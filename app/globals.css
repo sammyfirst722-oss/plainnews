@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant sepia (&:is(.sepia *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #fdfbf7;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #292524;
+  --muted: #f5f3ef;
+  --muted-foreground: #57534e;
+  --accent: #f0fdf4;
+  --accent-foreground: #166534;
+  --destructive: #dc2626;
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: #059669;
+}
+
+/* Warm Sepia Reading Mode for 40+ eye comfort */
+.sepia {
+  --background: #fbf7ee;
+  --foreground: #3d3024;
+  --card: #f6efe1;
+  --card-foreground: #3d3024;
+  --popover: #f6efe1;
+  --popover-foreground: #3d3024;
+  --primary: #92400e;
+  --primary-foreground: #ffffff;
+  --secondary: #eee4cf;
+  --secondary-foreground: #3d3024;
+  --muted: #eee4cf;
+  --muted-foreground: #786551;
+  --accent: #fef3c7;
+  --accent-foreground: #92400e;
+  --destructive: #b91c1c;
+  --border: #dfd4bf;
+  --input: #dfd4bf;
+  --ring: #92400e;
+}
+
+/* Calm Night Mode */
+.dark {
+  --background: #0c0a09;
+  --foreground: #f5f5f4;
+  --card: #1c1917;
+  --card-foreground: #f5f5f4;
+  --popover: #1c1917;
+  --popover-foreground: #f5f5f4;
+  --primary: #10b981;
+  --primary-foreground: #022c22;
+  --secondary: #292524;
+  --secondary-foreground: #f5f5f4;
+  --muted: #292524;
+  --muted-foreground: #a8a29e;
+  --accent: #064e3b;
+  --accent-foreground: #6ee7b7;
+  --destructive: #ef4444;
+  --border: #44403c;
+  --input: #44403c;
+  --ring: #10b981;
+}
+
+/* Typography legibility per modern-web-guidance */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, li, blockquote {
+  text-wrap: pretty;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars for clean category horizontal scroll */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

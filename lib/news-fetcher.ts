@@ -1,0 +1,247 @@
+import { XMLParser } from 'fast-xml-parser'
+import { NewsStory, NewsCategory } from './types'
+import { INITIAL_STORIES } from './stories-data'
+
+interface FeedSource {
+  url: string
+  sourceName: string
+  category: NewsCategory
+  categoryLabel: string
+  fallbackImage: string
+}
+
+const RSS_FEEDS: FeedSource[] = [
+  {
+    url: 'https://feeds.npr.org/1017/rss.xml',
+    sourceName: 'NPR Economy',
+    category: 'money',
+    categoryLabel: 'Money & Retirement',
+    fallbackImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://feeds.npr.org/1128/rss.xml',
+    sourceName: 'NPR Health',
+    category: 'health',
+    categoryLabel: 'Health & Wellness',
+    fallbackImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://feeds.npr.org/1019/rss.xml',
+    sourceName: 'NPR Technology',
+    category: 'tech',
+    categoryLabel: 'Tech Made Simple',
+    fallbackImage: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://feeds.npr.org/1001/rss.xml',
+    sourceName: 'NPR News',
+    category: 'us-world',
+    categoryLabel: 'US & World',
+    fallbackImage: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'http://feeds.bbci.co.uk/news/world/rss.xml',
+    sourceName: 'BBC World',
+    category: 'us-world',
+    categoryLabel: 'US & World',
+    fallbackImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://www.goodnewsnetwork.org/feed/',
+    sourceName: 'Good News Network',
+    category: 'good-news',
+    categoryLabel: 'Good News',
+    fallbackImage: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=800&q=80',
+  },
+]
+
+// In-memory cache for fast sub-50ms responses
+let cachedStories: NewsStory[] = []
+let lastFetchTime = 0
+const CACHE_TTL_MS = 5 * 60 * 1000 // 5 minutes
+
+function cleanHtml(raw: string = ''): string {
+  return raw
+    .replace(/<[^>]*>?/gm, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function timeSince(dateString: string): string {
+  const date = new Date(dateString)
+  const seconds = Math.floor((Date.now() - date.getTime()) / 1000)
+  if (isNaN(seconds) || seconds < 0) return 'Just now'
+  if (seconds < 60) return 'Just now'
+  const minutes = Math.floor(seconds / 60)
+  if (minutes < 60) return `${minutes}m ago`
+  const hours = Math.floor(minutes / 60)
+  if (hours < 24) return `${hours}h ago`
+  const days = Math.floor(hours / 24)
+  return `${days}d ago`
+}
+
+function createPlainEnglishBreakdown(title: string, summary: string, category: NewsCategory) {
+  const cleanTitle = cleanHtml(title)
+  const cleanSummary = cleanHtml(summary)
+
+  // Split into sentences
+  const sentences = cleanSummary
+    .split(/(?<=[.?!])\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 15)
+
+  const bigPicture =
+    sentences[0] || `Here is a clear summary of recent developments regarding ${cleanTitle.toLowerCase()}.`
+
+  const whatHappened = [
+    sentences[1] || `Key officials and experts are reviewing recent updates to keep the public informed.`,
+    sentences[2] || `The situation affects everyday services, pricing, and community guidelines.`,
+    sentences[3] || `More details will be shared as new verified information becomes available.`,
+  ]
+
+  let whyItMatters = 'Understanding this news helps you plan your weekly schedule, budget, and family priorities.'
+  if (category === 'money') {
+    whyItMatters = 'Changes in economic policy and market trends directly influence your groceries, mortgage rates, and retirement savings.'
+  } else if (category === 'health') {
+    whyItMatters = 'Staying informed on wellness and medical updates helps you make better decisions with your doctor and protect your family.'
+  } else if (category === 'tech') {
+    whyItMatters = 'Knowing how new technology works makes everyday gadgets easier to use while keeping your personal information safe from scams.'
+  } else if (category === 'good-news') {
+    whyItMatters = 'Positive community stories remind us of the kindness, progress, and resilience happening across our country every day.'
+  }
+
+  const plainWords = [
+    { word: 'Summary', meaning: 'A short, simple recap of the main points without confusing details.' },
+    { word: 'Developments', meaning: 'New events or changes that just happened.' },
+  ]
+
+  return {
+    simplifiedTitle: cleanTitle.length > 70 ? cleanTitle.slice(0, 67) + '...' : cleanTitle,
+    bigPicture,
+    whatHappened,
+    whyItMatters,
+    plainWords,
+  }
+}
+
+export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> {
+  const now = Date.now()
+
+  // Return cache if fresh
+  if (!forceRefresh && cachedStories.length > 0 && now - lastFetchTime < CACHE_TTL_MS) {
+    return cachedStories
+  }
+
+  const parser = new XMLParser({
+    ignoreAttributes: false,
+    attributeNamePrefix: '@_',
+  })
+
+  const fetchedStories: NewsStory[] = []
+
+  // Fetch feeds in parallel with timeout
+  const promises = RSS_FEEDS.map(async (feed) => {
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 4000) // 4 sec timeout
+
+      const res = await fetch(feed.url, {
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'PlainNews Reader/1.0 (plainnews.vercel.app)',
+        },
+        next: { revalidate: 300 },
+      })
+      clearTimeout(timeout)
+
+      if (!res.ok) return []
+
+      const xmlText = await res.text()
+      const parsed = parser.parse(xmlText)
+
+      const channel = parsed?.rss?.channel || parsed?.feed
+      if (!channel) return []
+
+      let items = channel.item || channel.entry || []
+      if (!Array.isArray(items)) items = [items]
+
+      const feedStories: NewsStory[] = []
+
+      for (let i = 0; i < Math.min(items.length, 4); i++) {
+        const item = items[i]
+        const rawTitle = item.title?.['#text'] || item.title || 'Breaking Update'
+        const rawDesc = item.description?.['#text'] || item.description || item.summary || ''
+        const link = item.link?.['#text'] || item.link?.['@_href'] || item.link || '#'
+        const pubDate = item.pubDate || item.published || new Date().toISOString()
+
+        // Extract thumbnail image if present in enclosure or media:content
+        let imageUrl = feed.fallbackImage
+        if (item.enclosure?.['@_url']) {
+          imageUrl = item.enclosure['@_url']
+        } else if (item['media:content']?.['@_url']) {
+          imageUrl = item['media:content']['@_url']
+        }
+
+        const breakdown = createPlainEnglishBreakdown(rawTitle, rawDesc, feed.category)
+
+        feedStories.push({
+          id: `rss-${feed.category}-${i}-${Date.now().toString(36)}`,
+          title: cleanHtml(rawTitle),
+          simplifiedTitle: breakdown.simplifiedTitle,
+          source: feed.sourceName,
+          sourceUrl: typeof link === 'string' ? link : '#',
+          pubDate: new Date(pubDate).toISOString(),
+          timeAgo: timeSince(pubDate),
+          category: feed.category,
+          categoryLabel: feed.categoryLabel,
+          imageUrl,
+          originalSummary: cleanHtml(rawDesc),
+          bigPicture: breakdown.bigPicture,
+          whatHappened: breakdown.whatHappened,
+          whyItMatters: breakdown.whyItMatters,
+          plainWords: breakdown.plainWords,
+          readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
+        })
+      }
+
+      return feedStories
+    } catch {
+      return []
+    }
+  })
+
+  const results = await Promise.allSettled(promises)
+  results.forEach((res) => {
+    if (res.status === 'fulfilled' && res.value.length > 0) {
+      fetchedStories.push(...res.value)
+    }
+  })
+
+  // Merge live stories with our curated 40+ foundation
+  const combined = [...fetchedStories, ...INITIAL_STORIES]
+
+  // Remove duplicates by title
+  const seen = new Set<string>()
+  const uniqueStories: NewsStory[] = []
+
+  for (const story of combined) {
+    const key = story.title.toLowerCase().trim()
+    if (!seen.has(key)) {
+      seen.add(key)
+      uniqueStories.push(story)
+    }
+  }
+
+  // Sort by pubDate descending (newest first)
+  uniqueStories.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+
+  cachedStories = uniqueStories
+  lastFetchTime = now
+
+  return cachedStories
+}
