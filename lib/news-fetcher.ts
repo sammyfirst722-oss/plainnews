@@ -1,5 +1,5 @@
 import { XMLParser } from 'fast-xml-parser'
-import { NewsStory, NewsCategory } from './types'
+import { NewsStory, NewsCategory, PlainWord } from './types'
 import { INITIAL_STORIES } from './stories-data'
 
 interface FeedSource {
@@ -60,6 +60,10 @@ let cachedStories: NewsStory[] = []
 let lastFetchTime = 0
 const CACHE_TTL_MS = 5 * 60 * 1000 // 5 minutes
 
+// In-memory cache for AI simplifications (separate longer-lived)
+const AI_CACHE_TTL_MS = 30 * 60 * 1000 // 30 minutes
+let aiCache: Record<string, { data: ReturnType<typeof createFallbackBreakdown>; timestamp: number }> = {}
+
 function cleanHtml(raw: string = ''): string {
   return raw
     .replace(/<[^>]*>?/gm, '')
@@ -85,7 +89,7 @@ function timeSince(dateString: string): string {
   return `${days}d ago`
 }
 
-function createPlainEnglishBreakdown(title: string, summary: string, category: NewsCategory) {
+function createFallbackBreakdown(title: string, summary: string, category: NewsCategory) {
   const cleanTitle = cleanHtml(title)
   const cleanSummary = cleanHtml(summary)
 
@@ -129,6 +133,108 @@ function createPlainEnglishBreakdown(title: string, summary: string, category: N
   }
 }
 
+async function aiSimplifyStory(title: string, description: string, category: NewsCategory, link: string) {
+  const hashKey = (title + link).slice(0, 100)
+  const now = Date.now()
+  if (aiCache[hashKey] && now - aiCache[hashKey].timestamp < AI_CACHE_TTL_MS) {
+    return aiCache[hashKey].data
+  }
+
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
+  if (!OPENROUTER_API_KEY) {
+    return createFallbackBreakdown(title, description, category)
+  }
+
+  const prompt = `You are an expert news editor and educator specializing in writing for adults aged 40+ at an 8th-grade school reading level.
+Your goal is to make the news clear, calm, and easy to understand without confusing jargon, hyperbolic panic, or partisan spin.
+
+ARTICLE HEADLINE: "${title}"
+ARTICLE TEXT:
+"""
+${description.slice(0, 3000)}
+"""
+
+Please rewrite this news story into simple, plain English at an 8th-grade reading level.
+Return ONLY valid JSON matching this exact structure:
+{
+  "simplifiedTitle": "Short, clear title in plain English (under 65 characters)",
+  "bigPicture": "One clear sentence explaining the main point simply.",
+  "whatHappened": [
+    "First simple fact about what happened in everyday words.",
+    "Second key detail or background point.",
+    "Third outcome or what happens next."
+  ],
+  "whyItMatters": "Two sentences explaining the practical impact on everyday life, money, health, safety, or family for adults aged 40+.",
+  "plainWords": [
+    {"word": "Jargon Term 1", "meaning": "Simple everyday definition"}
+  ]
+}`
+
+  try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 10000)
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'google/gemma-4-26b-a4b-it:free',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.3,
+        response_format: { type: 'json_object' },
+      }),
+    })
+    clearTimeout(timeout)
+    
+    if (!res.ok) throw new Error('API Error')
+    
+    const data = await res.json()
+    const rawContent = data.choices?.[0]?.message?.content || ''
+    const cleanedJson = rawContent.replace(/```json/gi, '').replace(/```/g, '').trim()
+    const parsed = JSON.parse(cleanedJson)
+    
+    const result = {
+      simplifiedTitle: parsed.simplifiedTitle || title,
+      bigPicture: parsed.bigPicture || 'Here is the key takeaway in plain English.',
+      whatHappened: Array.isArray(parsed.whatHappened) && parsed.whatHappened.length > 0 ? parsed.whatHappened : ['The main events were reviewed.'],
+      whyItMatters: parsed.whyItMatters || 'Staying informed helps you make practical decisions.',
+      plainWords: Array.isArray(parsed.plainWords) ? parsed.plainWords : [],
+    }
+    
+    aiCache[hashKey] = { data: result, timestamp: now }
+    return result
+  } catch (err) {
+    return createFallbackBreakdown(title, description, category)
+  }
+}
+
+function generateSlug(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 80)
+}
+
+// Concurrency utility
+async function processWithConcurrency<T>(tasks: (() => Promise<T>)[], limit: number): Promise<PromiseSettledResult<T>[]> {
+  const results: PromiseSettledResult<T>[] = [];
+  let i = 0;
+  const exec = async () => {
+    while (i < tasks.length) {
+      const taskIndex = i++;
+      try {
+        const value = await tasks[taskIndex]();
+        results[taskIndex] = { status: 'fulfilled', value };
+      } catch (reason) {
+        results[taskIndex] = { status: 'rejected', reason };
+      }
+    }
+  };
+  const workers = Array.from({ length: Math.min(limit, tasks.length) }, () => exec());
+  await Promise.all(workers);
+  return results;
+}
+
 export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> {
   const now = Date.now()
 
@@ -170,55 +276,70 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
       let items = channel.item || channel.entry || []
       if (!Array.isArray(items)) items = [items]
 
-      const feedStories: NewsStory[] = []
-
+      const feedStoriesRaw = []
+      
       for (let i = 0; i < Math.min(items.length, 4); i++) {
         const item = items[i]
-        const rawTitle = item.title?.['#text'] || item.title || 'Breaking Update'
-        const rawDesc = item.description?.['#text'] || item.description || item.summary || ''
-        const link = item.link?.['#text'] || item.link?.['@_href'] || item.link || '#'
-        const pubDate = item.pubDate || item.published || new Date().toISOString()
-
-        // Extract thumbnail image if present in enclosure or media:content
-        let imageUrl = feed.fallbackImage
-        if (item.enclosure?.['@_url']) {
-          imageUrl = item.enclosure['@_url']
-        } else if (item['media:content']?.['@_url']) {
-          imageUrl = item['media:content']['@_url']
-        }
-
-        const breakdown = createPlainEnglishBreakdown(rawTitle, rawDesc, feed.category)
-
-        feedStories.push({
-          id: `rss-${feed.category}-${i}-${Date.now().toString(36)}`,
-          title: cleanHtml(rawTitle),
-          simplifiedTitle: breakdown.simplifiedTitle,
-          source: feed.sourceName,
-          sourceUrl: typeof link === 'string' ? link : '#',
-          pubDate: new Date(pubDate).toISOString(),
-          timeAgo: timeSince(pubDate),
-          category: feed.category,
-          categoryLabel: feed.categoryLabel,
-          imageUrl,
-          originalSummary: cleanHtml(rawDesc),
-          bigPicture: breakdown.bigPicture,
-          whatHappened: breakdown.whatHappened,
-          whyItMatters: breakdown.whyItMatters,
-          plainWords: breakdown.plainWords,
-          readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
-        })
+        feedStoriesRaw.push({ item, feed, index: i })
       }
-
-      return feedStories
+      return feedStoriesRaw
     } catch {
       return []
     }
   })
 
-  const results = await Promise.allSettled(promises)
-  results.forEach((res) => {
+  const feedResults = await Promise.allSettled(promises)
+  
+  const allRawStories: any[] = []
+  feedResults.forEach((res) => {
     if (res.status === 'fulfilled' && res.value.length > 0) {
-      fetchedStories.push(...res.value)
+      allRawStories.push(...res.value)
+    }
+  })
+  
+  const aiTasks = allRawStories.map((raw) => async () => {
+    const { item, feed, index } = raw
+    const rawTitle = item.title?.['#text'] || item.title || 'Breaking Update'
+    const rawDesc = item.description?.['#text'] || item.description || item.summary || ''
+    const link = item.link?.['#text'] || item.link?.['@_href'] || item.link || '#'
+    const pubDate = item.pubDate || item.published || new Date().toISOString()
+    
+    const cleanRawTitle = cleanHtml(rawTitle)
+    const breakdown = await aiSimplifyStory(cleanRawTitle, cleanHtml(rawDesc), feed.category, typeof link === 'string' ? link : '#')
+
+    let imageUrl = feed.fallbackImage
+    if (item.enclosure?.['@_url']) {
+      imageUrl = item.enclosure['@_url']
+    } else if (item['media:content']?.['@_url']) {
+      imageUrl = item['media:content']['@_url']
+    }
+
+    return {
+      id: `rss-${feed.category}-${index}-${Date.now().toString(36)}`,
+      slug: generateSlug(cleanRawTitle),
+      title: cleanRawTitle,
+      simplifiedTitle: breakdown.simplifiedTitle,
+      source: feed.sourceName,
+      sourceUrl: typeof link === 'string' ? link : '#',
+      pubDate: new Date(pubDate).toISOString(),
+      timeAgo: timeSince(pubDate),
+      category: feed.category,
+      categoryLabel: feed.categoryLabel,
+      imageUrl,
+      originalSummary: cleanHtml(rawDesc),
+      bigPicture: breakdown.bigPicture,
+      whatHappened: breakdown.whatHappened,
+      whyItMatters: breakdown.whyItMatters,
+      plainWords: breakdown.plainWords,
+      readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
+    } as NewsStory
+  })
+
+  // Concurrency limit 3
+  const finalResults = await processWithConcurrency(aiTasks, 3)
+  finalResults.forEach(res => {
+    if (res.status === 'fulfilled' && res.value) {
+      fetchedStories.push(res.value)
     }
   })
 

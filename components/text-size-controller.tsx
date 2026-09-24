@@ -13,12 +13,28 @@ interface TextSizeControllerProps {
 export function TextSizeController({ textSize, setTextSize }: TextSizeControllerProps) {
   const { theme, setTheme } = useTheme()
 
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem('simplybignews-text-size')
+      if (saved && (saved === 'standard' || saved === 'large' || saved === 'xlarge')) {
+        setTextSize(saved as TextSize)
+      }
+    } catch (e) {}
+  }, [setTextSize])
+
+  const handleSetTextSize = (size: TextSize) => {
+    setTextSize(size)
+    try {
+      localStorage.setItem('simplybignews-text-size', size)
+    } catch (e) {}
+  }
+
   return (
     <div className="flex items-center gap-2">
       {/* Text Size Switcher */}
       <div className="flex items-center bg-card border-2 border-border/80 rounded-xl p-0.5 shadow-xs">
         <button
-          onClick={() => setTextSize('standard')}
+          onClick={() => handleSetTextSize('standard')}
           className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
             textSize === 'standard'
               ? 'bg-primary text-primary-foreground shadow-xs'
@@ -29,7 +45,7 @@ export function TextSizeController({ textSize, setTextSize }: TextSizeController
           A
         </button>
         <button
-          onClick={() => setTextSize('large')}
+          onClick={() => handleSetTextSize('large')}
           className={`px-2.5 py-1 text-sm font-bold rounded-lg transition-all ${
             textSize === 'large'
               ? 'bg-primary text-primary-foreground shadow-xs'
@@ -40,7 +56,7 @@ export function TextSizeController({ textSize, setTextSize }: TextSizeController
           A+
         </button>
         <button
-          onClick={() => setTextSize('xlarge')}
+          onClick={() => handleSetTextSize('xlarge')}
           className={`px-2.5 py-1 text-base font-extrabold rounded-lg transition-all ${
             textSize === 'xlarge'
               ? 'bg-primary text-primary-foreground shadow-xs'

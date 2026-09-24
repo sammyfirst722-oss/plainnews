@@ -14,6 +14,7 @@ export interface PlainWord {
 
 export interface NewsStory {
   id: string
+  slug: string
   title: string
   simplifiedTitle: string
   source: string

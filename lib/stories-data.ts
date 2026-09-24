@@ -4,6 +4,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-1',
     title: 'Social Security Announces Cost-of-Living Adjustment (COLA) for Upcoming Year',
+    slug: 'social-security-announces-cost-of-living-adjustment-cola-for-upcoming-year',
     simplifiedTitle: 'Social Security Checks Are Increasing: What You Need to Know',
     source: 'Associated Press',
     sourceUrl: 'https://apnews.com',
@@ -32,6 +33,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-2',
     title: 'Medicare Cap on Out-of-Pocket Prescription Drug Costs Begins Showing Major Savings',
+    slug: 'medicare-cap-on-out-of-pocket-prescription-drug-costs-begins-showing-major-savin',
     simplifiedTitle: 'Prescription Drug Costs Now Capped: How Seniors Are Saving Thousands',
     source: 'NPR Health',
     sourceUrl: 'https://npr.org',
@@ -60,6 +62,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-3',
     title: 'FTC Issues Urgent Warning Over AI Voice Cloning Scams Targeting Family Members',
+    slug: 'ftc-issues-urgent-warning-over-ai-voice-cloning-scams-targeting-family-members',
     simplifiedTitle: 'Watch Out for Fake Phone Calls Using AI to Copy Family Voices',
     source: 'BBC Technology',
     sourceUrl: 'https://bbc.com',
@@ -88,6 +91,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-4',
     title: 'New Study: 20 Minutes of Daily Brisk Walking Slashes Joint Stiffness and Heart Risk After 45',
+    slug: 'new-study-20-minutes-of-daily-brisk-walking-slashes-joint-stiffness-and-heart-ri',
     simplifiedTitle: 'A Simple 20-Minute Daily Walk Does Wonders for Joints and Heart',
     source: 'Reuters Health',
     sourceUrl: 'https://reuters.com',
@@ -116,6 +120,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-5',
     title: 'Homeowners Over 50 Find Major Energy Savings with State Heat Pump and Insulation Rebates',
+    slug: 'homeowners-over-50-find-major-energy-savings-with-state-heat-pump-and-insulation',
     simplifiedTitle: 'State and Federal Rebates Make Home Heating and Cooling Much Cheaper',
     source: 'CNBC',
     sourceUrl: 'https://cnbc.com',
@@ -144,6 +149,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-6',
     title: 'High-Yield Savings Accounts Remain Above 4.5%: How to Avoid Leaving Money in Near-Zero Checking',
+    slug: 'high-yield-savings-accounts-remain-above-4-5-how-to-avoid-leaving-money-in-near-',
     simplifiedTitle: 'How to Earn 4% to 5% on Your Emergency Cash Right Now',
     source: 'Wall Street Journal',
     sourceUrl: 'https://wsj.com',
@@ -172,6 +178,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-7',
     title: 'Good News: National Parks Expand Free Lifetime Passes and Easy Accessibility Trails for Seniors',
+    slug: 'good-news-national-parks-expand-free-lifetime-passes-and-easy-accessibility-trai',
     simplifiedTitle: 'National Parks Add Smoother Trails and Easy Access for Older Visitors',
     source: 'Good News Network',
     sourceUrl: 'https://goodnewsnetwork.org',
@@ -200,6 +207,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-8',
     title: 'New Simple Guide to Smartphone Privacy: How to Stop Apps from Tracking You in 3 Taps',
+    slug: 'new-simple-guide-to-smartphone-privacy-how-to-stop-apps-from-tracking-you-in-3-t',
     simplifiedTitle: 'How to Turn Off Annoying Phone Tracking in 3 Simple Steps',
     source: 'NPR Technology',
     sourceUrl: 'https://npr.org',
@@ -228,6 +236,7 @@ export const INITIAL_STORIES: NewsStory[] = [
   {
     id: 'story-9',
     title: 'Bipartisan Legislation Seeks to Crack Down on Hidden "Junk Fees" on Hotels, Airlines, and Cable Bills',
+    slug: 'bipartisan-legislation-seeks-to-crack-down-on-hidden-junk-fees-on-hotels-airline',
     simplifiedTitle: 'Congress Moves to Ban Sneaky "Junk Fees" on Hotel and Cable Bills',
     source: 'Associated Press',
     sourceUrl: 'https://apnews.com',

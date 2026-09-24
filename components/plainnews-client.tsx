@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React, { useState, useEffect, useMemo } from 'react'
 import { NewsStory, NewsCategory, TextSize } from '@/lib/types'
 import { TextSizeController } from './text-size-controller'
@@ -329,6 +330,9 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
 
                 {/* Actions: Listen & Read */}
                 <div className="flex flex-wrap items-center gap-3 pt-1">
+                  <Link href={`/story/${spotlightStory.slug}`} className="p-2.5 rounded-xl border-2 border-border/80 text-muted-foreground hover:text-foreground" title="Open Story Page">
+                    <ExternalLink className="w-4 h-4" />
+                  </Link>
                   <button
                     onClick={() => setSelectedStory(spotlightStory)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-extrabold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all"
@@ -467,6 +471,9 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                             <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
                           </button>
 
+                          <Link href={`/story/${story.slug}`} className="p-1.5 rounded-xl border-2 border-border/80 text-muted-foreground hover:text-foreground" title="Open Story Page">
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </Link>
                           <button
                             onClick={() => setSelectedStory(story)}
                             className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold shadow-2xs hover:opacity-90 active:scale-95 transition-all flex items-center gap-1"

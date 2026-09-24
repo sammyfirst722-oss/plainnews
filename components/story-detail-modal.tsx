@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NewsStory, TextSize } from '@/lib/types'
 import { AudioPlayer } from './audio-player'
 import {
@@ -32,16 +32,24 @@ export function StoryDetailModal({
 }: StoryDetailModalProps) {
   const [copied, setCopied] = useState(false)
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
+
   if (!story) return null
 
   const handleShare = async () => {
-    const textToShare = `${story.simplifiedTitle}\n\n${story.bigPicture}\n\nRead more on PlainNews.`
+    const textToShare = `${story.simplifiedTitle}\n\n${story.bigPicture}\n\nRead more on SimplyBigNews.`
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: story.simplifiedTitle,
           text: textToShare,
-          url: window.location.href,
+          url: `${window.location.origin}/story/${story.slug}`,
         })
       } catch {
         // Fall back to copy
@@ -77,7 +85,7 @@ export function StoryDetailModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/65 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl max-h-[92vh] flex flex-col bg-card border-2 border-border/90 rounded-3xl shadow-2xl overflow-hidden">
+      <div role="dialog" aria-modal="true" className="relative w-full max-w-2xl max-h-[92vh] flex flex-col bg-card border-2 border-border/90 rounded-3xl shadow-2xl overflow-hidden">
         {/* Modal Top Header Bar */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-5 py-4 border-b-2 border-border/80 bg-card/95 backdrop-blur-md">
           <div className="flex items-center gap-2">

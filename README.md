@@ -1,4 +1,4 @@
-# PlainNews 📰
+# SimplyBigNews 📰
 
 > Clear, honest, distraction-free news written at an 8th-grade reading level.
 > Tailored for readers 40+ who value calm, straightforward information without sensationalism.
@@ -32,7 +32,7 @@
 - **Audio**: Web Speech Synthesis API
 - **AI Simplifier**: OpenRouter / Google Gemma 4 26B with deterministic fallback engine
 - **Feed Processing**: `fast-xml-parser` with TTL caching
-- **Platform**: Web PWA & Android TWA (`app.vercel.plainnews.twa`)
+- **Platform**: Web PWA & Android TWA (`app.vercel.SimplyBigNews.twa`)
 
 ---
 
@@ -46,8 +46,8 @@
 ### Installation
 
 ```bash
-git clone https://github.com/sammyfirst722-oss/plainnews.git
-cd plainnews
+git clone https://github.com/sammyfirst722-oss/SimplyBigNews.git
+cd SimplyBigNews
 npm install
 ```
 
@@ -77,6 +77,6 @@ npm start
 
 ## 📱 Android App (Google Play)
 
-- **Package Name**: `app.vercel.plainnews.twa`
+- **Package Name**: `app.vercel.SimplyBigNews.twa`
 - **Application Type**: Android Trusted Web Activity (TWA) Bundle (.aab)
 - **Asset Links**: Digital Asset Links enabled via `/.well-known/assetlinks.json`
