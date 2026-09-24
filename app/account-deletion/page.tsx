@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { ArrowLeft, Trash2, Mail } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Data & Privacy Choices | PlainNews',
-  description: 'How to clear your PlainNews reading history and stored preferences.',
+  title: 'Data & Privacy Choices | SimplyBigNews',
+  description: 'How to clear your SimplyBigNews reading history and stored preferences.',
 }
 
 export default function AccountDeletionPage() {
@@ -15,7 +15,7 @@ export default function AccountDeletionPage() {
           href="/"
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline mb-6"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to PlainNews
+          <ArrowLeft className="w-4 h-4" /> Back to SimplyBigNews
         </Link>
 
         <div className="flex items-center gap-3 mb-2">
@@ -28,7 +28,7 @@ export default function AccountDeletionPage() {
 
         <div className="space-y-6 text-sm leading-relaxed text-muted-foreground">
           <p>
-            PlainNews does not create remote user profiles or retain personal data on servers. You have
+            SimplyBigNews does not create remote user profiles or retain personal data on servers. You have
             complete control over your stored preferences.
           </p>
 

@@ -30,7 +30,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-bold text-foreground mb-2">1. Agreement to Terms</h2>
             <p>
-              By accessing PlainNews, you agree to these Terms of Service. If you disagree with any
+              By accessing SimplyBigNews, you agree to these Terms of Service. If you disagree with any
               part, you may discontinue use of the service.
             </p>
           </section>
@@ -38,8 +38,8 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-bold text-foreground mb-2">2. Editorial &amp; News Disclaimer</h2>
             <p>
-              PlainNews provides simplified educational summaries of current news events at an
-              8th-grade reading level. While we strive for accuracy, summaries are for informational
+              SimplyBigNews provides simplified educational summaries of current news events in
+              clear, accessible everyday words. While we strive for accuracy, summaries are for informational
               purposes only and do not constitute legal, medical, or financial advice. Readers are
               encouraged to refer to original primary sources linked on each article for complete
               transcripts and full details.

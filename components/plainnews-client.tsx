@@ -161,14 +161,14 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-black text-xl sm:text-2xl tracking-tight text-foreground">
-                  PlainNews
+                  SimplyBigNews
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                  8th Grade Level
+                  Zero Jargon
                 </span>
               </div>
               <p className="text-[11px] text-muted-foreground font-medium hidden sm:block">
-                Clear, calm news in plain English • Tailored for everyday life
+                Clear, calm news in simple everyday words • Tailored for everyday life
               </p>
             </div>
           </div>
@@ -491,8 +491,8 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       <footer className="mt-20 border-t-2 border-border/60 py-8 px-4 text-center text-xs text-muted-foreground">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-black text-foreground">PlainNews</span>
-            <span>&copy; {new Date().getFullYear()} • News in Plain English</span>
+            <span className="font-black text-foreground">SimplyBigNews</span>
+            <span>&copy; {new Date().getFullYear()} • Clear, Everyday News</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 font-medium">
             <a href="/privacy" className="hover:text-emerald-500 hover:underline">

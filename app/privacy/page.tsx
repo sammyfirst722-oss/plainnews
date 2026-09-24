@@ -33,8 +33,8 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-bold text-foreground mb-2">1. Overview</h2>
             <p>
-              PlainNews (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is built to deliver calm, simple,
-              jargon-free news at an 8th-grade reading level. We are committed to complete privacy and
+              SimplyBigNews (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is built to deliver calm, simple,
+              jargon-free news in clear everyday words. We are committed to complete privacy and
               do not sell your personal data or track your reading habits across third-party websites.
             </p>
           </section>

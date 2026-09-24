@@ -5,10 +5,11 @@ import { SwRegister } from '@/components/sw-register'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'PlainNews — News in Plain English (8th Grade Reading Level)',
+  title: 'SimplyBigNews — Clear, Everyday News Without Jargon',
   description:
-    'Real-time news from top sources rewritten into calm, simple, 8th-grade level English. Tailored for adults 40+ with listen-aloud audio, large text, and practical takeaways.',
+    "The day's biggest news rewritten into calm, simple, everyday English. Tailored for comfortable reading with listen-aloud audio, large text, and practical takeaways.",
   keywords: [
+    'simply big news',
     'plain english news',
     'simple news',
     'easy reading news',
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'PlainNews',
+    title: 'SimplyBigNews',
   },
 }
 

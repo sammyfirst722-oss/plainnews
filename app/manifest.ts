@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'PlainNews - News in Plain English',
-    short_name: 'PlainNews',
+    name: 'SimplyBigNews - Clear, Everyday News',
+    short_name: 'SimplyBigNews',
     description:
-      'Daily real-time news rewritten at an 8th-grade reading level. Calm, simple, and tailored for adults 40+ with listen-aloud audio.',
+      'Daily real-time news rewritten in simple everyday words. Calm, honest, and comfortable to read.',
     id: '/',
     start_url: '/',
     scope: '/',

@@ -80,7 +80,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
                 Translate Any Story to Plain English
               </h2>
               <p className="text-xs text-muted-foreground font-medium">
-                Converts dense or confusing articles into an 8th-grade reading level
+                Converts dense or confusing articles into simple, everyday words
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
                 ) : (
                   <>
                     <Sparkles className="w-4 h-4" />
-                    <span>Simplify to 8th Grade Level</span>
+                    <span>Simplify into Simple Words</span>
                   </>
                 )}
               </button>

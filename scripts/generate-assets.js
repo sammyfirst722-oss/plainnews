@@ -113,24 +113,24 @@ function createFeatureGraphicSvg() {
       </g>
       
       <text x="135" y="60" font-family="system-ui, sans-serif" font-weight="900" font-size="44" fill="#ffffff" letter-spacing="-1">
-        PlainNews <tspan fill="#34d399">AI</tspan>
+        SimplyBig<tspan fill="#34d399">News</tspan>
       </text>
       <text x="135" y="98" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="url(#gold)" letter-spacing="1">
-        NEWS IN PLAIN ENGLISH
+        FAST, SIMPLE &amp; CLEAR
       </text>
       
       <text x="0" y="180" font-family="system-ui, sans-serif" font-weight="800" font-size="34" fill="#ffffff">
         Clear, Calm &amp; Simple News Every Day
       </text>
       <text x="0" y="220" font-family="system-ui, sans-serif" font-weight="400" font-size="19" fill="#a7f3d0">
-        Rewritten at an 8th-grade reading level. Tailored for adults 40+.
+        Everyday words without media jargon. Honest &amp; comfortable to read.
       </text>
       
       <!-- Feature Pills -->
       <g transform="translate(0, 260)">
         <rect x="0" y="0" width="185" height="44" rx="22" fill="#065f46" stroke="#34d399" stroke-width="2"/>
         <text x="92" y="28" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#ffffff" text-anchor="middle">
-          📖 8th Grade Level
+          ✨ Zero Jargon
         </text>
         
         <rect x="200" y="0" width="180" height="44" rx="22" fill="#065f46" stroke="#34d399" stroke-width="2"/>
@@ -151,7 +151,7 @@ function createFeatureGraphicSvg() {
       <!-- Header -->
       <rect x="20" y="24" width="240" height="34" rx="10" fill="#059669"/>
       <text x="140" y="46" font-family="sans-serif" font-weight="800" font-size="13" fill="#ffffff" text-anchor="middle">
-        PlainNews Daily Edition
+        SimplyBigNews Daily
       </text>
       <!-- Title -->
       <text x="24" y="85" font-family="sans-serif" font-weight="900" font-size="16" fill="#1c1917">
