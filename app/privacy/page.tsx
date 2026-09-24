@@ -34,7 +34,7 @@ export default function PrivacyPage() {
             <h2 className="text-lg font-bold text-foreground mb-2">1. Overview</h2>
             <p>
               SimplyBigNews (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is built to deliver calm, simple,
-              jargon-free news in clear everyday words. We are committed to complete privacy and
+              fluff-free news in clear everyday words. We are committed to complete privacy and
               do not sell your personal data or track your reading habits across third-party websites.
             </p>
           </section>

@@ -164,7 +164,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                   SimplyBigNews
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                  Zero Jargon
+                  Zero Fluff
                 </span>
               </div>
               <p className="text-[11px] text-muted-foreground font-medium hidden sm:block">

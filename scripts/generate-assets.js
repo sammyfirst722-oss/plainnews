@@ -123,14 +123,14 @@ function createFeatureGraphicSvg() {
         Clear, Calm &amp; Simple News Every Day
       </text>
       <text x="0" y="220" font-family="system-ui, sans-serif" font-weight="400" font-size="19" fill="#a7f3d0">
-        Everyday words without media jargon. Honest &amp; comfortable to read.
+        Everyday words without media fluff. Honest &amp; comfortable to read.
       </text>
       
       <!-- Feature Pills -->
       <g transform="translate(0, 260)">
         <rect x="0" y="0" width="185" height="44" rx="22" fill="#065f46" stroke="#34d399" stroke-width="2"/>
         <text x="92" y="28" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#ffffff" text-anchor="middle">
-          ✨ Zero Jargon
+          ✨ Zero Fluff
         </text>
         
         <rect x="200" y="0" width="180" height="44" rx="22" fill="#065f46" stroke="#34d399" stroke-width="2"/>
