@@ -39,3 +39,5 @@ next-env.d.ts
 *keystore-info.txt
 *-service-account*.json
 *.aab
+
+.vercel
