@@ -1,0 +1,12 @@
+#!/bin/sh
+# Blocks commits that include secret-looking files. Allows .env.example.
+bad=$(git diff --cached --name-only --diff-filter=ACMR \
+  | grep -Ei '(^|/)\.env($|\.)|service-account[^/]*\.json$|\.pem$|\.p12$|\.keystore$|\.jks$' \
+  | grep -Evi '(^|/)\.env\.example$')
+if [ -n "$bad" ]; then
+  echo "pre-commit: BLOCKED - these look like secrets:"
+  echo "$bad"
+  echo "Remove them from the commit (git restore --staged <file>) and add them to .gitignore."
+  exit 1
+fi
+exit 0

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Blocks pushes when the production build fails.
+if [ -f package.json ]; then
+  echo "pre-push: running npm run build..."
+  if ! npm run build --if-present; then
+    echo "pre-push: BLOCKED - build failed. Fix it before pushing."
+    exit 1
+  fi
+fi
+exit 0
