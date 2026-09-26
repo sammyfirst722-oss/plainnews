@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs'
 import { PlainWord } from './types'
 
 export interface PlainRewriteResult {
@@ -68,6 +69,15 @@ Return ONLY valid JSON matching this exact structure:
     clearTimeout(timeout)
 
     if (!res.ok) {
+      const errorText = await res.text().catch(() => '')
+      Sentry.captureMessage(
+        `OpenRouter rewrite error (HTTP ${res.status}): ${errorText || res.statusText}`,
+        {
+          level: 'error',
+          tags: { service: 'openrouter', operation: 'plainRewriter' },
+          extra: { headline, status: res.status, errorText },
+        }
+      )
       return fallbackSimplification(articleText, headline)
     }
 
@@ -91,7 +101,11 @@ Return ONLY valid JSON matching this exact structure:
       whyItMatters: parsed.whyItMatters || 'Staying informed helps you make practical decisions for your home and finances.',
       plainWords: Array.isArray(parsed.plainWords) ? parsed.plainWords : [],
     }
-  } catch {
+  } catch (err) {
+    Sentry.captureException(err, {
+      tags: { service: 'openrouter', operation: 'plainRewriter' },
+      extra: { headline },
+    })
     return fallbackSimplification(articleText, headline)
   }
 }

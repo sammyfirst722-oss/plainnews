@@ -1,4 +1,5 @@
 import { XMLParser } from 'fast-xml-parser'
+import * as Sentry from '@sentry/nextjs'
 import { NewsStory, NewsCategory, PlainWord } from './types'
 import { INITIAL_STORIES } from './stories-data'
 
@@ -189,7 +190,18 @@ Return ONLY valid JSON matching this exact structure:
     })
     clearTimeout(timeout)
     
-    if (!res.ok) throw new Error('API Error')
+    if (!res.ok) {
+      const errorText = await res.text().catch(() => '')
+      Sentry.captureMessage(
+        `OpenRouter API error (HTTP ${res.status}): ${errorText || res.statusText}`,
+        {
+          level: 'error',
+          tags: { service: 'openrouter', operation: 'aiSimplifyStory', category },
+          extra: { title, link, status: res.status, errorText },
+        }
+      )
+      return createFallbackBreakdown(title, description, category)
+    }
     
     const data = await res.json()
     const rawContent = data.choices?.[0]?.message?.content || ''
@@ -207,6 +219,10 @@ Return ONLY valid JSON matching this exact structure:
     aiCache[hashKey] = { data: result, timestamp: now }
     return result
   } catch (err) {
+    Sentry.captureException(err, {
+      tags: { service: 'openrouter', operation: 'aiSimplifyStory', category },
+      extra: { title, link },
+    })
     return createFallbackBreakdown(title, description, category)
   }
 }
@@ -236,133 +252,175 @@ async function processWithConcurrency<T>(tasks: (() => Promise<T>)[], limit: num
 }
 
 export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> {
-  const now = Date.now()
+  try {
+    const now = Date.now()
 
-  // Return cache if fresh
-  if (!forceRefresh && cachedStories.length > 0 && now - lastFetchTime < CACHE_TTL_MS) {
-    return cachedStories
-  }
+    // Return cache if fresh
+    if (!forceRefresh && cachedStories.length > 0 && now - lastFetchTime < CACHE_TTL_MS) {
+      return cachedStories
+    }
 
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    attributeNamePrefix: '@_',
-  })
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+      attributeNamePrefix: '@_',
+    })
 
-  const fetchedStories: NewsStory[] = []
+    const fetchedStories: NewsStory[] = []
 
-  // Fetch feeds in parallel with timeout
-  const promises = RSS_FEEDS.map(async (feed) => {
-    try {
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 4000) // 4 sec timeout
+    // Fetch feeds in parallel with timeout
+    const promises = RSS_FEEDS.map(async (feed) => {
+      try {
+        const controller = new AbortController()
+        const timeout = setTimeout(() => controller.abort(), 4000) // 4 sec timeout
 
-      const res = await fetch(feed.url, {
-        signal: controller.signal,
-        headers: {
-          'User-Agent': 'PlainNews Reader/1.0 (plainnews.vercel.app)',
-        },
-        next: { revalidate: 300 },
-      })
-      clearTimeout(timeout)
+        const res = await fetch(feed.url, {
+          signal: controller.signal,
+          headers: {
+            'User-Agent': 'PlainNews Reader/1.0 (plainnews.vercel.app)',
+          },
+          next: { revalidate: 300 },
+        })
+        clearTimeout(timeout)
 
-      if (!res.ok) return []
+        if (!res.ok) {
+          Sentry.captureMessage(
+            `RSS feed returned HTTP ${res.status}: ${feed.sourceName}`,
+            {
+              level: 'warning',
+              tags: { source: feed.sourceName, category: feed.category },
+              extra: { url: feed.url, status: res.status },
+            }
+          )
+          return []
+        }
 
-      const xmlText = await res.text()
-      const parsed = parser.parse(xmlText)
+        const xmlText = await res.text()
+        const parsed = parser.parse(xmlText)
 
-      const channel = parsed?.rss?.channel || parsed?.feed
-      if (!channel) return []
+        const channel = parsed?.rss?.channel || parsed?.feed
+        if (!channel) {
+          Sentry.captureMessage(
+            `RSS feed parse failed: No channel or feed root found for ${feed.sourceName}`,
+            {
+              level: 'warning',
+              tags: { source: feed.sourceName, category: feed.category },
+              extra: { url: feed.url },
+            }
+          )
+          return []
+        }
 
-      let items = channel.item || channel.entry || []
-      if (!Array.isArray(items)) items = [items]
+        let items = channel.item || channel.entry || []
+        if (!Array.isArray(items)) items = [items]
 
-      const feedStoriesRaw = []
-      
-      for (let i = 0; i < Math.min(items.length, 4); i++) {
-        const item = items[i]
-        feedStoriesRaw.push({ item, feed, index: i })
+        const feedStoriesRaw = []
+        
+        for (let i = 0; i < Math.min(items.length, 4); i++) {
+          const item = items[i]
+          feedStoriesRaw.push({ item, feed, index: i })
+        }
+        return feedStoriesRaw
+      } catch (err) {
+        Sentry.captureException(err, {
+          tags: { source: feed.sourceName, category: feed.category, operation: 'rssFetch' },
+          extra: { url: feed.url },
+        })
+        return []
       }
-      return feedStoriesRaw
-    } catch {
-      return []
-    }
-  })
+    })
 
-  const feedResults = await Promise.allSettled(promises)
-  
-  const allRawStories: any[] = []
-  feedResults.forEach((res) => {
-    if (res.status === 'fulfilled' && res.value.length > 0) {
-      allRawStories.push(...res.value)
-    }
-  })
-  
-  const aiTasks = allRawStories.map((raw) => async () => {
-    const { item, feed, index } = raw
-    const rawTitle = item.title?.['#text'] || item.title || 'Breaking Update'
-    const rawDesc = item.description?.['#text'] || item.description || item.summary || ''
-    const link = item.link?.['#text'] || item.link?.['@_href'] || item.link || '#'
-    const pubDate = item.pubDate || item.published || new Date().toISOString()
+    const feedResults = await Promise.allSettled(promises)
     
-    const cleanRawTitle = cleanHtml(rawTitle)
-    const breakdown = await aiSimplifyStory(cleanRawTitle, cleanHtml(rawDesc), feed.category, typeof link === 'string' ? link : '#')
+    const allRawStories: any[] = []
+    feedResults.forEach((res) => {
+      if (res.status === 'fulfilled' && res.value.length > 0) {
+        allRawStories.push(...res.value)
+      }
+    })
 
-    let imageUrl = feed.fallbackImage
-    if (item.enclosure?.['@_url']) {
-      imageUrl = item.enclosure['@_url']
-    } else if (item['media:content']?.['@_url']) {
-      imageUrl = item['media:content']['@_url']
+    if (allRawStories.length === 0) {
+      Sentry.captureMessage(
+        'All RSS feeds returned empty results or failed to fetch. Falling back to foundation stories.',
+        { level: 'error', tags: { pipeline: 'rss-fetcher' } }
+      )
+    }
+    
+    const aiTasks = allRawStories.map((raw) => async () => {
+      const { item, feed, index } = raw
+      const rawTitle = item.title?.['#text'] || item.title || 'Breaking Update'
+      const rawDesc = item.description?.['#text'] || item.description || item.summary || ''
+      const link = item.link?.['#text'] || item.link?.['@_href'] || item.link || '#'
+      const pubDate = item.pubDate || item.published || new Date().toISOString()
+      
+      const cleanRawTitle = cleanHtml(rawTitle)
+      const breakdown = await aiSimplifyStory(cleanRawTitle, cleanHtml(rawDesc), feed.category, typeof link === 'string' ? link : '#')
+
+      let imageUrl = feed.fallbackImage
+      if (item.enclosure?.['@_url']) {
+        imageUrl = item.enclosure['@_url']
+      } else if (item['media:content']?.['@_url']) {
+        imageUrl = item['media:content']['@_url']
+      }
+
+      return {
+        id: `rss-${feed.category}-${index}-${Date.now().toString(36)}`,
+        slug: generateSlug(cleanRawTitle),
+        title: cleanRawTitle,
+        simplifiedTitle: breakdown.simplifiedTitle,
+        source: feed.sourceName,
+        sourceUrl: typeof link === 'string' ? link : '#',
+        pubDate: new Date(pubDate).toISOString(),
+        timeAgo: timeSince(pubDate),
+        category: feed.category,
+        categoryLabel: feed.categoryLabel,
+        imageUrl,
+        originalSummary: cleanHtml(rawDesc),
+        bigPicture: breakdown.bigPicture,
+        whatHappened: breakdown.whatHappened,
+        whyItMatters: breakdown.whyItMatters,
+        plainWords: breakdown.plainWords,
+        readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
+      } as NewsStory
+    })
+
+    // Concurrency limit 3
+    const finalResults = await processWithConcurrency(aiTasks, 3)
+    finalResults.forEach(res => {
+      if (res.status === 'fulfilled' && res.value) {
+        fetchedStories.push(res.value)
+      } else if (res.status === 'rejected') {
+        Sentry.captureException(res.reason, {
+          tags: { pipeline: 'ai-batch' },
+        })
+      }
+    })
+
+    // Merge live stories with our curated 40+ foundation
+    const combined = [...fetchedStories, ...INITIAL_STORIES]
+
+    // Remove duplicates by title
+    const seen = new Set<string>()
+    const uniqueStories: NewsStory[] = []
+
+    for (const story of combined) {
+      const key = story.title.toLowerCase().trim()
+      if (!seen.has(key)) {
+        seen.add(key)
+        uniqueStories.push(story)
+      }
     }
 
-    return {
-      id: `rss-${feed.category}-${index}-${Date.now().toString(36)}`,
-      slug: generateSlug(cleanRawTitle),
-      title: cleanRawTitle,
-      simplifiedTitle: breakdown.simplifiedTitle,
-      source: feed.sourceName,
-      sourceUrl: typeof link === 'string' ? link : '#',
-      pubDate: new Date(pubDate).toISOString(),
-      timeAgo: timeSince(pubDate),
-      category: feed.category,
-      categoryLabel: feed.categoryLabel,
-      imageUrl,
-      originalSummary: cleanHtml(rawDesc),
-      bigPicture: breakdown.bigPicture,
-      whatHappened: breakdown.whatHappened,
-      whyItMatters: breakdown.whyItMatters,
-      plainWords: breakdown.plainWords,
-      readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
-    } as NewsStory
-  })
+    // Sort by pubDate descending (newest first)
+    uniqueStories.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
 
-  // Concurrency limit 3
-  const finalResults = await processWithConcurrency(aiTasks, 3)
-  finalResults.forEach(res => {
-    if (res.status === 'fulfilled' && res.value) {
-      fetchedStories.push(res.value)
-    }
-  })
+    cachedStories = uniqueStories
+    lastFetchTime = now
 
-  // Merge live stories with our curated 40+ foundation
-  const combined = [...fetchedStories, ...INITIAL_STORIES]
-
-  // Remove duplicates by title
-  const seen = new Set<string>()
-  const uniqueStories: NewsStory[] = []
-
-  for (const story of combined) {
-    const key = story.title.toLowerCase().trim()
-    if (!seen.has(key)) {
-      seen.add(key)
-      uniqueStories.push(story)
-    }
+    return cachedStories
+  } catch (err) {
+    Sentry.captureException(err, {
+      tags: { operation: 'fetchLiveNews' },
+    })
+    return cachedStories.length > 0 ? cachedStories : INITIAL_STORIES
   }
-
-  // Sort by pubDate descending (newest first)
-  uniqueStories.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
-
-  cachedStories = uniqueStories
-  lastFetchTime = now
-
-  return cachedStories
 }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import * as Sentry from '@sentry/nextjs'
 import { rewriteArticleToPlainEnglish } from '@/lib/plain-rewriter'
 
 export async function POST(req: NextRequest) {
@@ -20,6 +21,9 @@ export async function POST(req: NextRequest) {
       data: result,
     })
   } catch (err: unknown) {
+    Sentry.captureException(err, {
+      tags: { route: 'api/rewrite' },
+    })
     const message = err instanceof Error ? err.message : 'Rewriting error'
     return NextResponse.json(
       { success: false, error: message },

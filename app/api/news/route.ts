@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import * as Sentry from '@sentry/nextjs'
 import { fetchLiveNews } from '@/lib/news-fetcher'
 
 export async function GET(req: NextRequest) {
@@ -21,6 +22,9 @@ export async function GET(req: NextRequest) {
       stories: filtered,
     })
   } catch (err: unknown) {
+    Sentry.captureException(err, {
+      tags: { route: 'api/news' },
+    })
     const message = err instanceof Error ? err.message : 'Failed to fetch news'
     return NextResponse.json(
       { success: false, error: message },
