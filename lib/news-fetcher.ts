@@ -1,6 +1,12 @@
 import { XMLParser } from 'fast-xml-parser'
 import { NewsStory, NewsCategory, PlainWord } from './types'
 import { INITIAL_STORIES } from './stories-data'
+import {
+  getArchivedStories,
+  saveArchivedStories,
+  getPersistedMonthlySpend,
+  savePersistedMonthlySpend,
+} from './storage'
 
 interface FeedSource {
   url: string
@@ -15,8 +21,15 @@ const RSS_FEEDS: FeedSource[] = [
     url: 'https://feeds.npr.org/1017/rss.xml',
     sourceName: 'NPR Economy',
     category: 'money',
-    categoryLabel: 'Money & Retirement',
+    categoryLabel: 'Money & Life',
     fallbackImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://www.consumer.ftc.gov/blog/rss',
+    sourceName: 'FTC Scam Alerts',
+    category: 'money',
+    categoryLabel: 'Scam & Consumer Alerts',
+    fallbackImage: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80',
   },
   {
     url: 'https://feeds.npr.org/1128/rss.xml',
@@ -33,6 +46,13 @@ const RSS_FEEDS: FeedSource[] = [
     fallbackImage: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80',
   },
   {
+    url: 'https://www.nasa.gov/news-release/feed/',
+    sourceName: 'NASA Space & Science',
+    category: 'tech',
+    categoryLabel: 'Space & Discoveries',
+    fallbackImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+  },
+  {
     url: 'https://feeds.npr.org/1001/rss.xml',
     sourceName: 'NPR News',
     category: 'us-world',
@@ -45,6 +65,13 @@ const RSS_FEEDS: FeedSource[] = [
     category: 'us-world',
     categoryLabel: 'US & World',
     fallbackImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://phys.org/rss-feed/',
+    sourceName: 'Phys.org Discoveries',
+    category: 'living',
+    categoryLabel: 'Science & Everyday Nature',
+    fallbackImage: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
   },
   {
     url: 'https://www.goodnewsnetwork.org/feed/',
@@ -159,8 +186,12 @@ export function getMonthlySpendCapUsd(): number {
 
 export function getMonthlySpendStatus(): MonthlySpendStatus {
   const currentMonth = new Date().toISOString().slice(0, 7)
-  if (monthlySpend.month !== currentMonth) {
+  const persisted = getPersistedMonthlySpend()
+  if (persisted.month === currentMonth) {
+    monthlySpend = persisted
+  } else {
     monthlySpend = { month: currentMonth, calls: 0, estimatedSpendUsd: 0 }
+    savePersistedMonthlySpend(monthlySpend)
   }
   const capUsd = getMonthlySpendCapUsd()
   return {
@@ -178,6 +209,7 @@ export function resetMonthlySpendForTesting(spendUsd = 0, calls = 0): void {
     calls,
     estimatedSpendUsd: spendUsd,
   }
+  savePersistedMonthlySpend(monthlySpend)
 }
 
 export function clearAiCacheForTesting(): void {
@@ -354,6 +386,7 @@ Return ONLY valid JSON matching this exact structure:
 
       monthlySpend.calls += 1
       monthlySpend.estimatedSpendUsd += callCost
+      savePersistedMonthlySpend(monthlySpend)
 
       if (monthlySpend.estimatedSpendUsd >= spendStatus.capUsd) {
         console.warn(
@@ -411,6 +444,19 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
   // Return cache if fresh
   if (!forceRefresh && cachedStories.length > 0 && now - lastFetchTime < CACHE_TTL_MS) {
     return cachedStories
+  }
+
+  // Cold start or fresh execution: seed from persistent storage
+  if (!forceRefresh && cachedStories.length === 0) {
+    const archived = getArchivedStories()
+    if (archived && archived.length > 0) {
+      cachedStories = archived
+      lastFetchTime = now
+      // Prevent making live paid API calls during static compilation
+      if (process.env.NEXT_PHASE === 'phase-production-build') {
+        return cachedStories
+      }
+    }
   }
 
   const parser = new XMLParser({
@@ -533,6 +579,7 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
 
   cachedStories = uniqueStories
   lastFetchTime = now
+  saveArchivedStories(uniqueStories)
 
   return cachedStories
 }

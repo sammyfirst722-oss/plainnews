@@ -1,16 +1,26 @@
 import React from 'react'
 import { Metadata } from 'next'
 import { fetchLiveNews } from '@/lib/news-fetcher'
+import { getStoryBySlug } from '@/lib/storage'
+import { DailyBriefingSignup } from '@/components/daily-briefing-signup'
 import Link from 'next/link'
-import { ArrowLeft, CheckCircle2, HelpCircle, Lightbulb, ExternalLink } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, HelpCircle, Lightbulb, ExternalLink, Share2 } from 'lucide-react'
 
 interface PageProps {
   params: { slug: string }
 }
 
+async function resolveStory(slug: string) {
+  let story = getStoryBySlug(slug)
+  if (!story) {
+    const stories = await fetchLiveNews(false)
+    story = stories.find((s) => s.slug === slug) || null
+  }
+  return story
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const stories = await fetchLiveNews(false)
-  const story = stories.find((s) => s.slug === params.slug)
+  const story = await resolveStory(params.slug)
 
   if (!story) {
     return {
@@ -37,8 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function StoryPage({ params }: PageProps) {
-  const stories = await fetchLiveNews(false)
-  const story = stories.find((s) => s.slug === params.slug)
+  const story = await resolveStory(params.slug)
 
   if (!story) {
     return (
@@ -137,6 +146,10 @@ export default async function StoryPage({ params }: PageProps) {
             </div>
           </div>
         )}
+
+        <div className="pt-2">
+          <DailyBriefingSignup variant="inline" />
+        </div>
 
         <div className="pt-8 pb-12 text-center">
           <a

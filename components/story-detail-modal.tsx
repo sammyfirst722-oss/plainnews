@@ -133,7 +133,7 @@ export function StoryDetailModal({
           {/* Plain English Title */}
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">
-              <BookOpen className="w-3.5 h-3.5" /> 8th Grade Reading Level • Plain English
+              <BookOpen className="w-3.5 h-3.5" /> Plain English • 2 Min Read
             </div>
             <h1 className={`${titleClass} text-foreground text-balance`}>
               {story.simplifiedTitle}
