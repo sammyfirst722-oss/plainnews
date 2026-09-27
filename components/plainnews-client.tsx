@@ -7,6 +7,7 @@ import { TextSizeController } from './text-size-controller'
 import { StoryDetailModal } from './story-detail-modal'
 import { CustomRewriteModal } from './custom-rewrite-modal'
 import { AudioPlayer } from './audio-player'
+import { DailyBriefingSignup } from './daily-briefing-signup'
 import {
   Newspaper,
   Sparkles,
@@ -368,6 +369,11 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
               </div>
             </div>
           </div>
+        )}
+
+        {/* 2-MINUTE DAILY BRIEFING NEWSLETTER CAPTURE */}
+        {!searchQuery && selectedCategory === 'all' && (
+          <DailyBriefingSignup />
         )}
 
         {/* =================================================================== */}

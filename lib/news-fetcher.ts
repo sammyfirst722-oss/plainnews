@@ -1,6 +1,12 @@
 import { XMLParser } from 'fast-xml-parser'
 import { NewsStory, NewsCategory, PlainWord } from './types'
 import { INITIAL_STORIES } from './stories-data'
+import {
+  getArchivedStories,
+  saveArchivedStories,
+  getPersistedMonthlySpend,
+  savePersistedMonthlySpend,
+} from './storage'
 
 interface FeedSource {
   url: string
@@ -15,8 +21,15 @@ const RSS_FEEDS: FeedSource[] = [
     url: 'https://feeds.npr.org/1017/rss.xml',
     sourceName: 'NPR Economy',
     category: 'money',
-    categoryLabel: 'Money & Retirement',
+    categoryLabel: 'Money & Life',
     fallbackImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://www.consumer.ftc.gov/blog/rss',
+    sourceName: 'FTC Scam Alerts',
+    category: 'money',
+    categoryLabel: 'Scam & Consumer Alerts',
+    fallbackImage: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80',
   },
   {
     url: 'https://feeds.npr.org/1128/rss.xml',
@@ -33,6 +46,13 @@ const RSS_FEEDS: FeedSource[] = [
     fallbackImage: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80',
   },
   {
+    url: 'https://www.nasa.gov/news-release/feed/',
+    sourceName: 'NASA Space & Science',
+    category: 'tech',
+    categoryLabel: 'Space & Discoveries',
+    fallbackImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+  },
+  {
     url: 'https://feeds.npr.org/1001/rss.xml',
     sourceName: 'NPR News',
     category: 'us-world',
@@ -45,6 +65,13 @@ const RSS_FEEDS: FeedSource[] = [
     category: 'us-world',
     categoryLabel: 'US & World',
     fallbackImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://phys.org/rss-feed/',
+    sourceName: 'Phys.org Discoveries',
+    category: 'living',
+    categoryLabel: 'Science & Everyday Nature',
+    fallbackImage: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
   },
   {
     url: 'https://www.goodnewsnetwork.org/feed/',
@@ -89,7 +116,7 @@ function timeSince(dateString: string): string {
   return `${days}d ago`
 }
 
-function createFallbackBreakdown(title: string, summary: string, category: NewsCategory) {
+export function createFallbackBreakdown(title: string, summary: string, category: NewsCategory) {
   const cleanTitle = cleanHtml(title)
   const cleanSummary = cleanHtml(summary)
 
@@ -133,15 +160,159 @@ function createFallbackBreakdown(title: string, summary: string, category: NewsC
   }
 }
 
-async function aiSimplifyStory(title: string, description: string, category: NewsCategory, link: string) {
+// Monthly spend guard for paid AI fallback
+export interface MonthlySpendStatus {
+  month: string
+  calls: number
+  estimatedSpendUsd: number
+  capUsd: number
+  capReached: boolean
+}
+
+let monthlySpend = {
+  month: new Date().toISOString().slice(0, 7),
+  calls: 0,
+  estimatedSpendUsd: 0,
+}
+
+export function getMonthlySpendCapUsd(): number {
+  const envVal = process.env.OPENROUTER_MONTHLY_SPEND_CAP_USD
+  if (envVal) {
+    const parsed = parseFloat(envVal)
+    if (!isNaN(parsed) && parsed >= 0) return parsed
+  }
+  return 5.0 // Safe default $5.00/month cap
+}
+
+export function getMonthlySpendStatus(): MonthlySpendStatus {
+  const currentMonth = new Date().toISOString().slice(0, 7)
+  const persisted = getPersistedMonthlySpend()
+  if (persisted.month === currentMonth) {
+    monthlySpend = persisted
+  } else {
+    monthlySpend = { month: currentMonth, calls: 0, estimatedSpendUsd: 0 }
+    savePersistedMonthlySpend(monthlySpend)
+  }
+  const capUsd = getMonthlySpendCapUsd()
+  return {
+    month: monthlySpend.month,
+    calls: monthlySpend.calls,
+    estimatedSpendUsd: monthlySpend.estimatedSpendUsd,
+    capUsd,
+    capReached: monthlySpend.estimatedSpendUsd >= capUsd,
+  }
+}
+
+export function resetMonthlySpendForTesting(spendUsd = 0, calls = 0): void {
+  monthlySpend = {
+    month: new Date().toISOString().slice(0, 7),
+    calls,
+    estimatedSpendUsd: spendUsd,
+  }
+  savePersistedMonthlySpend(monthlySpend)
+}
+
+export function clearAiCacheForTesting(): void {
+  aiCache = {}
+}
+
+const MODEL_PRICING: Record<string, { promptPerMillion: number; completionPerMillion: number }> = {
+  'google/gemma-4-26b-a4b-it': { promptPerMillion: 0.0675, completionPerMillion: 0.225 },
+  'meta-llama/llama-3.1-8b-instruct': { promptPerMillion: 0.05, completionPerMillion: 0.08 },
+  'openai/gpt-4o-mini': { promptPerMillion: 0.15, completionPerMillion: 0.60 },
+  default: { promptPerMillion: 0.15, completionPerMillion: 0.60 },
+}
+
+function calculateCostUsd(model: string, promptTokens: number, completionTokens: number): number {
+  const pricing = MODEL_PRICING[model] || MODEL_PRICING.default
+  return (promptTokens * pricing.promptPerMillion + completionTokens * pricing.completionPerMillion) / 1_000_000
+}
+
+interface OpenRouterResultData {
+  simplifiedTitle?: string
+  bigPicture?: string
+  whatHappened?: string[]
+  whyItMatters?: string
+  plainWords?: PlainWord[]
+  usage?: {
+    prompt_tokens?: number
+    completion_tokens?: number
+    total_tokens?: number
+  }
+}
+
+async function requestOpenRouter(
+  model: string,
+  apiKey: string,
+  prompt: string,
+  timeoutMs = 10000
+): Promise<{ success: true; data: OpenRouterResultData } | { success: false; status?: number; error: string }> {
+  try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), timeoutMs)
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://plainnews.vercel.app',
+        'X-Title': 'SimplyBigNews Reader',
+      },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.3,
+        max_tokens: 1000,
+        response_format: { type: 'json_object' },
+      }),
+    })
+    clearTimeout(timeout)
+
+    if (!res.ok) {
+      const errorText = await res.text().catch(() => '')
+      return {
+        success: false,
+        status: res.status,
+        error: `HTTP ${res.status}: ${errorText || res.statusText}`,
+      }
+    }
+
+    const data = await res.json()
+    const rawContent = data.choices?.[0]?.message?.content || ''
+    const cleanedJson = rawContent.replace(/```json/gi, '').replace(/```/g, '').trim()
+    const parsed = JSON.parse(cleanedJson)
+
+    return {
+      success: true,
+      data: {
+        simplifiedTitle: parsed.simplifiedTitle,
+        bigPicture: parsed.bigPicture,
+        whatHappened: Array.isArray(parsed.whatHappened) && parsed.whatHappened.length > 0 ? parsed.whatHappened : ['The main events were reviewed.'],
+        whyItMatters: parsed.whyItMatters,
+        plainWords: Array.isArray(parsed.plainWords) ? parsed.plainWords : [],
+        usage: data.usage,
+      },
+    }
+  } catch (err: any) {
+    return {
+      success: false,
+      error: err?.message || 'Network or parse error',
+    }
+  }
+}
+
+export async function aiSimplifyStory(title: string, description: string, category: NewsCategory, link: string) {
   const hashKey = (title + link).slice(0, 100)
   const now = Date.now()
   if (aiCache[hashKey] && now - aiCache[hashKey].timestamp < AI_CACHE_TTL_MS) {
     return aiCache[hashKey].data
   }
 
-  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY
-  if (!OPENROUTER_API_KEY) {
+  const freeApiKey = process.env.OPENROUTER_API_KEY
+  const paidApiKey = process.env.OPENROUTER_PAID_API_KEY || freeApiKey
+
+  if (!freeApiKey && !paidApiKey) {
     return createFallbackBreakdown(title, description, category)
   }
 
@@ -170,45 +341,77 @@ Return ONLY valid JSON matching this exact structure:
   ]
 }`
 
-  try {
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 10000)
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      signal: controller.signal,
-      headers: {
-        Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'google/gemma-4-26b-a4b-it:free',
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.3,
-        response_format: { type: 'json_object' },
-      }),
-    })
-    clearTimeout(timeout)
-    
-    if (!res.ok) throw new Error('API Error')
-    
-    const data = await res.json()
-    const rawContent = data.choices?.[0]?.message?.content || ''
-    const cleanedJson = rawContent.replace(/```json/gi, '').replace(/```/g, '').trim()
-    const parsed = JSON.parse(cleanedJson)
-    
-    const result = {
-      simplifiedTitle: parsed.simplifiedTitle || title,
-      bigPicture: parsed.bigPicture || 'Here is the key takeaway in plain English.',
-      whatHappened: Array.isArray(parsed.whatHappened) && parsed.whatHappened.length > 0 ? parsed.whatHappened : ['The main events were reviewed.'],
-      whyItMatters: parsed.whyItMatters || 'Staying informed helps you make practical decisions.',
-      plainWords: Array.isArray(parsed.plainWords) ? parsed.plainWords : [],
+  const freeModel = process.env.OPENROUTER_FREE_MODEL || 'google/gemma-4-26b-a4b-it:free'
+  const fallbackPaidModel = process.env.OPENROUTER_FALLBACK_MODEL || 'google/gemma-4-26b-a4b-it'
+
+  // Step 1: Attempt the primary free model if free API key is available
+  if (freeApiKey) {
+    const freeRes = await requestOpenRouter(freeModel, freeApiKey, prompt)
+    if (freeRes.success) {
+      const result = {
+        simplifiedTitle: freeRes.data.simplifiedTitle || title,
+        bigPicture: freeRes.data.bigPicture || 'Here is the key takeaway in plain English.',
+        whatHappened: freeRes.data.whatHappened || ['The main events were reviewed.'],
+        whyItMatters: freeRes.data.whyItMatters || 'Staying informed helps you make practical decisions.',
+        plainWords: freeRes.data.plainWords || [],
+      }
+      aiCache[hashKey] = { data: result, timestamp: now }
+      return result
+    } else {
+      console.warn(
+        `[AI Simplification] Free model ${freeModel} failed (status: ${freeRes.status ?? 'network/timeout'}, error: ${freeRes.error}). Evaluating paid fallback...`
+      )
     }
-    
-    aiCache[hashKey] = { data: result, timestamp: now }
-    return result
-  } catch (err) {
-    return createFallbackBreakdown(title, description, category)
   }
+
+  // Step 2: Attempt the cheap paid fallback model (if spend cap allows)
+  if (paidApiKey) {
+    const spendStatus = getMonthlySpendStatus()
+    if (spendStatus.capReached) {
+      console.warn(
+        `[SpendGuard] Monthly spend cap reached ($${spendStatus.estimatedSpendUsd.toFixed(4)} >= $${spendStatus.capUsd.toFixed(2)} for ${spendStatus.month}). Blocking paid fallback to prevent unexpected charges. Falling back to deterministic breakdown.`
+      )
+      return createFallbackBreakdown(title, description, category)
+    }
+
+    console.info(
+      `[AI Simplification] Retrying with paid fallback model ${fallbackPaidModel} (Current spend: $${spendStatus.estimatedSpendUsd.toFixed(4)} / $${spendStatus.capUsd.toFixed(2)})...`
+    )
+
+    const paidRes = await requestOpenRouter(fallbackPaidModel, paidApiKey, prompt)
+    if (paidRes.success) {
+      const promptTokens = paidRes.data.usage?.prompt_tokens ?? 600
+      const completionTokens = paidRes.data.usage?.completion_tokens ?? 200
+      const callCost = calculateCostUsd(fallbackPaidModel, promptTokens, completionTokens)
+
+      monthlySpend.calls += 1
+      monthlySpend.estimatedSpendUsd += callCost
+      savePersistedMonthlySpend(monthlySpend)
+
+      if (monthlySpend.estimatedSpendUsd >= spendStatus.capUsd) {
+        console.warn(
+          `[SpendGuard] Monthly spend cap reached after call ($${monthlySpend.estimatedSpendUsd.toFixed(4)} >= $${spendStatus.capUsd.toFixed(2)}). Subsequent paid calls will be blocked for ${spendStatus.month}.`
+        )
+      }
+
+      const result = {
+        simplifiedTitle: paidRes.data.simplifiedTitle || title,
+        bigPicture: paidRes.data.bigPicture || 'Here is the key takeaway in plain English.',
+        whatHappened: paidRes.data.whatHappened || ['The main events were reviewed.'],
+        whyItMatters: paidRes.data.whyItMatters || 'Staying informed helps you make practical decisions.',
+        plainWords: paidRes.data.plainWords || [],
+      }
+      aiCache[hashKey] = { data: result, timestamp: now }
+      return result
+    } else {
+      console.error(
+        `[AI Simplification] Paid fallback model ${fallbackPaidModel} also failed (status: ${paidRes.status ?? 'network/timeout'}, error: ${paidRes.error}). Falling back to deterministic breakdown.`
+      )
+    }
+  }
+
+  // Step 3: All AI options exhausted or blocked; fall back to deterministic breakdown
+  return createFallbackBreakdown(title, description, category)
 }
 
 function generateSlug(title: string): string {
@@ -241,6 +444,19 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
   // Return cache if fresh
   if (!forceRefresh && cachedStories.length > 0 && now - lastFetchTime < CACHE_TTL_MS) {
     return cachedStories
+  }
+
+  // Cold start or fresh execution: seed from persistent storage
+  if (!forceRefresh && cachedStories.length === 0) {
+    const archived = getArchivedStories()
+    if (archived && archived.length > 0) {
+      cachedStories = archived
+      lastFetchTime = now
+      // Prevent making live paid API calls during static compilation
+      if (process.env.NEXT_PHASE === 'phase-production-build') {
+        return cachedStories
+      }
+    }
   }
 
   const parser = new XMLParser({
@@ -363,6 +579,7 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
 
   cachedStories = uniqueStories
   lastFetchTime = now
+  saveArchivedStories(uniqueStories)
 
   return cachedStories
 }

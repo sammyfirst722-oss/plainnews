@@ -35,7 +35,11 @@ next-env.d.ts
 
 # keystores & android secrets
 *.keystore
-*.jks
 *keystore-info.txt
 *-service-account*.json
 *.aab
+
+# persistent data
+data/subscribers.json
+data/spend-tracker.json
+data/.write-test
