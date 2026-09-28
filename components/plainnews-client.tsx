@@ -177,6 +177,15 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
 
           {/* Controls: Text Size, Reading Theme, Translate Button */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/guides"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 border-2 border-emerald-500/30 text-xs font-extrabold shadow-2xs transition-all active:scale-95"
+              title="Senior Life & Money Guides"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Senior Guides</span>
+            </Link>
+
             <button
               onClick={() => setIsRewriteModalOpen(true)}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary border-2 border-primary/30 text-xs font-extrabold shadow-2xs transition-all active:scale-95"
@@ -508,6 +517,10 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
             <span>&copy; {new Date().getFullYear()} • Clear, Everyday News</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 font-medium">
+            <Link href="/guides" className="text-emerald-600 dark:text-emerald-400 font-bold hover:underline">
+              Senior Life Guides
+            </Link>
+            <span className="text-border">•</span>
             <a href="/privacy" className="hover:text-emerald-500 hover:underline">
               Privacy Policy
             </a>
