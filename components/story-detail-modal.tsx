@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { NewsStory, TextSize } from '@/lib/types'
 import { AudioPlayer } from './audio-player'
+import { VisualShareCardModal } from './visual-share-card-modal'
 import {
   X,
   Bookmark,
@@ -13,6 +14,7 @@ import {
   Lightbulb,
   Check,
   BookOpen,
+  Sparkles,
 } from 'lucide-react'
 
 interface StoryDetailModalProps {
@@ -31,6 +33,7 @@ export function StoryDetailModal({
   onToggleBookmark,
 }: StoryDetailModalProps) {
   const [copied, setCopied] = useState(false)
+  const [isShareCardOpen, setIsShareCardOpen] = useState(false)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -98,6 +101,15 @@ export function StoryDetailModal({
           </div>
 
           <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setIsShareCardOpen(true)}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border-2 border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 text-xs font-extrabold transition-all"
+              title="Generate visual card to send to family on WhatsApp or Facebook"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+              <span className="hidden sm:inline">Picture Card</span>
+            </button>
+
             <button
               onClick={() => onToggleBookmark(story.id)}
               className={`p-2 rounded-xl border-2 transition-all ${
@@ -252,6 +264,15 @@ export function StoryDetailModal({
           </button>
         </div>
       </div>
+
+      <VisualShareCardModal
+        isOpen={isShareCardOpen}
+        onClose={() => setIsShareCardOpen(false)}
+        title={story.simplifiedTitle}
+        category={story.categoryLabel || 'News'}
+        gist={story.bigPicture}
+        bulletPoints={story.whatHappened}
+      />
     </div>
   )
 }
