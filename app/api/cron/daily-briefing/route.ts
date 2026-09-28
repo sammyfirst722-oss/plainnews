@@ -89,6 +89,17 @@ async function handleBriefing(request: Request) {
             <p style="font-size: 15px; color: #334155; line-height: 1.5; margin-top: 0;">
               Good morning! Here are the 3 most interesting and important news stories today, broken down into plain, everyday English.
             </p>
+            
+            <!-- Newsletter Sponsorship Ad Slot (FTC Compliant) -->
+            <div style="margin-bottom: 24px; padding: 16px; border-radius: 12px; background-color: #fef3c7; border: 1px solid #fde68a;">
+              <div style="font-size: 10px; font-weight: 800; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+                SPONSORED BRIEFING PARTNER
+              </div>
+              <p style="margin: 0; font-size: 13px; color: #78350f; line-height: 1.4;">
+                <strong>SnapChef AI:</strong> Have random ingredients in your fridge? Snap a photo with your phone and get custom step-by-step recipes in plain English. <a href="https://snapchef-ai-eight.vercel.app" style="color: #b45309; font-weight: 700; text-decoration: underline;">Try SnapChef AI Free →</a>
+              </p>
+            </div>
+
             ${htmlStories}
           </div>
           <div style="padding: 20px; background-color: #f8fafc; border-top: 1px solid #e2e8f0; text-align: center; font-size: 12px; color: #94a3b8; line-height: 1.5;">
