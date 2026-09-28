@@ -1,0 +1,24 @@
+{
+  "title": "How to Spot and Block Fake Bank Text Message Alerts",
+  "slug": "how-to-spot-and-block-fake-bank-text-message-alerts",
+  "bigPicture": "Fake bank texts try to trick you into giving away your money or passwords, but you can stop them by staying calm and checking before you click.",
+  "whatYouNeedToKnow": [
+    "Banks will never ask for your full password, PIN, or one-time code in a text message.",
+    "A real bank text usually has your name or account nickname, not just 'Dear Customer'.",
+    "Fake texts often create panic by saying your account is locked or money is missing.",
+    "Links in texts can take you to fake websites that steal your login info.",
+    "You can block numbers that send you fake texts on your phone."
+  ],
+  "commonMistakesToAvoid": [
+    "Clicking links in texts that say your account has a problem.",
+    "Replying with personal info like your Social Security number or card code.",
+    "Not calling your bank directly when a text feels wrong."
+  ],
+  "actionSteps": [
+    "If a text looks fake, do not click any links or call any numbers in the message.",
+    "Call your bank using the phone number on the back of your debit card.",
+    "Tell your bank about the fake text so they can warn other customers.",
+    "Block the sender's number in your phone settings.",
+    "Delete the fake text message right away."
+  ]
+}
