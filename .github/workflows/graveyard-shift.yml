@@ -22,10 +22,10 @@ jobs:
           fi
           echo "SimplyBigNews is 100% operational!"
 
-      - name: Verify Guides Directory Live
+      - name: Verify Homepage Live
         run: |
-          GUIDES_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://plainnews.vercel.app/guides)
-          echo "Guides Directory HTTP Status: $GUIDES_STATUS"
-          if [ "$GUIDES_STATUS" -ne 200 ] && [ "$GUIDES_STATUS" -ne 302 ]; then
-            echo "::warning::Guides directory returned $GUIDES_STATUS"
+          HOME_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://plainnews.vercel.app/)
+          echo "Homepage HTTP Status: $HOME_STATUS"
+          if [ "$HOME_STATUS" -ne 200 ] && [ "$HOME_STATUS" -ne 302 ]; then
+            echo "::warning::Homepage returned $HOME_STATUS"
           fi

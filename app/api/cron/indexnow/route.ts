@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getAllGuides } from '@/lib/guides'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,14 +14,13 @@ export async function GET(req: NextRequest) {
 
   try {
     const host = req.headers.get('host') || DEFAULT_HOST
-    const guides = getAllGuides()
 
     const urls = [
       `https://${host}/`,
-      `https://${host}/guides`,
       `https://${host}/sitemap.xml`,
       `https://${host}/robots.txt`,
-      ...guides.map((g) => `https://${host}/guides/${g.slug}`),
+      `https://${host}/privacy`,
+      `https://${host}/terms`,
     ]
 
     const payload = {
