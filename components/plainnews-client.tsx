@@ -8,9 +8,12 @@ import { StoryDetailModal } from './story-detail-modal'
 import { CustomRewriteModal } from './custom-rewrite-modal'
 import { AudioPlayer } from './audio-player'
 import { DailyBriefingSignup } from './daily-briefing-signup'
+import { AdBanner } from './ad-banner'
+import { VipModal } from './vip-modal'
 import {
   Newspaper,
   Sparkles,
+  Crown,
   Search,
   RotateCw,
   Bookmark,
@@ -49,11 +52,22 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [isRewriteModalOpen, setIsRewriteModalOpen] = useState(false)
+  const [isVipModalOpen, setIsVipModalOpen] = useState(false)
+  const [isVip, setIsVip] = useState(false)
   const [lastRefreshed, setLastRefreshed] = useState<string>('Just now')
 
-  // Load saved bookmarks from localStorage
+  // Load saved bookmarks and VIP status from localStorage
   useEffect(() => {
     try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search)
+        if (params.get('upgraded') === 'true') {
+          localStorage.setItem('simplybignews_vip', 'true')
+          setIsVip(true)
+        } else {
+          setIsVip(localStorage.getItem('simplybignews_vip') === 'true')
+        }
+      }
       const saved = localStorage.getItem('plainnews_bookmarks')
       if (saved) {
         setBookmarkedIds(JSON.parse(saved))
@@ -177,6 +191,22 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
 
           {/* Controls: Text Size, Reading Theme, Translate Button */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {isVip ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-300 border-2 border-amber-500/30 text-xs font-black">
+                <Crown className="w-3.5 h-3.5 fill-current" />
+                <span>VIP Supporter</span>
+              </span>
+            ) : (
+              <button
+                onClick={() => setIsVipModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-amber-500/15 to-orange-500/15 hover:from-amber-500/25 hover:to-orange-500/25 text-amber-700 dark:text-amber-300 border-2 border-amber-500/30 text-xs font-black shadow-2xs transition-all active:scale-95 cursor-pointer"
+                title="Support SimplyBigNews and remove ads ($2.99/mo)"
+              >
+                <Crown className="w-3.5 h-3.5 fill-current" />
+                <span>Go VIP ($2.99)</span>
+              </button>
+            )}
+
             <button
               onClick={() => setIsRewriteModalOpen(true)}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary border-2 border-primary/30 text-xs font-extrabold shadow-2xs transition-all active:scale-95"
@@ -376,6 +406,9 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
           <DailyBriefingSignup />
         )}
 
+        {/* HIGH-CPM DISPLAY AD BANNER / VIP UPGRADE HOOK */}
+        <AdBanner onOpenVipModal={() => setIsVipModalOpen(true)} slot="top" />
+
         {/* =================================================================== */}
         {/* STORIES FEED GRID                                                  */}
         {/* =================================================================== */}
@@ -541,6 +574,11 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       <CustomRewriteModal
         isOpen={isRewriteModalOpen}
         onClose={() => setIsRewriteModalOpen(false)}
+      />
+
+      <VipModal
+        isOpen={isVipModalOpen}
+        onClose={() => setIsVipModalOpen(false)}
       />
     </div>
   )
