@@ -8,6 +8,8 @@ import { StoryDetailModal } from './story-detail-modal'
 import { CustomRewriteModal } from './custom-rewrite-modal'
 import { AudioPlayer } from './audio-player'
 import { DailyBriefingSignup } from './daily-briefing-signup'
+import { SpotTheFake } from './spot-the-fake'
+import { WaterCooler } from './water-cooler'
 import { AdBanner } from './ad-banner'
 import { VipModal } from './vip-modal'
 import {
@@ -435,13 +437,18 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
           </div>
         )}
 
-        {/* 2-MINUTE DAILY BRIEFING NEWSLETTER CAPTURE */}
+        {/* DAILY VIRAL HOOK 1: SPOT THE FAKE HEADLINE GAME */}
         {!searchQuery && selectedCategory === 'all' && (
-          <DailyBriefingSignup />
+          <SpotTheFake onOpenVipModal={() => setIsVipModalOpen(true)} />
         )}
 
         {/* HIGH-CPM DISPLAY AD BANNER / VIP UPGRADE HOOK */}
         <AdBanner onOpenVipModal={() => setIsVipModalOpen(true)} slot="top" />
+
+        {/* DAILY VIRAL HOOK 2: 60-SECOND WATER COOLER (THE BIG DEBATE TODAY) */}
+        {!searchQuery && selectedCategory === 'all' && (
+          <WaterCooler />
+        )}
 
         {/* =================================================================== */}
         {/* STORIES FEED GRID                                                  */}
