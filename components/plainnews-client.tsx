@@ -32,16 +32,30 @@ interface PlainNewsClientProps {
   initialStories: NewsStory[]
 }
 
-const CATEGORIES: { id: NewsCategory | 'saved'; label: string; icon: string }[] = [
-  { id: 'all', label: 'All Stories', icon: '📰' },
-  { id: 'money', label: 'Money & Retirement', icon: '💰' },
-  { id: 'health', label: 'Health & Wellness', icon: '🩺' },
-  { id: 'us-world', label: 'US & World', icon: '🌍' },
-  { id: 'tech', label: 'Tech Made Simple', icon: '💡' },
-  { id: 'living', label: 'Home & Living', icon: '🏡' },
-  { id: 'good-news', label: 'Good News', icon: '☀️' },
-  { id: 'saved', label: 'Saved Stories', icon: '🔖' },
+const CATEGORY_ROWS: { id: NewsCategory | 'saved'; label: string; icon: string }[][] = [
+  // Row 1: The Mega Trends & Mainstream Wire
+  [
+    { id: 'all', label: 'Top Trending', icon: '🔥' },
+    { id: 'us-world', label: 'US & World', icon: '⚡' },
+    { id: 'tech', label: 'AI & Tech', icon: '🤖' },
+    { id: 'money', label: 'Money & Markets', icon: '💰' },
+  ],
+  // Row 2: Entertainment, Sports, Science & Health
+  [
+    { id: 'entertainment', label: 'Pop Culture', icon: '🎬' },
+    { id: 'sports', label: 'Sports & Records', icon: '🏆' },
+    { id: 'science', label: 'Space & Science', icon: '🚀' },
+    { id: 'health', label: 'Health & Wellness', icon: '🩺' },
+  ],
+  // Row 3: Uplifting, Viral & Personal
+  [
+    { id: 'viral', label: 'Wild & Viral', icon: '🌟' },
+    { id: 'good-news', label: 'Good News', icon: '☀️' },
+    { id: 'living', label: 'Everyday Life', icon: '🏡' },
+    { id: 'saved', label: 'Saved Stories', icon: '🔖' },
+  ],
 ]
+const CATEGORIES = CATEGORY_ROWS.flat()
 
 export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
   const [stories, setStories] = useState<NewsStory[]>(initialStories)
@@ -147,13 +161,13 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     }
   }, [])
 
-  // Font size multiplier classes
+  // Font size multiplier classes (Bigger Bold Writing)
   const headlineClass =
     textSize === 'xlarge'
-      ? 'text-xl sm:text-2xl font-black'
+      ? 'text-2xl sm:text-3xl font-black'
       : textSize === 'large'
-      ? 'text-lg sm:text-xl font-black'
-      : 'text-base sm:text-lg font-bold'
+      ? 'text-xl sm:text-2xl font-black'
+      : 'text-lg sm:text-xl font-black'
 
   const cardBodyClass =
     textSize === 'xlarge'
@@ -251,40 +265,60 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
 
       <main className="max-w-6xl mx-auto px-4 pt-6 space-y-8">
         {/* =================================================================== */}
-        {/* CATEGORY SELECTOR PILLS                                             */}
+        {/* CATEGORY SELECTOR PILLS (3 TRENDING ROWS)                           */}
         {/* =================================================================== */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          {CATEGORIES.map((cat) => {
-            const isActive = selectedCategory === cat.id
-            const count =
-              cat.id === 'saved'
-                ? bookmarkedIds.length
-                : cat.id === 'all'
-                ? stories.length
-                : stories.filter((s) => s.category === cat.id).length
+        <div className="space-y-2.5 bg-card/70 border-2 border-border/80 rounded-3xl p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-muted-foreground px-1">
+            <span className="flex items-center gap-2 text-foreground font-black text-xs sm:text-sm">
+              <span>Trending Channels</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                Live
+              </span>
+            </span>
+            <span className="text-[11px] font-bold text-muted-foreground">
+              Swipe or tap any topic
+            </span>
+          </div>
 
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-extrabold border-2 whitespace-nowrap transition-all ${
-                  isActive
-                    ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-102'
-                    : 'bg-card text-foreground border-border/80 hover:border-primary/50'
-                }`}
-              >
-                <span>{cat.icon}</span>
-                <span>{cat.label}</span>
-                <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-primary-foreground/20 text-primary-foreground' : 'bg-muted text-muted-foreground'
-                  }`}
-                >
-                  {count}
-                </span>
-              </button>
-            )
-          })}
+          <div className="space-y-2">
+            {CATEGORY_ROWS.map((row, rowIndex) => (
+              <div key={rowIndex} className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+                {row.map((cat) => {
+                  const isActive = selectedCategory === cat.id
+                  const count =
+                    cat.id === 'saved'
+                      ? bookmarkedIds.length
+                      : cat.id === 'all'
+                      ? stories.length
+                      : stories.filter((s) => s.category === cat.id).length
+
+                  return (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedCategory(cat.id)}
+                      className={`flex items-center gap-1.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-black border-2 whitespace-nowrap transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-md scale-102'
+                          : 'bg-card text-foreground border-border/80 hover:border-emerald-500/50 hover:bg-muted/40'
+                      }`}
+                    >
+                      <span>{cat.icon}</span>
+                      <span>{cat.label}</span>
+                      <span
+                        className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                          isActive
+                            ? 'bg-white/25 text-white'
+                            : 'bg-muted text-muted-foreground'
+                        }`}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* =================================================================== */}
@@ -313,9 +347,9 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
         {/* SPOTLIGHT / TOP STORY CARD                                          */}
         {/* =================================================================== */}
         {spotlightStory && selectedCategory !== 'saved' && !searchQuery && (
-          <div className="bg-card border-2 border-emerald-500/40 rounded-3xl p-5 sm:p-7 shadow-lg relative overflow-hidden">
+          <div className="bg-card border-2 border-emerald-500/60 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 px-4 py-1 rounded-bl-2xl bg-emerald-600 text-white text-[11px] font-black uppercase tracking-wider">
-              Top Story
+              🔥 #1 Trending Story Today
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
@@ -345,7 +379,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
 
                 <h2
                   onClick={() => setSelectedStory(spotlightStory)}
-                  className="text-xl sm:text-2xl lg:text-3xl font-black text-foreground hover:text-emerald-600 cursor-pointer transition-colors text-balance"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground hover:text-emerald-600 leading-tight cursor-pointer transition-colors text-balance"
                 >
                   {spotlightStory.simplifiedTitle}
                 </h2>
@@ -452,7 +486,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                   return (
                     <article
                       key={story.id}
-                      className="flex flex-col bg-card border-2 border-border/80 rounded-3xl p-5 shadow-2xs hover:shadow-md hover:border-emerald-500/50 transition-all group"
+                      className="flex flex-col bg-card border-2 border-border/90 hover:border-emerald-500/70 rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl transition-all duration-200 group"
                     >
                       {/* Card Thumbnail Image */}
                       {story.imageUrl && (
@@ -474,16 +508,21 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                         </div>
                       )}
 
-                      {/* Meta: Source & Time */}
-                      <div className="flex items-center justify-between gap-2 text-[11px] text-muted-foreground font-semibold mb-2">
-                        <span>{story.source}</span>
-                        <span>{story.timeAgo}</span>
+                      {/* Meta: Source & Time (Bigger Date & Source) */}
+                      <div className="flex items-center justify-between gap-2 text-xs sm:text-sm font-bold text-muted-foreground mb-3">
+                        <span className="px-2.5 py-1 rounded-xl bg-muted text-foreground font-black text-xs uppercase tracking-wide">
+                          {story.source}
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-foreground/80">
+                          <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                          {story.timeAgo}
+                        </span>
                       </div>
 
                       {/* Simplified Headline */}
                       <h4
                         onClick={() => setSelectedStory(story)}
-                        className={`${headlineClass} text-foreground group-hover:text-emerald-600 transition-colors cursor-pointer mb-2.5 text-balance`}
+                        className={`${headlineClass} text-foreground group-hover:text-emerald-600 transition-colors cursor-pointer mb-3 leading-snug tracking-tight text-balance`}
                       >
                         {story.simplifiedTitle}
                       </h4>
@@ -493,32 +532,32 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                         {story.bigPicture}
                       </p>
 
-                      {/* Card Bottom Controls */}
-                      <div className="flex items-center justify-between pt-3 border-t-2 border-border/60 gap-2">
+                      {/* Card Bottom Controls (Prominent Front Listen Button) */}
+                      <div className="flex items-center justify-between pt-4 border-t-2 border-border/70 gap-2">
                         <AudioPlayer compact title={story.simplifiedTitle} textToRead={audioScript} />
 
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1.5">
                           <button
                             onClick={() => toggleBookmark(story.id)}
-                            className={`p-1.5 rounded-xl border-2 transition-all ${
+                            className={`p-2 rounded-xl border-2 transition-all cursor-pointer ${
                               isSaved
                                 ? 'bg-amber-500/20 text-amber-950 dark:text-amber-200 border-amber-500'
                                 : 'border-border/80 text-muted-foreground hover:text-foreground'
                             }`}
                             title={isSaved ? 'Remove Bookmark' : 'Save Story'}
                           >
-                            <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
+                            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
                           </button>
 
-                          <Link href={`/story/${story.slug}`} className="p-1.5 rounded-xl border-2 border-border/80 text-muted-foreground hover:text-foreground" title="Open Story Page">
-                            <ExternalLink className="w-3.5 h-3.5" />
+                          <Link href={`/story/${story.slug}`} className="p-2 rounded-xl border-2 border-border/80 text-muted-foreground hover:text-foreground" title="Open Story Page">
+                            <ExternalLink className="w-4 h-4" />
                           </Link>
                           <button
                             onClick={() => setSelectedStory(story)}
-                            className="px-3 py-1.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold shadow-2xs hover:opacity-90 active:scale-95 transition-all flex items-center gap-1"
+                            className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs sm:text-sm font-black shadow-md hover:opacity-90 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
                           >
                             <span>Read</span>
-                            <ChevronRight className="w-3.5 h-3.5" />
+                            <ChevronRight className="w-4 h-4" />
                           </button>
                         </div>
                       </div>

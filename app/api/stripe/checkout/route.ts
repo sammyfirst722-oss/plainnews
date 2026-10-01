@@ -26,7 +26,8 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const stripeKey = process.env.STRIPE_SECRET_KEY
+    const rawKey = process.env.STRIPE_SECRET_KEY || ''
+    const stripeKey = rawKey.trim().replace(/[\r\n"']/g, '')
 
     if (!stripeKey) {
       return NextResponse.json(

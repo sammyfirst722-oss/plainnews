@@ -6,6 +6,10 @@ export type NewsCategory =
   | 'tech'
   | 'living'
   | 'good-news'
+  | 'entertainment'
+  | 'sports'
+  | 'science'
+  | 'viral'
 
 export interface PlainWord {
   word: string
@@ -32,6 +36,7 @@ export interface NewsStory {
   readTimeMinutes: number
   isBookmarked?: boolean
   likesCount?: number
+  trendingScore?: number
 }
 
 export type TextSize = 'standard' | 'large' | 'xlarge'

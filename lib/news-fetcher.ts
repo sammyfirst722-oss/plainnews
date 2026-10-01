@@ -18,60 +18,53 @@ interface FeedSource {
 
 const RSS_FEEDS: FeedSource[] = [
   {
-    url: 'https://feeds.npr.org/1017/rss.xml',
-    sourceName: 'NPR Economy',
-    category: 'money',
-    categoryLabel: 'Money & Life',
-    fallbackImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    url: 'https://www.consumer.ftc.gov/blog/rss',
-    sourceName: 'FTC Scam Alerts',
-    category: 'money',
-    categoryLabel: 'Scam & Consumer Alerts',
-    fallbackImage: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    url: 'https://feeds.npr.org/1128/rss.xml',
-    sourceName: 'NPR Health',
-    category: 'health',
-    categoryLabel: 'Health & Wellness',
-    fallbackImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    url: 'https://feeds.npr.org/1019/rss.xml',
-    sourceName: 'NPR Technology',
-    category: 'tech',
-    categoryLabel: 'Tech Made Simple',
-    fallbackImage: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    url: 'https://www.nasa.gov/news-release/feed/',
-    sourceName: 'NASA Space & Science',
-    category: 'tech',
-    categoryLabel: 'Space & Discoveries',
-    fallbackImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    url: 'https://feeds.npr.org/1001/rss.xml',
-    sourceName: 'NPR News',
-    category: 'us-world',
-    categoryLabel: 'US & World',
+    url: 'https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Google News Top Stories',
+    category: 'all',
+    categoryLabel: 'Top Trending',
     fallbackImage: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80',
   },
   {
-    url: 'http://feeds.bbci.co.uk/news/world/rss.xml',
-    sourceName: 'BBC World',
-    category: 'us-world',
-    categoryLabel: 'US & World',
-    fallbackImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
+    url: 'https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Tech & AI Wire',
+    category: 'tech',
+    categoryLabel: 'AI & Tech',
+    fallbackImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
   },
   {
-    url: 'https://phys.org/rss-feed/',
-    sourceName: 'Phys.org Discoveries',
-    category: 'living',
-    categoryLabel: 'Science & Everyday Nature',
-    fallbackImage: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
+    url: 'https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Markets & Economy',
+    category: 'money',
+    categoryLabel: 'Money & Markets',
+    fallbackImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Entertainment & Culture',
+    category: 'entertainment',
+    categoryLabel: 'Pop Culture',
+    fallbackImage: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Sports Wire',
+    category: 'sports',
+    categoryLabel: 'Sports & Records',
+    fallbackImage: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Space & Discoveries',
+    category: 'science',
+    categoryLabel: 'Space & Science',
+    fallbackImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-US&gl=US&ceid=US:en',
+    sourceName: 'Health & Science',
+    category: 'health',
+    categoryLabel: 'Health & Wellness',
+    fallbackImage: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80',
   },
   {
     url: 'https://www.goodnewsnetwork.org/feed/',
@@ -79,6 +72,20 @@ const RSS_FEEDS: FeedSource[] = [
     category: 'good-news',
     categoryLabel: 'Good News',
     fallbackImage: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
+    sourceName: 'BBC World News',
+    category: 'us-world',
+    categoryLabel: 'US & World',
+    fallbackImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    url: 'https://phys.org/rss-feed/',
+    sourceName: 'Viral Science & Tech',
+    category: 'viral',
+    categoryLabel: 'Wild & Viral',
+    fallbackImage: 'https://images.unsplash.com/photo-1516116211227-bbc679e72848?auto=format&fit=crop&w=800&q=80',
   },
 ]
 
@@ -316,8 +323,8 @@ export async function aiSimplifyStory(title: string, description: string, catego
     return createFallbackBreakdown(title, description, category)
   }
 
-  const prompt = `You are an expert news editor and educator specializing in writing for adults aged 40+ at an 8th-grade school reading level.
-Your goal is to make the news clear, calm, and easy to understand without confusing jargon, hyperbolic panic, or partisan spin.
+  const prompt = `You are a top-tier news journalist and editor. Your job is to take today's biggest, most trending and interesting news story and rewrite it into captivating, crystal-clear plain English that anyone can read in 60 seconds.
+Focus on the most fascinating facts, big revelations, and why millions of people are talking about it today. Avoid confusing jargon, academic fluff, or partisan bias.
 
 ARTICLE HEADLINE: "${title}"
 ARTICLE TEXT:
@@ -325,19 +332,19 @@ ARTICLE TEXT:
 ${description.slice(0, 3000)}
 """
 
-Please rewrite this news story into simple, plain English at an 8th-grade reading level.
+Please rewrite this news story into punchy, compelling plain English.
 Return ONLY valid JSON matching this exact structure:
 {
-  "simplifiedTitle": "Short, clear title in plain English (under 65 characters)",
-  "bigPicture": "One clear sentence explaining the main point simply.",
+  "simplifiedTitle": "Short, gripping title in plain English (under 65 characters)",
+  "bigPicture": "One bold, captivating sentence explaining the biggest takeaway.",
   "whatHappened": [
-    "First simple fact about what happened in everyday words.",
-    "Second key detail or background point.",
-    "Third outcome or what happens next."
+    "First fascinating fact about what went down.",
+    "Second key detail, numbers, or surprising development.",
+    "Third major consequence or what happens next."
   ],
-  "whyItMatters": "Two sentences explaining the practical impact on everyday life, money, health, safety, or family for adults aged 40+.",
+  "whyItMatters": "Two sentences explaining why this is huge news and how it impacts people.",
   "plainWords": [
-    {"word": "Jargon Term 1", "meaning": "Simple everyday definition"}
+    {"word": "Key Term", "meaning": "Simple everyday definition"}
   ]
 }`
 
@@ -548,6 +555,7 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
       whyItMatters: breakdown.whyItMatters,
       plainWords: breakdown.plainWords,
       readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
+      trendingScore: (feed.category === 'all' ? 60 : 20) + Math.max(0, 30 - index * 6) + (item.pubDate ? Math.max(0, 20 - Math.floor((Date.now() - new Date(item.pubDate).getTime()) / (3600000 * 2))) : 0),
     } as NewsStory
   })
 

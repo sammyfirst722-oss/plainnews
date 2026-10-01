@@ -86,32 +86,33 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
     return (
       <button
         onClick={togglePlay}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border-2 transition-all ${
+        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl text-xs sm:text-sm font-extrabold border-2 shadow-xs transition-all cursor-pointer ${
           isPlaying
-            ? 'bg-amber-500/20 text-amber-900 dark:text-amber-300 border-amber-500 animate-pulse'
-            : 'bg-muted/60 text-foreground hover:bg-muted border-border'
+            ? 'bg-amber-500 text-white border-amber-600 shadow-md animate-pulse'
+            : 'bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 hover:bg-amber-500/25 hover:border-amber-500'
         }`}
-        title="Listen to story"
+        title="Listen to story summary"
       >
         {isPlaying ? (
           <>
-            <Pause className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+            <Pause className="w-4 h-4 fill-current text-white" />
             <span>Listening</span>
             <span className="flex gap-0.5 items-end h-3">
-              <span className="w-1 bg-amber-500 h-2 animate-bounce"></span>
-              <span className="w-1 bg-amber-500 h-3 animate-bounce delay-75"></span>
-              <span className="w-1 bg-amber-500 h-1 animate-bounce delay-150"></span>
+              <span className="w-1 bg-white h-2 animate-bounce"></span>
+              <span className="w-1 bg-white h-3 animate-bounce delay-75"></span>
+              <span className="w-1 bg-white h-1 animate-bounce delay-150"></span>
             </span>
           </>
         ) : (
           <>
-            <Volume2 className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+            <Volume2 className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500/20" />
             <span>Listen</span>
           </>
         )}
       </button>
     )
   }
+
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border-2 border-amber-500/30">
