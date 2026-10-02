@@ -26,11 +26,8 @@ async function handleBriefing(request: Request) {
       }
     }
 
-    // Get stories
-    let stories = getArchivedStories()
-    if (!stories || stories.length === 0) {
-      stories = await fetchLiveNews(false)
-    }
+    // Always fetch fresh news for the morning briefing
+    const stories = await fetchLiveNews(true)
 
     // Top 3 stories
     const topStories = stories.slice(0, 3)
