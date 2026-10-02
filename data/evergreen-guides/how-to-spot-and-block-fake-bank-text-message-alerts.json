@@ -1,0 +1,22 @@
+{
+  "title": "How to Spot and Block Fake Bank Text Message Alerts",
+  "slug": "how-to-spot-and-block-fake-bank-text-message-alerts",
+  "bigPicture": "Real banks will never ask for your password or PIN through a text message — if a text feels wrong, it probably is.",
+  "whatYouNeedToKnow": [
+    "Fake texts often say your account is locked or there is suspicious activity to scare you into clicking fast.",
+    "Real bank texts usually just tell you to call the number on the back of your card or log in through the official app.",
+    "A fake link may look almost real but has small misspellings like 'b0famerica' instead of 'bankofamerica'."
+  ],
+  "commonMistakesToAvoid": [
+    "Clicking the link inside the text message — even if it looks urgent.",
+    "Replying 'STOP' to a suspicious text — this just tells the scammer your number is active.",
+    "Calling a phone number provided in the text instead of using the one on your card or bank statement."
+  ],
+  "actionSteps": [
+    "Pause and breathe — scammers rely on panic. Take 30 seconds before doing anything.",
+    "Call your bank directly using the number on your debit card or official website.",
+    "Forward the fake text to 7726 (SPAM) to help your carrier block it.",
+    "Block the sender in your phone's messaging app.",
+    "Report it to the FTC at ReportFraud.ftc.gov."
+  ]
+}

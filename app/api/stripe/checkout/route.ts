@@ -42,37 +42,52 @@ export async function POST(req: NextRequest) {
 
     const origin = req.headers.get('origin') || 'http://localhost:3000'
 
-    const lineItems =
-      plan === 'monthly'
-        ? [
-            {
-              price_data: {
-                currency: 'usd',
-                product_data: {
-                  name: 'SimplyBigNews VIP Supporter (Monthly)',
-                  description: 'Ad-Free Reading, Unlimited AI 8th-Grade News Simplifier, Morning Audio Briefing',
-                },
-                unit_amount: 299, // $2.99
-                recurring: {
-                  interval: 'month' as const,
-                },
-              },
-              quantity: 1,
+    let lineItems;
+    
+    if (plan === 'monthly') {
+      lineItems = [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'SimplyBigNews VIP Supporter (Monthly)',
+              description: 'Ad-Free Reading, Unlimited AI 8th-Grade News Simplifier, Morning Audio Briefing',
             },
-          ]
-        : [
-            {
-              price_data: {
-                currency: 'usd',
-                product_data: {
-                  name: 'SimplyBigNews VIP Lifetime Pass',
-                  description: 'Pay once, enjoy SimplyBigNews Ad-Free & Unlimited AI forever',
-                },
-                unit_amount: 1999, // $19.99
-              },
-              quantity: 1,
+            unit_amount: 299, // $2.99
+            recurring: { interval: 'month' as const },
+          },
+          quantity: 1,
+        },
+      ]
+    } else if (plan === 'gift') {
+      lineItems = [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'SimplyBigNews VIP Lifetime Pass (Gift)',
+              description: 'Gift this to a parent or grandparent for ad-free calm reading forever.',
             },
-          ]
+            unit_amount: 1999, // $19.99
+          },
+          quantity: 1,
+        },
+      ]
+    } else {
+      lineItems = [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'SimplyBigNews VIP Lifetime Pass',
+              description: 'Pay once, enjoy SimplyBigNews Ad-Free & Unlimited AI forever',
+            },
+            unit_amount: 1999, // $19.99
+          },
+          quantity: 1,
+        },
+      ]
+    }
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],

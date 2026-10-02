@@ -148,6 +148,17 @@ export function VipModal({ isOpen, onClose }: VipModalProps) {
             </div>
           </button>
         </div>
+        
+        {/* Gift Option */}
+        <button
+          onClick={() => handleCheckout('gift')}
+          disabled={isLoading !== null}
+          className="w-full mt-3 p-3 rounded-2xl border-2 border-dashed border-emerald-500/50 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all text-center flex items-center justify-center gap-2 group cursor-pointer active:scale-98"
+        >
+          <span className="text-xs sm:text-sm font-bold text-emerald-700 dark:text-emerald-300">
+            {isLoading === 'gift' ? 'Connecting...' : '🎁 Gift a Lifetime Pass to a Parent/Grandparent ($19.99)'}
+          </span>
+        </button>
 
         {/* Footer Guarantee */}
         <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground font-medium">

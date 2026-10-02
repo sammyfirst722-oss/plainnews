@@ -5,16 +5,19 @@ import { SwRegister } from '@/components/sw-register'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SimplyBigNews — Clear, Everyday News Without Fluff',
+  title: 'SimplyBigNews | Calm, Anxiety-Free News in Plain English',
   description:
     "The day's biggest news rewritten into calm, simple, everyday English. Tailored for comfortable reading with listen-aloud audio, large text, and practical takeaways.",
   keywords: [
     'simply big news',
     'plain english news',
-    'simple news',
+    'calm news',
+    'anxiety free news',
+    'ad-free news reader',
+    'unbiased plain english',
+    '8th grade reading level news',
     'easy reading news',
     'news for seniors',
-    'news for adults',
     'social security news',
     'health news',
     'audio news reader',
