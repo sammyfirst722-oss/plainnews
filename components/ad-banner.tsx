@@ -13,10 +13,15 @@ export function AdBanner({ onOpenVipModal, slot = 'mid' }: AdBannerProps) {
   const [isDismissed, setIsDismissed] = useState(false)
 
   useEffect(() => {
-    try {
-      const vip = localStorage.getItem('simplybignews_vip') === 'true'
-      setIsVip(vip)
-    } catch {}
+    const checkVip = () => {
+      try {
+        const vip = localStorage.getItem('simplybignews_vip') === 'true'
+        setIsVip(vip)
+      } catch {}
+    }
+    checkVip()
+    window.addEventListener('simplybignews_vip_changed', checkVip)
+    return () => window.removeEventListener('simplybignews_vip_changed', checkVip)
   }, [])
 
   if (isVip || isDismissed) return null

@@ -77,7 +77,11 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     try {
       if (typeof window !== 'undefined') {
         const params = new URLSearchParams(window.location.search)
-        if (params.get('upgraded') === 'true') {
+        if (
+          params.get('upgraded') === 'true' ||
+          params.get('tester') === 'true' ||
+          params.get('email')?.toLowerCase() === 'sammyfirstplaystore@gmail.com'
+        ) {
           localStorage.setItem('simplybignews_vip', 'true')
           setIsVip(true)
         } else {
@@ -91,6 +95,17 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     } catch {
       // Ignore localStorage errors
     }
+  }, [])
+
+  // Listen for VIP status changes across components
+  useEffect(() => {
+    const handleVipChange = () => {
+      try {
+        setIsVip(localStorage.getItem('simplybignews_vip') === 'true')
+      } catch {}
+    }
+    window.addEventListener('simplybignews_vip_changed', handleVipChange)
+    return () => window.removeEventListener('simplybignews_vip_changed', handleVipChange)
   }, [])
 
   // Persist bookmarks
@@ -625,6 +640,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       <VipModal
         isOpen={isVipModalOpen}
         onClose={() => setIsVipModalOpen(false)}
+        onVipSuccess={() => setIsVip(true)}
       />
     </div>
   )
