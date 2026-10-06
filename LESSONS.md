@@ -7,3 +7,6 @@
 
 
 - 2026-09-28: Keep SimplyBigNews positioned for a universal general audience (plain English news for everyone), never narrow it to seniors or elderly guides (why: Sammy explicitly instructed that SimplyBigNews must appeal to everyone, not just old people).
+
+- 2026-10-06: When extracting locations from news, always use strict regex checking for AP Datelines (like Calif. or Wash.) and punctuation boundaries to avoid false positives on words like "mass", "or", "in", and "wash". (why: simple word matching causes unrelated stories to ping random states).
+- 2026-10-06: For Reddit bot integrations, prefer RSS feeds over PRAW when only reading data to bypass Dev Portal registration and OAuth requirements. (why: zero chores for Sammy).
