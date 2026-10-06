@@ -5,19 +5,19 @@ import { SwRegister } from '@/components/sw-register'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SimplyBigNews | Calm, Anxiety-Free News in Plain English',
+  title: 'SimplyBigNews | The 50-State Plain Newsroom & News IQ',
   description:
-    "The day's biggest news rewritten into calm, simple, everyday English. Tailored for comfortable reading with listen-aloud audio, large text, and practical takeaways.",
+    "The day's biggest news in calm, clear everyday words. Centered around our interactive 50-state USA News Radar and daily News IQ challenge.",
   keywords: [
     'simply big news',
     'plain english news',
+    'us news map',
+    '50 state news',
+    'news iq',
+    'daily news quiz',
     'calm news',
     'anxiety free news',
-    'ad-free news reader',
     'unbiased plain english',
-    '8th grade reading level news',
-    'easy reading news',
-    'news for seniors',
     'social security news',
     'health news',
     'audio news reader',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#059669',
+  themeColor: '#1d4ed8',
   width: 'device-width',
   initialScale: 1,
 }

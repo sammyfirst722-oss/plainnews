@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { rewardGlobalNewsIqXp } from './news-iq'
 import { MessageSquare, ThumbsUp, ThumbsDown, CheckCircle2, Share2, Sparkles, Scale, TrendingUp } from 'lucide-react'
 
 interface WaterCoolerTopic {
@@ -77,6 +78,7 @@ export function WaterCooler() {
     setSelectedSide(side)
     try {
       localStorage.setItem(`plainnews_vote_${currentTopic.id}`, side)
+      rewardGlobalNewsIqXp(10, 'Voted in Daily Water Cooler Debate')
     } catch {}
   }
 
@@ -96,15 +98,15 @@ export function WaterCooler() {
   }
 
   return (
-    <section className="bg-card border-2 border-emerald-500/50 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+    <section className="bg-card border-2 border-blue-600/50 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
       {/* Top Header Badge */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600 text-white font-black text-xs uppercase tracking-wider shadow-sm">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600 text-white font-black text-xs uppercase tracking-wider shadow-sm">
             <MessageSquare className="w-3.5 h-3.5 fill-current" /> 60-Sec Water Cooler
           </span>
           <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
-            <TrendingUp className="w-3.5 h-3.5 text-emerald-500" /> Viral Debate Today
+            <TrendingUp className="w-3.5 h-3.5 text-blue-600" /> Viral Debate Today
           </span>
         </div>
 
@@ -134,12 +136,12 @@ export function WaterCooler() {
           onClick={() => handleVote('A')}
           className={`p-5 rounded-2xl border-2 transition-all cursor-pointer ${
             selectedSide === 'A'
-              ? 'bg-emerald-500/15 border-emerald-500 shadow-md ring-2 ring-emerald-500/20'
-              : 'bg-card border-border/80 hover:border-emerald-500/60 hover:bg-muted/30'
+              ? 'bg-blue-600/15 border-blue-600 shadow-md ring-2 ring-blue-600/20'
+              : 'bg-card border-border/80 hover:border-blue-600/60 hover:bg-muted/30'
           }`}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-black uppercase text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-black uppercase text-blue-600 dark:text-blue-400">
               {currentTopic.sideA.name}
             </span>
             {selectedSide && (
@@ -153,10 +155,10 @@ export function WaterCooler() {
             disabled={selectedSide !== null}
             className={`w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
               selectedSide === 'A'
-                ? 'bg-emerald-600 text-white shadow-sm'
+                ? 'bg-blue-600 text-white shadow-sm'
                 : selectedSide === 'B'
                 ? 'bg-muted text-muted-foreground'
-                : 'bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30'
+                : 'bg-blue-600/15 hover:bg-blue-600/25 text-blue-800 dark:text-blue-300 border border-blue-600/30'
             }`}
           >
             <ThumbsUp className="w-4 h-4" />
@@ -169,12 +171,12 @@ export function WaterCooler() {
           onClick={() => handleVote('B')}
           className={`p-5 rounded-2xl border-2 transition-all cursor-pointer ${
             selectedSide === 'B'
-              ? 'bg-teal-500/15 border-teal-500 shadow-md ring-2 ring-teal-500/20'
-              : 'bg-card border-border/80 hover:border-teal-500/60 hover:bg-muted/30'
+              ? 'bg-red-600/15 border-red-600 shadow-md ring-2 ring-red-600/20'
+              : 'bg-card border-border/80 hover:border-red-600/60 hover:bg-muted/30'
           }`}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-black uppercase text-teal-600 dark:text-teal-400">
+            <span className="text-xs font-black uppercase text-red-600 dark:text-red-400">
               {currentTopic.sideB.name}
             </span>
             {selectedSide && (
@@ -188,10 +190,10 @@ export function WaterCooler() {
             disabled={selectedSide !== null}
             className={`w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
               selectedSide === 'B'
-                ? 'bg-teal-600 text-white shadow-sm'
+                ? 'bg-red-600 text-white shadow-sm'
                 : selectedSide === 'A'
                 ? 'bg-muted text-muted-foreground'
-                : 'bg-teal-500/15 hover:bg-teal-500/25 text-teal-700 dark:text-teal-300 border border-teal-500/30'
+                : 'bg-red-600/15 hover:bg-red-600/25 text-red-700 dark:text-red-300 border border-red-600/30'
             }`}
           >
             <ThumbsDown className="w-4 h-4" />
@@ -209,11 +211,11 @@ export function WaterCooler() {
           </div>
           <div className="w-full h-3 rounded-full bg-muted overflow-hidden flex">
             <div
-              className="bg-emerald-600 h-full transition-all duration-500"
+              className="bg-blue-600 h-full transition-all duration-500"
               style={{ width: `${pctA}%` }}
             />
             <div
-              className="bg-teal-500 h-full transition-all duration-500"
+              className="bg-red-600 h-full transition-all duration-500"
               style={{ width: `${pctB}%` }}
             />
           </div>
@@ -222,7 +224,7 @@ export function WaterCooler() {
 
       {/* The Plain English Gist */}
       <div className="p-4 rounded-2xl bg-muted/40 border border-border flex items-start gap-3">
-        <Scale className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+        <Scale className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
         <p className="text-xs sm:text-sm font-semibold text-foreground leading-relaxed">
           {currentTopic.theGist}
         </p>

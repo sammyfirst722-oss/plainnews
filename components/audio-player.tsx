@@ -88,8 +88,8 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
         onClick={togglePlay}
         className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl text-xs sm:text-sm font-extrabold border-2 shadow-xs transition-all cursor-pointer ${
           isPlaying
-            ? 'bg-amber-500 text-white border-amber-600 shadow-md animate-pulse'
-            : 'bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 hover:bg-amber-500/25 hover:border-amber-500'
+            ? 'bg-blue-600 text-white border-blue-700 shadow-md animate-pulse'
+            : 'bg-blue-600/15 text-blue-900 dark:text-blue-200 border-blue-600/30 hover:bg-blue-600/25 hover:border-blue-600'
         }`}
         title="Listen to story summary"
       >
@@ -105,7 +105,7 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
           </>
         ) : (
           <>
-            <Volume2 className="w-4 h-4 text-amber-600 dark:text-amber-400 fill-amber-500/20" />
+            <Volume2 className="w-4 h-4 text-blue-600 dark:text-blue-400 fill-blue-500/20" />
             <span>Listen</span>
           </>
         )}
@@ -115,11 +115,11 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
 
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-amber-500/10 border-2 border-amber-500/30">
+    <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-blue-600/10 border-2 border-blue-600/30">
       <div className="flex items-center gap-3">
         <button
           onClick={togglePlay}
-          className="w-11 h-11 rounded-full bg-amber-600 hover:bg-amber-500 text-white flex items-center justify-center shadow-md active:scale-95 transition-all border-2 border-amber-700"
+          className="w-11 h-11 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-md active:scale-95 transition-all border-2 border-blue-700 cursor-pointer"
           aria-label={isPlaying ? 'Pause speech' : 'Play speech'}
         >
           {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
@@ -132,9 +132,9 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
             </span>
             {isPlaying && (
               <span className="flex gap-0.5 items-end h-3.5">
-                <span className="w-1 bg-amber-600 dark:bg-amber-400 h-2 animate-bounce"></span>
-                <span className="w-1 bg-amber-600 dark:bg-amber-400 h-3.5 animate-bounce delay-75"></span>
-                <span className="w-1 bg-amber-600 dark:bg-amber-400 h-1.5 animate-bounce delay-150"></span>
+                <span className="w-1 bg-blue-600 dark:bg-blue-400 h-2 animate-bounce"></span>
+                <span className="w-1 bg-blue-600 dark:bg-blue-400 h-3.5 animate-bounce delay-75"></span>
+                <span className="w-1 bg-blue-600 dark:bg-blue-400 h-1.5 animate-bounce delay-150"></span>
               </span>
             )}
           </div>

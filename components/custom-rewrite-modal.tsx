@@ -152,7 +152,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
             <div className="space-y-6">
               {/* Plain Title */}
               <div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1.5">
+                <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1.5">
                   <BookOpen className="w-3.5 h-3.5" /> Plain English Translation
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-foreground">
@@ -169,8 +169,8 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
               />
 
               {/* Big Picture */}
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border-2 border-emerald-500/30">
-                <div className="flex items-center gap-2 mb-2 font-black text-xs text-emerald-700 dark:text-emerald-300">
+              <div className="p-4 rounded-2xl bg-blue-600/10 border-2 border-blue-600/30">
+                <div className="flex items-center gap-2 mb-2 font-black text-xs text-blue-800 dark:text-blue-300">
                   <Lightbulb className="w-4 h-4" /> THE BIG PICTURE
                 </div>
                 <p className="text-sm sm:text-base font-semibold text-foreground">
@@ -188,16 +188,16 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
                     key={i}
                     className="flex items-start gap-3 p-3 rounded-xl bg-card border-2 border-border/80"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <p className="text-sm text-foreground">{pt}</p>
                   </div>
                 ))}
               </div>
 
               {/* Why It Matters */}
-              <div className="p-4 rounded-2xl bg-amber-500/10 border-2 border-amber-500/30">
-                <div className="flex items-center gap-2 mb-2 font-black text-xs text-amber-800 dark:text-amber-300">
-                  <HelpCircle className="w-4 h-4" /> WHY IT MATTERS TO YOU (40+ FOCUS)
+              <div className="p-4 rounded-2xl bg-red-600/10 border-2 border-red-600/30">
+                <div className="flex items-center gap-2 mb-2 font-black text-xs text-red-700 dark:text-red-300">
+                  <HelpCircle className="w-4 h-4" /> WHY IT MATTERS — EVERYDAY TAKEAWAY
                 </div>
                 <p className="text-sm text-foreground">{result.whyItMatters}</p>
               </div>

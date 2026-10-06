@@ -7,6 +7,7 @@ import {
   getPersistedMonthlySpend,
   savePersistedMonthlySpend,
 } from './storage'
+import { extractUSLocation } from './location-extractor'
 
 interface FeedSource {
   url: string
@@ -537,6 +538,8 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
       imageUrl = item['media:content']['@_url']
     }
 
+    const location = extractUSLocation(cleanRawTitle, cleanHtml(rawDesc))
+
     return {
       id: `rss-${feed.category}-${index}-${Date.now().toString(36)}`,
       slug: generateSlug(cleanRawTitle),
@@ -556,6 +559,9 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
       plainWords: breakdown.plainWords,
       readTimeMinutes: Math.max(1, Math.ceil(cleanHtml(rawDesc).split(' ').length / 130)),
       trendingScore: (feed.category === 'all' ? 60 : 20) + Math.max(0, 30 - index * 6) + (item.pubDate ? Math.max(0, 20 - Math.floor((Date.now() - new Date(item.pubDate).getTime()) / (3600000 * 2))) : 0),
+      state: location?.state ?? null,
+      city: location?.city ?? null,
+      coordinates: location?.coordinates ?? null,
     } as NewsStory
   })
 

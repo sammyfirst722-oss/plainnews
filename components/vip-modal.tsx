@@ -70,7 +70,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-lg bg-card border-2 border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-lg bg-card border-2 border-blue-600/30 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -81,11 +81,11 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
 
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold text-xs border border-emerald-500/20">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600/10 text-blue-600 dark:text-blue-400 font-extrabold text-xs border border-blue-600/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>SimplyBigNews VIP Supporter</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-foreground">
+          <h2 className="font-masthead text-2xl sm:text-3xl font-black text-foreground">
             Clear News, Zero Distractions
           </h2>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto">
@@ -96,19 +96,19 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
         {/* Benefits */}
         <div className="my-6 space-y-3 bg-muted/40 p-4 rounded-2xl border border-border/60">
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-foreground">
-            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <Check className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span><strong>100% Ad-Free Reading</strong> across all editions</span>
           </div>
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-foreground">
-            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <Check className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span><strong>Unlimited AI Article Rewrites</strong> (paste any link or text)</span>
           </div>
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-foreground">
-            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <Check className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span><strong>Listen Aloud Pro</strong> audio narration at multiple speeds</span>
           </div>
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-foreground">
-            <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <Check className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span><strong>Cancel Anytime</strong> with 1 click in your receipt</span>
           </div>
         </div>
@@ -125,10 +125,10 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
           <button
             onClick={() => handleCheckout('monthly')}
             disabled={isLoading !== null}
-            className="p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 hover:bg-emerald-500/20 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98"
+            className="p-4 rounded-2xl border-2 border-blue-600 bg-blue-600/10 hover:bg-blue-600/20 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98"
           >
             <div>
-              <span className="text-[10px] uppercase font-bold text-emerald-700 dark:text-emerald-300">
+              <span className="text-[10px] uppercase font-bold text-blue-800 dark:text-blue-300">
                 Most Popular
               </span>
               <div className="flex items-baseline gap-1 mt-1">
@@ -139,7 +139,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
                 Flexible support, cancel anytime.
               </p>
             </div>
-            <div className="mt-3 flex items-center justify-between text-xs font-bold text-emerald-700 dark:text-emerald-300">
+            <div className="mt-3 flex items-center justify-between text-xs font-bold text-blue-800 dark:text-blue-300">
               <span>{isLoading === 'monthly' ? 'Connecting...' : 'Join Monthly'}</span>
               {isLoading === 'monthly' ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -153,7 +153,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
           <button
             onClick={() => handleCheckout('lifetime')}
             disabled={isLoading !== null}
-            className="p-4 rounded-2xl border-2 border-border/80 hover:border-emerald-500/50 bg-card hover:bg-muted/40 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98"
+            className="p-4 rounded-2xl border-2 border-border/80 hover:border-blue-600/50 bg-card hover:bg-muted/40 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98"
           >
             <div>
               <span className="text-[10px] uppercase font-bold text-muted-foreground">
@@ -182,9 +182,9 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
         <button
           onClick={() => handleCheckout('gift')}
           disabled={isLoading !== null}
-          className="w-full mt-3 p-3 rounded-2xl border-2 border-dashed border-emerald-500/50 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all text-center flex items-center justify-center gap-2 group cursor-pointer active:scale-98"
+          className="w-full mt-3 p-3 rounded-2xl border-2 border-dashed border-blue-600/50 bg-blue-600/5 hover:bg-blue-600/10 transition-all text-center flex items-center justify-center gap-2 group cursor-pointer active:scale-98"
         >
-          <span className="text-xs sm:text-sm font-bold text-emerald-700 dark:text-emerald-300">
+          <span className="text-xs sm:text-sm font-bold text-blue-800 dark:text-blue-300">
             {isLoading === 'gift' ? 'Connecting...' : '🎁 Gift a Lifetime Pass to a Parent/Grandparent ($19.99)'}
           </span>
         </button>
@@ -200,17 +200,17 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
               placeholder="Enter email or tester password"
               value={restoreInput}
               onChange={(e) => setRestoreInput(e.target.value)}
-              className="flex-1 text-xs px-3 py-2 rounded-xl border border-border/80 bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+              className="flex-1 text-xs px-3 py-2 rounded-xl border border-border/80 bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-blue-600/40"
             />
             <button
               type="submit"
-              className="text-xs font-bold h-9 rounded-xl px-3 border-2 border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 cursor-pointer active:scale-95 transition-all"
+              className="text-xs font-bold h-9 rounded-xl px-3 border-2 border-blue-600/40 bg-blue-600/10 text-blue-800 dark:text-blue-300 hover:bg-blue-600/20 cursor-pointer active:scale-95 transition-all"
             >
               Restore
             </button>
           </form>
           {restoreMessage && (
-            <p className={`text-[11px] mt-1.5 font-semibold ${restoreMessage.startsWith('✓') ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500'}`}>
+            <p className={`text-[11px] mt-1.5 font-semibold ${restoreMessage.startsWith('✓') ? 'text-blue-600 dark:text-blue-400' : 'text-red-500'}`}>
               {restoreMessage}
             </p>
           )}
@@ -218,7 +218,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
 
         {/* Footer Guarantee */}
         <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground font-medium">
-          <Shield className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+          <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
           <span>Secured by Stripe • Instant Access • Money-back guarantee</span>
         </div>
       </div>

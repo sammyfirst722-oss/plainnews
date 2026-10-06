@@ -37,7 +37,34 @@ export interface NewsStory {
   isBookmarked?: boolean
   likesCount?: number
   trendingScore?: number
+  // News Map location fields
+  state?: string | null
+  city?: string | null
+  coordinates?: [number, number] | null // [longitude, latitude]
 }
 
 export type TextSize = 'standard' | 'large' | 'xlarge'
 export type ReadingMode = 'light' | 'sepia' | 'dark'
+
+export interface NewsIqQuestion {
+  id: string
+  question: string
+  category: 'national' | 'economy' | 'tech' | 'world' | 'map'
+  categoryLabel: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
+export interface NewsIqProfile {
+  score: number
+  level: number
+  levelTitle: string
+  xp: number
+  nextLevelXp: number
+  streak: number
+  questionsAnswered: number
+  questionsCorrect: number
+  lastPlayedDate: string
+  percentile: number
+}

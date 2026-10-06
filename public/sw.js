@@ -5,7 +5,8 @@ const PRECACHE = [
   '/offline.html',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
-  '/favicon.ico'
+  '/favicon.ico',
+  '/us-topo.json'
 ];
 
 self.addEventListener('install', (e) => {
@@ -31,7 +32,7 @@ self.addEventListener('fetch', (e) => {
   if (url.pathname.startsWith('/api')) return;
 
   // Static assets -> cache-first
-  if (url.pathname.startsWith('/_next/static') || url.pathname.startsWith('/icons')) {
+  if (url.pathname.startsWith('/_next/static') || url.pathname.startsWith('/icons') || url.pathname === '/us-topo.json') {
     e.respondWith(
       caches.match(req).then(
         (hit) =>
