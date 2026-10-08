@@ -481,7 +481,7 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
       const uniqueStories: NewsStory[] = []
       
       for (const story of combined) {
-        const key = story.title.toLowerCase().trim()
+        const key = story.state ? `state-${story.state.toLowerCase()}` : story.title.toLowerCase().trim()
         if (!seen.has(key)) {
           seen.add(key)
           uniqueStories.push(story)
