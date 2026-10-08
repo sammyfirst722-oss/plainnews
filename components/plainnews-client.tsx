@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import React, { useState, useEffect, useMemo } from 'react'
@@ -253,9 +253,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                   50-State Radar
                 </span>
               </div>
-              <p className="text-[11px] text-muted-foreground font-semibold hidden sm:block">
-                Clear, calm news in simple everyday words • Built around live USA state wire
-              </p>
+              <p className="text-[11px] text-muted-foreground font-semibold hidden sm:block">One Nation - One Truth - One Location</p>
             </div>
           </div>
 
@@ -723,7 +721,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-masthead font-black text-foreground">SimplyBigNews</span>
-            <span>&copy; {new Date().getFullYear()} • Clear, Everyday 50-State News</span>
+            <span>&copy; {new Date().getFullYear()} • One Nation - One Truth - One Location</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 font-medium">
             <a href="/privacy" className="hover:text-blue-600 hover:underline">
@@ -774,3 +772,6 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     </div>
   )
 }
+
+
+

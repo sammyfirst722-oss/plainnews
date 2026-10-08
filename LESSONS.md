@@ -10,3 +10,5 @@
 
 - 2026-10-06: When extracting locations from news, always use strict regex checking for AP Datelines (like Calif. or Wash.) and punctuation boundaries to avoid false positives on words like "mass", "or", "in", and "wash". (why: simple word matching causes unrelated stories to ping random states).
 - 2026-10-06: For Reddit bot integrations, prefer RSS feeds over PRAW when only reading data to bypass Dev Portal registration and OAuth requirements. (why: zero chores for Sammy).
+
+- 2026-10-06: When scaling the interactive US map for thousands of live hyper-local stories, use an Upstash Redis database (`@upstash/redis`) instead of fetching 50+ RSS feeds on the fly, to prevent memory crashes and timeout limits in Vercel Serverless Functions. (why: prevents 504 errors on massive feed aggregations).

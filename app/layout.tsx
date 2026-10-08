@@ -1,13 +1,14 @@
-import type { Metadata, Viewport } from 'next'
+﻿import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
 import { SwRegister } from '@/components/sw-register'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SimplyBigNews | The 50-State Plain Newsroom & News IQ',
+  title: 'SimplyBigNews | One Nation - One Truth - One Location',
+  
   description:
-    "The day's biggest news in calm, clear everyday words. Centered around our interactive 50-state USA News Radar and daily News IQ challenge.",
+    "One Nation - One Truth - One Location. Centered around our interactive 50-state USA News Radar and daily News IQ challenge.",
   keywords: [
     'simply big news',
     'plain english news',
@@ -62,3 +63,7 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+
+

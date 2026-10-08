@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft, ShieldCheck, HardDrive, Mail, EyeOff } from 'lucide-react'
 
@@ -33,8 +33,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-bold text-foreground mb-2">1. Overview</h2>
             <p>
-              SimplyBigNews (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is built to deliver calm, simple,
-              fluff-free news in clear everyday words. We are committed to complete privacy and
+              SimplyBigNews (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is built to deliver One Nation - One Truth - One Location. We are committed to complete privacy and
               do not sell your personal data or track your reading habits across third-party websites.
             </p>
           </section>
@@ -89,3 +88,5 @@ export default function PrivacyPage() {
     </div>
   )
 }
+
+
