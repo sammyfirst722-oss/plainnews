@@ -238,7 +238,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       <header className="sticky top-0 z-40 w-full border-b-2 border-border/80 bg-background/95 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between gap-3">
           {/* Brand Logo & Editorial Emblem */}
-          <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-3">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-red-600 text-white flex items-center justify-center shadow-md border-2 border-blue-400 shrink-0">
               <Newspaper className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>

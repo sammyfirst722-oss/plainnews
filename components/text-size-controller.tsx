@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { TextSize, ReadingMode } from '@/lib/types'
-import { Sun, Moon, Coffee } from 'lucide-react'
+import { TextSize } from '@/lib/types'
+import { Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 interface TextSizeControllerProps {
@@ -12,8 +12,10 @@ interface TextSizeControllerProps {
 
 export function TextSizeController({ textSize, setTextSize }: TextSizeControllerProps) {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
+    setMounted(true)
     try {
       const saved = localStorage.getItem('simplybignews-text-size')
       if (saved && (saved === 'standard' || saved === 'large' || saved === 'xlarge')) {
@@ -22,84 +24,50 @@ export function TextSizeController({ textSize, setTextSize }: TextSizeController
     } catch (e) {}
   }, [setTextSize])
 
-  const handleSetTextSize = (size: TextSize) => {
-    setTextSize(size)
+  const cycleTextSize = () => {
+    const nextSize: TextSize =
+      textSize === 'standard' ? 'large' : textSize === 'large' ? 'xlarge' : 'standard'
+    setTextSize(nextSize)
     try {
-      localStorage.setItem('simplybignews-text-size', size)
+      localStorage.setItem('simplybignews-text-size', nextSize)
     } catch (e) {}
   }
 
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(nextTheme)
+  }
+
+  const isDark = mounted ? theme === 'dark' : false
+
   return (
-    <div className="flex items-center gap-2">
-      {/* Text Size Switcher */}
-      <div className="flex items-center bg-card border-2 border-border/80 rounded-xl p-0.5 shadow-xs">
-        <button
-          onClick={() => handleSetTextSize('standard')}
-          className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
-            textSize === 'standard'
-              ? 'bg-primary text-primary-foreground shadow-xs'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Standard Text Size (16px)"
-        >
-          A
-        </button>
-        <button
-          onClick={() => handleSetTextSize('large')}
-          className={`px-2.5 py-1 text-sm font-bold rounded-lg transition-all ${
-            textSize === 'large'
-              ? 'bg-primary text-primary-foreground shadow-xs'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Large Text Size (19px)"
-        >
-          A+
-        </button>
-        <button
-          onClick={() => handleSetTextSize('xlarge')}
-          className={`px-2.5 py-1 text-base font-extrabold rounded-lg transition-all ${
-            textSize === 'xlarge'
-              ? 'bg-primary text-primary-foreground shadow-xs'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Extra Large Text Size (23px)"
-        >
-          A++
-        </button>
-      </div>
+    <div className="flex items-center gap-1.5 sm:gap-2">
+      {/* 1 Button Text Size Cycler: Aa */}
+      <button
+        onClick={cycleTextSize}
+        className="inline-flex items-center justify-center gap-0.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-card border-2 border-border/80 hover:border-blue-500/50 text-foreground text-xs font-black shadow-2xs transition-all active:scale-95 cursor-pointer"
+        title={`Text Size: ${textSize.toUpperCase()} (Click to toggle)`}
+      >
+        <span className="text-sm font-black leading-none">A</span>
+        <span className="text-xs font-bold leading-none -ml-0.5 opacity-80">a</span>
+        <span className="ml-1 text-[9px] font-black text-blue-600 dark:text-blue-400 uppercase">
+          {textSize === 'standard' ? '1x' : textSize === 'large' ? '1.5x' : '2x'}
+        </span>
+      </button>
 
-      {/* Theme Toggles: Light, Sepia, Dark */}
-      <div className="flex items-center bg-card border-2 border-border/80 rounded-xl p-0.5 shadow-xs">
-        <button
-          onClick={() => setTheme('light')}
-          className={`p-1.5 rounded-lg transition-all ${
-            theme === 'light' ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Light Paper Mode"
-        >
-          <Sun className="w-4 h-4" />
-        </button>
-
-        <button
-          onClick={() => setTheme('sepia')}
-          className={`p-1.5 rounded-lg transition-all ${
-            theme === 'sepia' ? 'bg-[#f4ebd0] text-[#433422] border border-[#d3be93]' : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Warm Sepia Eye-Care Mode"
-        >
-          <Coffee className="w-4 h-4 text-amber-700 dark:text-amber-500" />
-        </button>
-
-        <button
-          onClick={() => setTheme('dark')}
-          className={`p-1.5 rounded-lg transition-all ${
-            theme === 'dark' ? 'bg-slate-800 text-slate-100 border border-slate-700' : 'text-muted-foreground hover:text-foreground'
-          }`}
-          title="Calm Night Mode"
-        >
-          <Moon className="w-4 h-4" />
-        </button>
-      </div>
+      {/* 1 Button Day/Night Toggle */}
+      <button
+        onClick={toggleTheme}
+        className="inline-flex items-center justify-center p-2 rounded-xl bg-card border-2 border-border/80 hover:border-blue-500/50 text-foreground shadow-2xs transition-all active:scale-95 cursor-pointer"
+        title={isDark ? 'Switch to Day Mode (Light)' : 'Switch to Night Mode (Dark)'}
+        aria-label="Toggle Day and Night mode"
+      >
+        {isDark ? (
+          <Sun className="w-4 h-4 text-amber-500 hover:rotate-45 transition-transform" />
+        ) : (
+          <Moon className="w-4 h-4 text-blue-600 hover:-rotate-12 transition-transform" />
+        )}
+      </button>
     </div>
   )
 }
