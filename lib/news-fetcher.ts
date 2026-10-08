@@ -459,13 +459,19 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
   // Cold start or fresh execution: seed from persistent storage
   if (!forceRefresh && cachedStories.length === 0) {
     const archived = getArchivedStories()
-    if (archived && archived.length > 0) {
-      cachedStories = archived
-      lastFetchTime = now
-    } else {
-      cachedStories = [...(fiftyStateStoriesFallback as NewsStory[]), ...INITIAL_STORIES]
-      lastFetchTime = now
+    const base = archived && archived.length > 0 ? archived : INITIAL_STORIES
+    const combined = [...base, ...(fiftyStateStoriesFallback as NewsStory[])]
+    const seen = new Set<string>()
+    const uniqueStories: NewsStory[] = []
+    for (const story of combined) {
+      const key = story.state ? `state-${story.state.toLowerCase()}` : story.title.toLowerCase().trim()
+      if (!seen.has(key)) {
+        seen.add(key)
+        uniqueStories.push(story)
+      }
     }
+    cachedStories = uniqueStories
+    lastFetchTime = now
     // Prevent making live paid API calls during static compilation
     if (process.env.NEXT_PHASE === 'phase-production-build') {
       return cachedStories
@@ -607,8 +613,8 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
     }
   })
 
-  // Merge live stories with our curated 40+ foundation
-  const combined = [...fetchedStories, ...INITIAL_STORIES]
+  // Merge live stories with our 50-state coverage and curated foundation
+  const combined = [...fetchedStories, ...(fiftyStateStoriesFallback as NewsStory[]), ...INITIAL_STORIES]
 
   // Remove duplicates by title
   const seen = new Set<string>()

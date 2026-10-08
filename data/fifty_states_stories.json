@@ -1,18 +1,18 @@
 [
   {
-    "id": "state-co-1791481395",
-    "slug": "co-what-to-do-in-colorado-this-week-a-reworked-great-american-beer-festiv",
-    "title": "What to do in Colorado this week: A reworked Great American Beer Festival heads outdoors and sketch comedy returns to Denver",
-    "simplifiedTitle": "What to do in Colorado this week: A reworked Great American Beer Festiva...",
+    "id": "state-co-1791481893",
+    "slug": "co-only-eligible-votes-on-colorado-passenger-rail-ballot-question-will-be",
+    "title": "Only eligible votes on Colorado passenger rail ballot question will be counted, Secretary of State says",
+    "simplifiedTitle": "Only eligible votes on Colorado passenger rail ballot question will be c...",
     "source": "Colorado Capital Wire",
-    "sourceUrl": "https://coloradosun.com/2026/10/08/what-to-do-in-colorado-this-week-great-american-beer-fest-sketch-comedy/",
-    "pubDate": "Thu, 08 Oct 2026 14:00:00 +0000",
+    "sourceUrl": "https://coloradosun.com/2026/10/08/colorado-counties-reconfigure-voting-systems-passenger-rail-ballot/",
+    "pubDate": "Thu, 08 Oct 2026 17:44:11 +0000",
     "timeAgo": "Today",
     "category": "us-world",
     "categoryLabel": "Colorado Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Plus: A sensory-friendly \"Don Quixote\" by Colorado Ballet and a fall festival in Fort Collins",
-    "bigPicture": "Plus: A sensory-friendly \"Don Quixote\" by Colorado Ballet and a fall festival in Fort Collins",
+    "originalSummary": "Adams, Arapahoe, Douglas and Weld County clerks are instructed to reconfigure their voting systems to discount about 800,000 ineligible votes on Ballot Issue 7A",
+    "bigPicture": "Adams, Arapahoe, Douglas and Weld County clerks are instructed to reconfigure their voting systems to discount about 800,000 ineligible votes on Ballot Issue 7A",
     "whatHappened": [
       "Officials in Colorado are addressing community updates regarding this issue.",
       "State leaders and local agencies are reviewing the practical impact on residents.",
@@ -31,38 +31,7 @@
     "city": "Colorado"
   },
   {
-    "id": "state-ca-1791481395",
-    "slug": "ca-california-s-biggest-state-worker-union-authorizes-strike-in-newsom-s-",
-    "title": "California’s biggest state worker union authorizes strike in Newsom’s last months",
-    "simplifiedTitle": "California’s biggest state worker union authorizes strike in Newsom’s la...",
-    "source": "California Capital Wire",
-    "sourceUrl": "https://calmatters.org/politics/2026/10/seiu-local-1000-strike-authorization/",
-    "pubDate": "Thu, 08 Oct 2026 15:00:00 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "California Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Demanding better pay and a more flexible work-from-home policy, state workers in SEIU Local 1000 voted to authorize a strike as the union negotiates with Gov. Gavin Newsom.",
-    "bigPicture": "Demanding better pay and a more flexible work-from-home policy, state workers in SEIU Local 1000 voted to authorize a strike as the union negotiates with Gov.",
-    "whatHappened": [
-      "Officials in California are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "california",
-    "city": "California"
-  },
-  {
-    "id": "state-de-1791481395",
+    "id": "state-de-1791481893",
     "slug": "de-trump-administration-sues-ud-over-undocumented-student-tuition-policy",
     "title": "Trump administration sues UD over undocumented student tuition policy",
     "simplifiedTitle": "Trump administration sues UD over undocumented student tuition policy",
@@ -93,7 +62,38 @@
     "city": "Delaware"
   },
   {
-    "id": "state-ct-1791481395",
+    "id": "state-ca-1791481893",
+    "slug": "ca-california-s-biggest-state-worker-union-authorizes-strike-in-newsom-s-",
+    "title": "California’s biggest state worker union authorizes strike in Newsom’s last months",
+    "simplifiedTitle": "California’s biggest state worker union authorizes strike in Newsom’s la...",
+    "source": "California Capital Wire",
+    "sourceUrl": "https://calmatters.org/politics/2026/10/seiu-local-1000-strike-authorization/",
+    "pubDate": "Thu, 08 Oct 2026 15:00:00 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "California Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Demanding better pay and a more flexible work-from-home policy, state workers in SEIU Local 1000 voted to authorize a strike as the union negotiates with Gov. Gavin Newsom.",
+    "bigPicture": "Demanding better pay and a more flexible work-from-home policy, state workers in SEIU Local 1000 voted to authorize a strike as the union negotiates with Gov.",
+    "whatHappened": [
+      "Officials in California are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "california",
+    "city": "California"
+  },
+  {
+    "id": "state-ct-1791481893",
     "slug": "ct-kosta-diamantis-seeks-to-appeal-conviction-in-federal-corruption-case",
     "title": "Kosta Diamantis seeks to appeal conviction in federal corruption case",
     "simplifiedTitle": "Kosta Diamantis seeks to appeal conviction in federal corruption case",
@@ -124,7 +124,7 @@
     "city": "Connecticut"
   },
   {
-    "id": "state-hi-1791481395",
+    "id": "state-hi-1791481893",
     "slug": "hi-candidate-q-a-honolulu-city-council-member-district-6-tyler-dos-santos",
     "title": "Candidate Q&A: Honolulu City Council Member District 6 – Tyler Dos Santos-Tam",
     "simplifiedTitle": "Candidate Q&A: Honolulu City Council Member District 6 – Tyler Dos Santo...",
@@ -155,7 +155,7 @@
     "city": "Hawaii"
   },
   {
-    "id": "state-il-1791481395",
+    "id": "state-il-1791481893",
     "slug": "il-illinois-other-states-urge-supreme-court-to-take-up-prediction-market-",
     "title": "Illinois, other states urge Supreme Court to take up prediction market regulation",
     "simplifiedTitle": "Illinois, other states urge Supreme Court to take up prediction market r...",
@@ -186,100 +186,7 @@
     "city": "Illinois"
   },
   {
-    "id": "state-al-1791481789",
-    "slug": "al-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
-    "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
-    "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
-    "source": "Alabama Capital Wire",
-    "sourceUrl": "https://alabamareflector.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
-    "pubDate": "Thu, 08 Oct 2026 17:13:42 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Alabama Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September. The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S. Navy, are raising [&#8230;]",
-    "bigPicture": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September.",
-    "whatHappened": [
-      "The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S.",
-      "Navy, are raising [&#8230;]",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "alabama",
-    "city": "Alabama"
-  },
-  {
-    "id": "state-fl-1791481396",
-    "slug": "fl-florida-county-wants-motocross-course-on-land-bought-for-conservation",
-    "title": "Florida county wants motocross course on land bought for conservation",
-    "simplifiedTitle": "Florida county wants motocross course on land bought for conservation",
-    "source": "Florida Capital Wire",
-    "sourceUrl": "https://floridaphoenix.com/2026/10/08/florida-county-wants-motocross-course-on-land-bought-for-conservation/",
-    "pubDate": "Thu, 08 Oct 2026 04:05:18 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Florida Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "One of the great things about hiking around Florida’s precious conservation lands is how quiet they can be. You can get away from all the noise and — I SAID, YOU CAN GET AWAY! FROM ALL THE NOISE! WHAT? YOU CAN’T HEAR ME? IT MUST BE BECAUSE OF ALL THESE DIRT BIKES ROARING AROUND! Well, [&#8230;]",
-    "bigPicture": "One of the great things about hiking around Florida’s precious conservation lands is how quiet they can be.",
-    "whatHappened": [
-      "You can get away from all the noise and — I SAID, YOU CAN GET AWAY!",
-      "FROM ALL THE NOISE!",
-      "YOU CAN’T HEAR ME?"
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "florida",
-    "city": "Florida"
-  },
-  {
-    "id": "state-az-1791481396",
-    "slug": "az-aaron-lieberman-pitches-pragmatism-in-bid-to-unseat-carine-werner-in-p",
-    "title": "Aaron Lieberman pitches pragmatism in bid to unseat Carine Werner in pivotal Senate race",
-    "simplifiedTitle": "Aaron Lieberman pitches pragmatism in bid to unseat Carine Werner in piv...",
-    "source": "Arizona Capital Wire",
-    "sourceUrl": "https://azmirror.com/2026/10/08/aaron-lieberman-pitches-pragmatism-in-bid-to-unseat-carine-werner-in-pivotal-senate-race/",
-    "pubDate": "Thu, 08 Oct 2026 16:23:48 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Arizona Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Democratic lawmaker Aaron Lieberman hopes to unseat Republican Sen. Carine Werner in one of the Arizona Legislature’s most competitive races in November, with a focus on pragmatism instead of partisan fighting. Lieberman told the Arizona Mirror that his door-knocking efforts have mostly focused on reaching independents and moderate Republican voters. Legislative District 4 covers parts [&#8230;]",
-    "bigPicture": "Democratic lawmaker Aaron Lieberman hopes to unseat Republican Sen.",
-    "whatHappened": [
-      "Carine Werner in one of the Arizona Legislature’s most competitive races in November, with a focus on pragmatism instead of partisan fighting.",
-      "Lieberman told the Arizona Mirror that his door-knocking efforts have mostly focused on reaching independents and moderate Republican voters.",
-      "Legislative District 4 covers parts [&#8230;]"
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "arizona",
-    "city": "Arizona"
-  },
-  {
-    "id": "state-ar-1791481396",
+    "id": "state-ar-1791481893",
     "slug": "ar-feds-unlikely-to-change-abortion-pill-policy-before-next-year",
     "title": "Feds unlikely to change abortion pill policy before next year",
     "simplifiedTitle": "Feds unlikely to change abortion pill policy before next year",
@@ -310,7 +217,7 @@
     "city": "Arkansas"
   },
   {
-    "id": "state-ak-1791481783",
+    "id": "state-ak-1791481893",
     "slug": "ak-documents-show-dhs-probed-nonprofits-obtained-millions-of-records-in-h",
     "title": "Documents show DHS probed nonprofits, obtained millions of records in hunt for noncitizen voters",
     "simplifiedTitle": "Documents show DHS probed nonprofits, obtained millions of records in hu...",
@@ -341,84 +248,22 @@
     "city": "Alaska"
   },
   {
-    "id": "state-ga-1791481396",
-    "slug": "ga-woof-animal-welfare-advocates-want-georgians-to-know-their-state-lawma",
-    "title": "Woof! Animal welfare advocates want Georgians to know their state lawmaker’s record on pet issues",
-    "simplifiedTitle": "Woof! Animal welfare advocates want Georgians to know their state lawmak...",
-    "source": "Georgia Capital Wire",
-    "sourceUrl": "https://georgiarecorder.com/2026/10/08/woof-animal-welfare-advocates-want-georgians-to-know-their-state-lawmakers-record-on-pet-issues/",
-    "pubDate": "Thu, 08 Oct 2026 08:00:26 +0000",
+    "id": "state-al-1791481893",
+    "slug": "al-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
+    "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
+    "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
+    "source": "Alabama Capital Wire",
+    "sourceUrl": "https://alabamareflector.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
+    "pubDate": "Thu, 08 Oct 2026 17:13:42 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Georgia Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "The dogs and cats in your life don’t get a vote on Nov. 3, so they’re counting on you to get it right. That’s the message from the Georgia Pet Coalition, a nonpartisan group of Georgia humans who advocate state and local governments on behalf of the state’s companion animals. “We do not endorse candidates, [&#8230;]",
-    "bigPicture": "The dogs and cats in your life don’t get a vote on Nov.",
+    "categoryLabel": "Alabama Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September. The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S. Navy, are raising [&#8230;]",
+    "bigPicture": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September.",
     "whatHappened": [
-      "3, so they’re counting on you to get it right.",
-      "That’s the message from the Georgia Pet Coalition, a nonpartisan group of Georgia humans who advocate state and local governments on behalf of the state’s companion animals.",
-      "“We do not endorse candidates, [&#8230;]"
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "georgia",
-    "city": "Georgia"
-  },
-  {
-    "id": "state-id-1791481396",
-    "slug": "id-idaho-voters-can-help-pick-the-state-s-official-gun-in-2026-general-el",
-    "title": "Idaho voters can help pick the state’s official gun in 2026 general election",
-    "simplifiedTitle": "Idaho voters can help pick the state’s official gun in 2026 general elec...",
-    "source": "Idaho Capital Wire",
-    "sourceUrl": "https://idahocapitalsun.com/2026/10/08/idaho-voters-can-help-pick-the-states-official-gun-in-2026-general-election/",
-    "pubDate": "Thu, 08 Oct 2026 10:10:53 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Idaho Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "This year, Idaho voters have a lot to decide on: Who will be the state’s next governor or U.S. senator? Should two constitutional amendments pass? Should voters pass their own law to repeal the state’s abortion ban? But in the mix is a poll that the Idaho Legislature called for: What should be the state’s [&#8230;]",
-    "bigPicture": "This year, Idaho voters have a lot to decide on: Who will be the state’s next governor or U.S.",
-    "whatHappened": [
-      "Should two constitutional amendments pass?",
-      "Should voters pass their own law to repeal the state’s abortion ban?",
-      "But in the mix is a poll that the Idaho Legislature called for: What should be the state’s [&#8230;]"
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "idaho",
-    "city": "Idaho"
-  },
-  {
-    "id": "state-ma-1791481396",
-    "slug": "ma-police-ask-for-tips-after-man-shot-to-death-in-hyde-park-gas-station",
-    "title": "Police ask for tips after man shot to death in Hyde Park gas station",
-    "simplifiedTitle": "Police ask for tips after man shot to death in Hyde Park gas station",
-    "source": "Massachusetts Capital Wire",
-    "sourceUrl": "https://www.boston.com/news/crime/2026/10/08/hyde-park-gas-station-shooting/",
-    "pubDate": "Thu, 08 Oct 2026 17:29:26 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Massachusetts Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Boston police urged anyone with information to call 617-343-4470. The post Police ask for tips after man shot to death in Hyde Park gas station appeared first on Boston.com.",
-    "bigPicture": "Boston police urged anyone with information to call 617-343-4470.",
-    "whatHappened": [
-      "The post Police ask for tips after man shot to death in Hyde Park gas station appeared first on Boston.com.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S.",
+      "Navy, are raising [&#8230;]",
       "Further updates will be released as new details become verified."
     ],
     "whyItMatters": "",
@@ -430,27 +275,27 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "massachusetts",
-    "city": "Massachusetts"
+    "state": "alabama",
+    "city": "Alabama"
   },
   {
-    "id": "state-in-1791481396",
-    "slug": "in-lincoln-party-candidate-ballard-starting-tv-ads-in-indiana-secretary-o",
-    "title": "Lincoln Party candidate Ballard starting TV ads in Indiana secretary of state race",
-    "simplifiedTitle": "Lincoln Party candidate Ballard starting TV ads in Indiana secretary of ...",
-    "source": "Indiana Capital Wire",
-    "sourceUrl": "https://indianacapitalchronicle.com/2026/10/08/lincoln-party-candidate-ballard-starting-tv-ads-in-indiana-secretary-of-state-race/",
-    "pubDate": "Thu, 08 Oct 2026 15:33:10 +0000",
+    "id": "state-fl-1791481893",
+    "slug": "fl-florida-county-wants-motocross-course-on-land-bought-for-conservation",
+    "title": "Florida county wants motocross course on land bought for conservation",
+    "simplifiedTitle": "Florida county wants motocross course on land bought for conservation",
+    "source": "Florida Capital Wire",
+    "sourceUrl": "https://floridaphoenix.com/2026/10/08/florida-county-wants-motocross-course-on-land-bought-for-conservation/",
+    "pubDate": "Thu, 08 Oct 2026 04:05:18 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Indiana Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Lincoln Party candidate Greg Ballard will soon make it three campaigns with television ads on the air in the Indiana secretary of state’s race.",
-    "bigPicture": "Lincoln Party candidate Greg Ballard will soon make it three campaigns with television ads on the air in the Indiana secretary of state’s race.",
+    "categoryLabel": "Florida Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "One of the great things about hiking around Florida’s precious conservation lands is how quiet they can be. You can get away from all the noise and — I SAID, YOU CAN GET AWAY! FROM ALL THE NOISE! WHAT? YOU CAN’T HEAR ME? IT MUST BE BECAUSE OF ALL THESE DIRT BIKES ROARING AROUND! Well, [&#8230;]",
+    "bigPicture": "One of the great things about hiking around Florida’s precious conservation lands is how quiet they can be.",
     "whatHappened": [
-      "Officials in Indiana are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
+      "You can get away from all the noise and — I SAID, YOU CAN GET AWAY!",
+      "FROM ALL THE NOISE!",
+      "YOU CAN’T HEAR ME?"
     ],
     "whyItMatters": "",
     "plainWords": [
@@ -461,11 +306,42 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "indiana",
-    "city": "Indiana"
+    "state": "florida",
+    "city": "Florida"
   },
   {
-    "id": "state-ia-1791481396",
+    "id": "state-az-1791481893",
+    "slug": "az-aaron-lieberman-pitches-pragmatism-in-bid-to-unseat-carine-werner-in-p",
+    "title": "Aaron Lieberman pitches pragmatism in bid to unseat Carine Werner in pivotal Senate race",
+    "simplifiedTitle": "Aaron Lieberman pitches pragmatism in bid to unseat Carine Werner in piv...",
+    "source": "Arizona Capital Wire",
+    "sourceUrl": "https://azmirror.com/2026/10/08/aaron-lieberman-pitches-pragmatism-in-bid-to-unseat-carine-werner-in-pivotal-senate-race/",
+    "pubDate": "Thu, 08 Oct 2026 16:23:48 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Arizona Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Democratic lawmaker Aaron Lieberman hopes to unseat Republican Sen. Carine Werner in one of the Arizona Legislature’s most competitive races in November, with a focus on pragmatism instead of partisan fighting. Lieberman told the Arizona Mirror that his door-knocking efforts have mostly focused on reaching independents and moderate Republican voters. Legislative District 4 covers parts [&#8230;]",
+    "bigPicture": "Democratic lawmaker Aaron Lieberman hopes to unseat Republican Sen.",
+    "whatHappened": [
+      "Carine Werner in one of the Arizona Legislature’s most competitive races in November, with a focus on pragmatism instead of partisan fighting.",
+      "Lieberman told the Arizona Mirror that his door-knocking efforts have mostly focused on reaching independents and moderate Republican voters.",
+      "Legislative District 4 covers parts [&#8230;]"
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "arizona",
+    "city": "Arizona"
+  },
+  {
+    "id": "state-ia-1791481893",
     "slug": "ia-chance-of-dyed-diesel-lingering-in-tanks-makes-some-farmers-hesitant-t",
     "title": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to accept Trump’s help",
     "simplifiedTitle": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to ...",
@@ -496,21 +372,52 @@
     "city": "Iowa"
   },
   {
-    "id": "state-ks-1791481396",
-    "slug": "ks-kansas-gop-candidate-for-secretary-of-state-fined-93-000-for-breaking-",
-    "title": "Kansas GOP candidate for secretary of state fined $93,000 for breaking federal labor law",
-    "simplifiedTitle": "Kansas GOP candidate for secretary of state fined $93,000 for breaking f...",
-    "source": "Kansas Capital Wire",
-    "sourceUrl": "https://kansasreflector.com/2026/10/08/kansas-gop-candidate-for-secretary-of-state-fined-93000-for-breaking-federal-labor-law/",
-    "pubDate": "Thu, 08 Oct 2026 14:28:59 +0000",
+    "id": "state-ga-1791481893",
+    "slug": "ga-woof-animal-welfare-advocates-want-georgians-to-know-their-state-lawma",
+    "title": "Woof! Animal welfare advocates want Georgians to know their state lawmaker’s record on pet issues",
+    "simplifiedTitle": "Woof! Animal welfare advocates want Georgians to know their state lawmak...",
+    "source": "Georgia Capital Wire",
+    "sourceUrl": "https://georgiarecorder.com/2026/10/08/woof-animal-welfare-advocates-want-georgians-to-know-their-state-lawmakers-record-on-pet-issues/",
+    "pubDate": "Thu, 08 Oct 2026 08:00:26 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Kansas Dispatch",
+    "categoryLabel": "Georgia Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Republican Pat Proctor explains why a bureaucrat concluded he owed $93,000 in overtime and minimum wage compensation to restaurant employees.",
-    "bigPicture": "Republican Pat Proctor explains why a bureaucrat concluded he owed $93,000 in overtime and minimum wage compensation to restaurant employees.",
+    "originalSummary": "The dogs and cats in your life don’t get a vote on Nov. 3, so they’re counting on you to get it right. That’s the message from the Georgia Pet Coalition, a nonpartisan group of Georgia humans who advocate state and local governments on behalf of the state’s companion animals. “We do not endorse candidates, [&#8230;]",
+    "bigPicture": "The dogs and cats in your life don’t get a vote on Nov.",
     "whatHappened": [
-      "Officials in Kansas are addressing community updates regarding this issue.",
+      "3, so they’re counting on you to get it right.",
+      "That’s the message from the Georgia Pet Coalition, a nonpartisan group of Georgia humans who advocate state and local governments on behalf of the state’s companion animals.",
+      "“We do not endorse candidates, [&#8230;]"
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "georgia",
+    "city": "Georgia"
+  },
+  {
+    "id": "state-ma-1791481893",
+    "slug": "ma-oteil-burbridge-on-playing-great-woods-remembering-bill-walton-and-hav",
+    "title": "Oteil Burbridge on playing Great Woods, remembering Bill Walton, and having his own Vermont Teddy Bear",
+    "simplifiedTitle": "Oteil Burbridge on playing Great Woods, remembering Bill Walton, and hav...",
+    "source": "Massachusetts Capital Wire",
+    "sourceUrl": "https://www.boston.com/culture/music/2026/10/08/oteil-burbridge-dead-co-allman-brothers/",
+    "pubDate": "Thu, 08 Oct 2026 17:47:53 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Massachusetts Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Burbridge, formerly of Tedeschi Trucks Band and Dead and Co., is in Somerville this week with Vermont jam trio LaMP. The post Oteil Burbridge on playing Great Woods, remembering Bill Walton, and having his own Vermont Teddy Bear appeared first on Boston.com.",
+    "bigPicture": "Burbridge, formerly of Tedeschi Trucks Band and Dead and Co., is in Somerville this week with Vermont jam trio LaMP.",
+    "whatHappened": [
+      "The post Oteil Burbridge on playing Great Woods, remembering Bill Walton, and having his own Vermont Teddy Bear appeared first on Boston.com.",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
@@ -523,56 +430,56 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "kansas",
-    "city": "Kansas"
+    "state": "massachusetts",
+    "city": "Massachusetts"
   },
   {
-    "id": "state-ky-1791481396",
-    "slug": "ky-kentucky-senate-budget-chair-questions-whether-politics-are-influencin",
-    "title": "Kentucky Senate budget chair questions whether politics are influencing budget forecast",
-    "simplifiedTitle": "Kentucky Senate budget chair questions whether politics are influencing ...",
-    "source": "Kentucky Capital Wire",
-    "sourceUrl": "https://kentuckylantern.com/2026/10/08/kentucky-senate-budget-chair-questions-whether-politics-influencing-budget-forecast/",
-    "pubDate": "Thu, 08 Oct 2026 14:41:08 +0000",
+    "id": "state-id-1791481893",
+    "slug": "id-idaho-voters-can-help-pick-the-state-s-official-gun-in-2026-general-el",
+    "title": "Idaho voters can help pick the state’s official gun in 2026 general election",
+    "simplifiedTitle": "Idaho voters can help pick the state’s official gun in 2026 general elec...",
+    "source": "Idaho Capital Wire",
+    "sourceUrl": "https://idahocapitalsun.com/2026/10/08/idaho-voters-can-help-pick-the-states-official-gun-in-2026-general-election/",
+    "pubDate": "Thu, 08 Oct 2026 10:10:53 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Kentucky Dispatch",
+    "categoryLabel": "Idaho Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "A Republican leader has raised concerns about whether political games are being played with budget forecasts that show new revenue amid a very uncertain economic forecast. At a legislative meeting Wednesday, Senate Appropriations and Revenue Committee chair Chris McDaniel, R-Ryland Heights, said he was worried about a revised state revenue forecast last month that Democratic [&#8230;]",
-    "bigPicture": "A Republican leader has raised concerns about whether political games are being played with budget forecasts that show new revenue amid a very uncertain economic forecast.",
+    "originalSummary": "This year, Idaho voters have a lot to decide on: Who will be the state’s next governor or U.S. senator? Should two constitutional amendments pass? Should voters pass their own law to repeal the state’s abortion ban? But in the mix is a poll that the Idaho Legislature called for: What should be the state’s [&#8230;]",
+    "bigPicture": "This year, Idaho voters have a lot to decide on: Who will be the state’s next governor or U.S.",
     "whatHappened": [
-      "At a legislative meeting Wednesday, Senate Appropriations and Revenue Committee chair Chris McDaniel, R-Ryland Heights, said he was worried about a revised state revenue forecast last month that Democratic [&#8230;]",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
+      "Should two constitutional amendments pass?",
+      "Should voters pass their own law to repeal the state’s abortion ban?",
+      "But in the mix is a poll that the Idaho Legislature called for: What should be the state’s [&#8230;]"
     ],
     "whyItMatters": "",
     "plainWords": [
       {
-        "word": "State Appropriation",
-        "meaning": "Money specifically set aside by state lawmakers for a public program."
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
       }
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "kentucky",
-    "city": "Kentucky"
+    "state": "idaho",
+    "city": "Idaho"
   },
   {
-    "id": "state-me-1791481396",
-    "slug": "me-aging-workforce-immigration-crackdown-are-depleting-skilled-workers",
-    "title": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "simplifiedTitle": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "source": "Maine Capital Wire",
-    "sourceUrl": "https://mainemorningstar.com/2026/10/08/repub/aging-workforce-immigration-crackdown-are-depleting-skilled-workers/",
-    "pubDate": "Thu, 08 Oct 2026 15:08:51 +0000",
+    "id": "state-in-1791481893",
+    "slug": "in-lincoln-party-candidate-ballard-starting-tv-ads-in-indiana-secretary-o",
+    "title": "Lincoln Party candidate Ballard starting TV ads in Indiana secretary of state race",
+    "simplifiedTitle": "Lincoln Party candidate Ballard starting TV ads in Indiana secretary of ...",
+    "source": "Indiana Capital Wire",
+    "sourceUrl": "https://indianacapitalchronicle.com/2026/10/08/lincoln-party-candidate-ballard-starting-tv-ads-in-indiana-secretary-of-state-race/",
+    "pubDate": "Thu, 08 Oct 2026 15:33:10 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Maine Dispatch",
+    "categoryLabel": "Indiana Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers. Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
-    "bigPicture": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
+    "originalSummary": "Lincoln Party candidate Greg Ballard will soon make it three campaigns with television ads on the air in the Indiana secretary of state’s race.",
+    "bigPicture": "Lincoln Party candidate Greg Ballard will soon make it three campaigns with television ads on the air in the Indiana secretary of state’s race.",
     "whatHappened": [
-      "Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
+      "Officials in Indiana are addressing community updates regarding this issue.",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
@@ -585,11 +492,11 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "maine",
-    "city": "Maine"
+    "state": "indiana",
+    "city": "Indiana"
   },
   {
-    "id": "state-ms-1791481396",
+    "id": "state-ms-1791481893",
     "slug": "ms-hurricane-isaias-is-expected-to-strengthen-as-it-barrels-toward-the-us",
     "title": "Hurricane Isaias is expected to strengthen as it barrels toward the US Gulf Coast",
     "simplifiedTitle": "Hurricane Isaias is expected to strengthen as it barrels toward the US G...",
@@ -620,7 +527,69 @@
     "city": "Mississippi"
   },
   {
-    "id": "state-mi-1791481396",
+    "id": "state-ks-1791481894",
+    "slug": "ks-kansas-gop-candidate-for-secretary-of-state-fined-93-000-for-breaking-",
+    "title": "Kansas GOP candidate for secretary of state fined $93,000 for breaking federal labor law",
+    "simplifiedTitle": "Kansas GOP candidate for secretary of state fined $93,000 for breaking f...",
+    "source": "Kansas Capital Wire",
+    "sourceUrl": "https://kansasreflector.com/2026/10/08/kansas-gop-candidate-for-secretary-of-state-fined-93000-for-breaking-federal-labor-law/",
+    "pubDate": "Thu, 08 Oct 2026 14:28:59 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Kansas Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Republican Pat Proctor explains why a bureaucrat concluded he owed $93,000 in overtime and minimum wage compensation to restaurant employees.",
+    "bigPicture": "Republican Pat Proctor explains why a bureaucrat concluded he owed $93,000 in overtime and minimum wage compensation to restaurant employees.",
+    "whatHappened": [
+      "Officials in Kansas are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "kansas",
+    "city": "Kansas"
+  },
+  {
+    "id": "state-ky-1791481894",
+    "slug": "ky-kentucky-senate-budget-chair-questions-whether-politics-are-influencin",
+    "title": "Kentucky Senate budget chair questions whether politics are influencing budget forecast",
+    "simplifiedTitle": "Kentucky Senate budget chair questions whether politics are influencing ...",
+    "source": "Kentucky Capital Wire",
+    "sourceUrl": "https://kentuckylantern.com/2026/10/08/kentucky-senate-budget-chair-questions-whether-politics-influencing-budget-forecast/",
+    "pubDate": "Thu, 08 Oct 2026 14:41:08 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Kentucky Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "A Republican leader has raised concerns about whether political games are being played with budget forecasts that show new revenue amid a very uncertain economic forecast. At a legislative meeting Wednesday, Senate Appropriations and Revenue Committee chair Chris McDaniel, R-Ryland Heights, said he was worried about a revised state revenue forecast last month that Democratic [&#8230;]",
+    "bigPicture": "A Republican leader has raised concerns about whether political games are being played with budget forecasts that show new revenue amid a very uncertain economic forecast.",
+    "whatHappened": [
+      "At a legislative meeting Wednesday, Senate Appropriations and Revenue Committee chair Chris McDaniel, R-Ryland Heights, said he was worried about a revised state revenue forecast last month that Democratic [&#8230;]",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "State Appropriation",
+        "meaning": "Money specifically set aside by state lawmakers for a public program."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "kentucky",
+    "city": "Kentucky"
+  },
+  {
+    "id": "state-mi-1791481894",
     "slug": "mi-urban-rural-hospitals-closing-at-similar-rates-study-finds",
     "title": "Urban, rural hospitals closing at similar rates, study finds",
     "simplifiedTitle": "Urban, rural hospitals closing at similar rates, study finds",
@@ -651,7 +620,7 @@
     "city": "Michigan"
   },
   {
-    "id": "state-la-1791481396",
+    "id": "state-la-1791481894",
     "slug": "la-fda-provides-update-on-abortion-pill-review-for-louisiana-telehealth-c",
     "title": "FDA provides update on abortion pill review for Louisiana telehealth case",
     "simplifiedTitle": "FDA provides update on abortion pill review for Louisiana telehealth case",
@@ -682,52 +651,21 @@
     "city": "Louisiana"
   },
   {
-    "id": "state-md-1791481396",
-    "slug": "md-regulators-fined-state-local-government-offices-125-150-for-workplace-",
-    "title": "Regulators fined state, local government offices $125,150 for workplace safety violations",
-    "simplifiedTitle": "Regulators fined state, local government offices $125,150 for workplace ...",
-    "source": "Maryland Capital Wire",
-    "sourceUrl": "https://marylandmatters.org/2026/10/08/regulators-fined-state-local-government-offices-125150-for-workplace-safety-violations/",
-    "pubDate": "Thu, 08 Oct 2026 09:36:56 +0000",
+    "id": "state-me-1791481894",
+    "slug": "me-aging-workforce-immigration-crackdown-are-depleting-skilled-workers",
+    "title": "Aging workforce, immigration crackdown are depleting skilled workers",
+    "simplifiedTitle": "Aging workforce, immigration crackdown are depleting skilled workers",
+    "source": "Maine Capital Wire",
+    "sourceUrl": "https://mainemorningstar.com/2026/10/08/repub/aging-workforce-immigration-crackdown-are-depleting-skilled-workers/",
+    "pubDate": "Thu, 08 Oct 2026 15:08:51 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Maryland Dispatch",
+    "categoryLabel": "Maine Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "State regulators issued $125,150 in civil penalties to state, county and local governments over an eight-month period for failing to adhere to workplace safety requirements, lawmakers were told Wednesday.",
-    "bigPicture": "State regulators issued $125,150 in civil penalties to state, county and local governments over an eight-month period for failing to adhere to workplace safety requirements, lawmakers were told Wednesday.",
+    "originalSummary": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers. Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
+    "bigPicture": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
     "whatHappened": [
-      "Officials in Maryland are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "maryland",
-    "city": "Maryland"
-  },
-  {
-    "id": "state-mn-1791481396",
-    "slug": "mn-minnesota-seeks-to-replace-fraud-ridden-housing-stabilization-services",
-    "title": "Minnesota seeks to replace fraud-ridden Housing Stabilization Services with new program",
-    "simplifiedTitle": "Minnesota seeks to replace fraud-ridden Housing Stabilization Services w...",
-    "source": "Minnesota Capital Wire",
-    "sourceUrl": "https://minnesotareformer.com/2026/10/08/minnesota-seeks-to-replace-fraud-ridden-housing-stabilization-services-with-new-program/",
-    "pubDate": "Thu, 08 Oct 2026 15:48:03 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Minnesota Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "The Minnesota Department of Human Services is planning to replace Housing Stabilization Services, a Medicaid program that was so riddled with fraud it was shut down by the Walz administration last year. The agency plans to develop a new program and a legislative proposal for 2028 as part of the Olmstead Plan, which is the [&#8230;]",
-    "bigPicture": "The Minnesota Department of Human Services is planning to replace Housing Stabilization Services, a Medicaid program that was so riddled with fraud it was shut down by the Walz administration last year.",
-    "whatHappened": [
-      "The agency plans to develop a new program and a legislative proposal for 2028 as part of the Olmstead Plan, which is the [&#8230;]",
+      "Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
@@ -740,104 +678,11 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "minnesota",
-    "city": "Minnesota"
+    "state": "maine",
+    "city": "Maine"
   },
   {
-    "id": "state-mt-1791481397",
-    "slug": "mt-a-prison-sentence-shouldn-t-take-away-a-citizen-s-vote",
-    "title": "A prison sentence shouldn’t take away a citizen’s vote",
-    "simplifiedTitle": "A prison sentence shouldn’t take away a citizen’s vote",
-    "source": "Montana Capital Wire",
-    "sourceUrl": "https://dailymontanan.com/2026/10/08/a-prison-sentence-shouldnt-take-away-a-citizens-vote/",
-    "pubDate": "Thu, 08 Oct 2026 14:54:39 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Montana Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "It was Election Day, 1964. My mother took me to the polling site – Meadowlark Elementary in Great Falls. She held my hand. We stood in line. A voting booth opened, and we entered. My mother pulled a lever. A curtain closed. She explained that Democratic candidates were on one side. Republicans on the other. People [&#8230;]",
-    "bigPicture": "It was Election Day, 1964.",
-    "whatHappened": [
-      "My mother took me to the polling site – Meadowlark Elementary in Great Falls.",
-      "She held my hand.",
-      "We stood in line."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "montana",
-    "city": "Montana"
-  },
-  {
-    "id": "state-mo-1791481397",
-    "slug": "mo-advocates-blast-trump-campaign-against-in-state-tuition-for-immigrants",
-    "title": "Advocates blast Trump campaign against in-state tuition for immigrants",
-    "simplifiedTitle": "Advocates blast Trump campaign against in-state tuition for immigrants",
-    "source": "Missouri Capital Wire",
-    "sourceUrl": "https://missouriindependent.com/2026/10/08/repub/advocates-blast-trump-campaign-against-in-state-tuition-for-immigrants/",
-    "pubDate": "Thu, 08 Oct 2026 16:00:55 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Missouri Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "WASHINGTON — Leading immigration advocates and experts sounded the alarm Wednesday on the Trump administration’s sweeping efforts to undo state laws allowing some immigrants to pay in-state college tuition in the states where they reside.&#160; The U.S. Department of Justice has sued 24 states, Washington, D.C., and the University of Delaware since President Donald Trump [&#8230;]",
-    "bigPicture": "WASHINGTON — Leading immigration advocates and experts sounded the alarm Wednesday on the Trump administration’s sweeping efforts to undo state laws allowing some immigrants to pay in-state college tuition in the states where they reside.&#160; The U.S.",
-    "whatHappened": [
-      "Department of Justice has sued 24 states, Washington, D.C., and the University of Delaware since President Donald Trump [&#8230;]",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "missouri",
-    "city": "Missouri"
-  },
-  {
-    "id": "state-ne-1791481397",
-    "slug": "ne-trump-auto-enrolls-10s-of-millions-in-child-investment-accounts",
-    "title": "Trump auto-enrolls 10s of millions in child investment accounts",
-    "simplifiedTitle": "Trump auto-enrolls 10s of millions in child investment accounts",
-    "source": "Nebraska Capital Wire",
-    "sourceUrl": "https://nebraskaexaminer.com/2026/10/08/repub/trump-auto-enrolls-10s-of-millions-in-child-investment-accounts/",
-    "pubDate": "Thu, 08 Oct 2026 15:57:36 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Nebraska Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday. Parents must claim the accounts by downloading a Trump Account mobile app. Children born from 2025 through 2028 will automatically receive a one-time deposit [&#8230;]",
-    "bigPicture": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday.",
-    "whatHappened": [
-      "Parents must claim the accounts by downloading a Trump Account mobile app.",
-      "Children born from 2025 through 2028 will automatically receive a one-time deposit [&#8230;]",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "State Appropriation",
-        "meaning": "Money specifically set aside by state lawmakers for a public program."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "nebraska",
-    "city": "Nebraska"
-  },
-  {
-    "id": "state-nv-1791481397",
+    "id": "state-nv-1791481894",
     "slug": "nv-with-violins-trumpets-and-the-guitarr-n-las-vegas-is-training-the-mari",
     "title": "With violins, trumpets and the guitarrón, Las Vegas is training the mariachi educators of tomorrow",
     "simplifiedTitle": "With violins, trumpets and the guitarrón, Las Vegas is training the mari...",
@@ -868,21 +713,114 @@
     "city": "Nevada"
   },
   {
-    "id": "state-nm-1791481397",
-    "slug": "nm-aging-workforce-immigration-crackdown-are-depleting-skilled-workers",
-    "title": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "simplifiedTitle": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "source": "New Mexico Capital Wire",
-    "sourceUrl": "https://sourcenm.com/2026/10/08/repub/aging-workforce-immigration-crackdown-are-depleting-skilled-workers/",
-    "pubDate": "Thu, 08 Oct 2026 15:38:12 +0000",
+    "id": "state-md-1791481894",
+    "slug": "md-regulators-fined-state-local-government-offices-125-150-for-workplace-",
+    "title": "Regulators fined state, local government offices $125,150 for workplace safety violations",
+    "simplifiedTitle": "Regulators fined state, local government offices $125,150 for workplace ...",
+    "source": "Maryland Capital Wire",
+    "sourceUrl": "https://marylandmatters.org/2026/10/08/regulators-fined-state-local-government-offices-125150-for-workplace-safety-violations/",
+    "pubDate": "Thu, 08 Oct 2026 09:36:56 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "New Mexico Dispatch",
+    "categoryLabel": "Maryland Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers. Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
-    "bigPicture": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
+    "originalSummary": "State regulators issued $125,150 in civil penalties to state, county and local governments over an eight-month period for failing to adhere to workplace safety requirements, lawmakers were told Wednesday.",
+    "bigPicture": "State regulators issued $125,150 in civil penalties to state, county and local governments over an eight-month period for failing to adhere to workplace safety requirements, lawmakers were told Wednesday.",
     "whatHappened": [
-      "Automakers and construction contractors say they need more access to workers through accelerated training, steady immigration and a cultural shift to encourage young people to do the hard, [&#8230;]",
+      "Officials in Maryland are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "maryland",
+    "city": "Maryland"
+  },
+  {
+    "id": "state-mt-1791481894",
+    "slug": "mt-us-senate-dems-demand-apology-from-chuck-grassley-to-jack-smith-for-at",
+    "title": "US Senate Dems demand apology from Chuck Grassley to Jack Smith for attacks at hearing",
+    "simplifiedTitle": "US Senate Dems demand apology from Chuck Grassley to Jack Smith for atta...",
+    "source": "Montana Capital Wire",
+    "sourceUrl": "https://dailymontanan.com/2026/10/08/repub/us-senate-dems-demand-apology-from-chuck-grassley-to-jack-smith-for-attacks-at-hearing/",
+    "pubDate": "Thu, 08 Oct 2026 17:39:26 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Montana Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — The top Democrat on the Senate Judiciary Committee is demanding his colleagues across the aisle apologize to former special counsel Jack Smith after Missouri Republican Sen. Eric Schmitt launched false accusations at a recent hearing and called the former Justice Department official a “dirtbag.” Committee ranking member Sen. Dick Durbin, D-Ill., accused his [&#8230;]",
+    "bigPicture": "WASHINGTON — The top Democrat on the Senate Judiciary Committee is demanding his colleagues across the aisle apologize to former special counsel Jack Smith after Missouri Republican Sen.",
+    "whatHappened": [
+      "Eric Schmitt launched false accusations at a recent hearing and called the former Justice Department official a “dirtbag.” Committee ranking member Sen.",
+      "Dick Durbin, D-Ill., accused his [&#8230;]",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "montana",
+    "city": "Montana"
+  },
+  {
+    "id": "state-mo-1791481894",
+    "slug": "mo-advocates-blast-trump-campaign-against-in-state-tuition-for-immigrants",
+    "title": "Advocates blast Trump campaign against in-state tuition for immigrants",
+    "simplifiedTitle": "Advocates blast Trump campaign against in-state tuition for immigrants",
+    "source": "Missouri Capital Wire",
+    "sourceUrl": "https://missouriindependent.com/2026/10/08/repub/advocates-blast-trump-campaign-against-in-state-tuition-for-immigrants/",
+    "pubDate": "Thu, 08 Oct 2026 16:00:55 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Missouri Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — Leading immigration advocates and experts sounded the alarm Wednesday on the Trump administration’s sweeping efforts to undo state laws allowing some immigrants to pay in-state college tuition in the states where they reside.&#160; The U.S. Department of Justice has sued 24 states, Washington, D.C., and the University of Delaware since President Donald Trump [&#8230;]",
+    "bigPicture": "WASHINGTON — Leading immigration advocates and experts sounded the alarm Wednesday on the Trump administration’s sweeping efforts to undo state laws allowing some immigrants to pay in-state college tuition in the states where they reside.&#160; The U.S.",
+    "whatHappened": [
+      "Department of Justice has sued 24 states, Washington, D.C., and the University of Delaware since President Donald Trump [&#8230;]",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "missouri",
+    "city": "Missouri"
+  },
+  {
+    "id": "state-mn-1791481894",
+    "slug": "mn-minnesota-seeks-to-replace-fraud-ridden-housing-stabilization-services",
+    "title": "Minnesota seeks to replace fraud-ridden Housing Stabilization Services with new program",
+    "simplifiedTitle": "Minnesota seeks to replace fraud-ridden Housing Stabilization Services w...",
+    "source": "Minnesota Capital Wire",
+    "sourceUrl": "https://minnesotareformer.com/2026/10/08/minnesota-seeks-to-replace-fraud-ridden-housing-stabilization-services-with-new-program/",
+    "pubDate": "Thu, 08 Oct 2026 15:48:03 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Minnesota Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "The Minnesota Department of Human Services is planning to replace Housing Stabilization Services, a Medicaid program that was so riddled with fraud it was shut down by the Walz administration last year. The agency plans to develop a new program and a legislative proposal for 2028 as part of the Olmstead Plan, which is the [&#8230;]",
+    "bigPicture": "The Minnesota Department of Human Services is planning to replace Housing Stabilization Services, a Medicaid program that was so riddled with fraud it was shut down by the Walz administration last year.",
+    "whatHappened": [
+      "The agency plans to develop a new program and a legislative proposal for 2028 as part of the Olmstead Plan, which is the [&#8230;]",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
@@ -895,51 +833,20 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "new mexico",
-    "city": "New Mexico"
+    "state": "minnesota",
+    "city": "Minnesota"
   },
   {
-    "id": "state-nj-1791481397",
-    "slug": "nj-aging-workforce-immigration-crackdown-are-depleting-skilled-workers",
-    "title": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "simplifiedTitle": "Aging workforce, immigration crackdown are depleting skilled workers",
-    "source": "New Jersey Capital Wire",
-    "sourceUrl": "https://newjerseymonitor.com/2026/10/08/repub/immigration-skilled-workers/",
-    "pubDate": "Thu, 08 Oct 2026 10:40:52 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "New Jersey Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
-    "bigPicture": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
-    "whatHappened": [
-      "Officials in New Jersey are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "new jersey",
-    "city": "New Jersey"
-  },
-  {
-    "id": "state-nh-1791481397",
-    "slug": "nh-trump-auto-enrolls-10s-of-millions-in-child-investment-accounts",
+    "id": "state-ne-1791481894",
+    "slug": "ne-trump-auto-enrolls-10s-of-millions-in-child-investment-accounts",
     "title": "Trump auto-enrolls 10s of millions in child investment accounts",
     "simplifiedTitle": "Trump auto-enrolls 10s of millions in child investment accounts",
-    "source": "New Hampshire Capital Wire",
-    "sourceUrl": "https://newhampshirebulletin.com/2026/10/08/repub/trump-auto-enrolls-10s-of-millions-in-child-investment-accounts/",
-    "pubDate": "Thu, 08 Oct 2026 13:06:25 +0000",
+    "source": "Nebraska Capital Wire",
+    "sourceUrl": "https://nebraskaexaminer.com/2026/10/08/repub/trump-auto-enrolls-10s-of-millions-in-child-investment-accounts/",
+    "pubDate": "Thu, 08 Oct 2026 15:57:36 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "New Hampshire Dispatch",
+    "categoryLabel": "Nebraska Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
     "originalSummary": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday. Parents must claim the accounts by downloading a Trump Account mobile app. Children born from 2025 through 2028 will automatically receive a one-time deposit [&#8230;]",
     "bigPicture": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday.",
@@ -957,20 +864,20 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "new hampshire",
-    "city": "New Hampshire"
+    "state": "nebraska",
+    "city": "Nebraska"
   },
   {
-    "id": "state-oh-1791481397",
-    "slug": "oh-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
+    "id": "state-nm-1791481894",
+    "slug": "nm-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
     "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
     "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
-    "source": "Ohio Capital Wire",
-    "sourceUrl": "https://ohiocapitaljournal.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
-    "pubDate": "Thu, 08 Oct 2026 14:32:51 +0000",
+    "source": "New Mexico Capital Wire",
+    "sourceUrl": "https://sourcenm.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
+    "pubDate": "Thu, 08 Oct 2026 17:30:29 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Ohio Dispatch",
+    "categoryLabel": "New Mexico Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
     "originalSummary": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September. The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S. Navy, are raising [&#8230;]",
     "bigPicture": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September.",
@@ -988,11 +895,11 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "ohio",
-    "city": "Ohio"
+    "state": "new mexico",
+    "city": "New Mexico"
   },
   {
-    "id": "state-nd-1791481397",
+    "id": "state-nd-1791481894",
     "slug": "nd-first-time-candidate-running-as-independent-for-us-house-in-north-dako",
     "title": "First-time candidate running as independent for US House in North Dakota",
     "simplifiedTitle": "First-time candidate running as independent for US House in North Dakota",
@@ -1023,7 +930,38 @@
     "city": "North Dakota"
   },
   {
-    "id": "state-nc-1791481397",
+    "id": "state-nh-1791481894",
+    "slug": "nh-trump-auto-enrolls-10s-of-millions-in-child-investment-accounts",
+    "title": "Trump auto-enrolls 10s of millions in child investment accounts",
+    "simplifiedTitle": "Trump auto-enrolls 10s of millions in child investment accounts",
+    "source": "New Hampshire Capital Wire",
+    "sourceUrl": "https://newhampshirebulletin.com/2026/10/08/repub/trump-auto-enrolls-10s-of-millions-in-child-investment-accounts/",
+    "pubDate": "Thu, 08 Oct 2026 13:06:25 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "New Hampshire Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday. Parents must claim the accounts by downloading a Trump Account mobile app. Children born from 2025 through 2028 will automatically receive a one-time deposit [&#8230;]",
+    "bigPicture": "WASHINGTON — Every child in the United States with a valid Social Security number is now enrolled in a tax-advantaged investment account, titled a “Trump Account,” President Donald Trump announced Wednesday.",
+    "whatHappened": [
+      "Parents must claim the accounts by downloading a Trump Account mobile app.",
+      "Children born from 2025 through 2028 will automatically receive a one-time deposit [&#8230;]",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "State Appropriation",
+        "meaning": "Money specifically set aside by state lawmakers for a public program."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "new hampshire",
+    "city": "New Hampshire"
+  },
+  {
+    "id": "state-nc-1791481895",
     "slug": "nc-would-your-campus-host-credit-card-companies-or-big-tobacco-then-why-b",
     "title": "Would your campus host credit card companies or Big Tobacco? Then why Big Tech?",
     "simplifiedTitle": "Would your campus host credit card companies or Big Tobacco? Then why Bi...",
@@ -1054,100 +992,38 @@
     "city": "North Carolina"
   },
   {
-    "id": "state-ok-1791481397",
-    "slug": "ok-chance-of-dyed-diesel-lingering-in-tanks-makes-some-farmers-hesitant-t",
-    "title": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to accept Trump’s help",
-    "simplifiedTitle": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to ...",
-    "source": "Oklahoma Capital Wire",
-    "sourceUrl": "https://oklahomavoice.com/2026/10/08/repub/chance-of-dyed-diesel-lingering-in-tanks-makes-some-farmers-hesitant-to-accept-trumps-help/",
-    "pubDate": "Thu, 08 Oct 2026 16:43:13 +0000",
+    "id": "state-nj-1791481895",
+    "slug": "nj-aging-workforce-immigration-crackdown-are-depleting-skilled-workers",
+    "title": "Aging workforce, immigration crackdown are depleting skilled workers",
+    "simplifiedTitle": "Aging workforce, immigration crackdown are depleting skilled workers",
+    "source": "New Jersey Capital Wire",
+    "sourceUrl": "https://newjerseymonitor.com/2026/10/08/repub/immigration-skilled-workers/",
+    "pubDate": "Thu, 08 Oct 2026 10:40:52 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Oklahoma Dispatch",
+    "categoryLabel": "New Jersey Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "https://southdakotasearchlight.com/wp-content/uploads/2026/10/100626-Red-Dyed-Diesel-web.mp3 President Donald Trump is allowing broader use of a federally tax-exempt fuel that powers farm equipment, in an attempt to ease the burden of rising diesel prices. But some farmers are hesitant to accept the help. The fuel is red-dyed diesel, which is legally limited to use in offroad machinery. The action by Trump [&#8230;]",
-    "bigPicture": "https://southdakotasearchlight.com/wp-content/uploads/2026/10/100626-Red-Dyed-Diesel-web.mp3 President Donald Trump is allowing broader use of a federally tax-exempt fuel that powers farm equipment, in an attempt to ease the burden of rising diesel prices.",
+    "originalSummary": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
+    "bigPicture": "A perfect storm of harsh immigration enforcement, aging journeymen and a building boom for data centers is wreaking havoc on the nation’s supply of skilled trade workers.",
     "whatHappened": [
-      "But some farmers are hesitant to accept the help.",
-      "The fuel is red-dyed diesel, which is legally limited to use in offroad machinery.",
-      "The action by Trump [&#8230;]"
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "State Appropriation",
-        "meaning": "Money specifically set aside by state lawmakers for a public program."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "oklahoma",
-    "city": "Oklahoma"
-  },
-  {
-    "id": "state-sc-1791481398",
-    "slug": "sc-sc-law-guaranteed-teachers-2-days-of-planning-time-some-schools-still-",
-    "title": "SC law guaranteed teachers 2 days of planning time. Some schools still aren’t complying.",
-    "simplifiedTitle": "SC law guaranteed teachers 2 days of planning time. Some schools still a...",
-    "source": "South Carolina Capital Wire",
-    "sourceUrl": "https://scdailygazette.com/2026/10/08/sc-law-guaranteed-teachers-2-days-of-planning-time-schools-still-arent-complying-advocates-say/",
-    "pubDate": "Thu, 08 Oct 2026 14:39:40 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "South Carolina Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Roughly one in five teachers reported not receiving their legally required planning days, the state's largest association of educators found.",
-    "bigPicture": "Roughly one in five teachers reported not receiving their legally required planning days, the state's largest association of educators found.",
-    "whatHappened": [
-      "Officials in South Carolina are addressing community updates regarding this issue.",
+      "Officials in New Jersey are addressing community updates regarding this issue.",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
     "whyItMatters": "",
     "plainWords": [
       {
-        "word": "Statute",
-        "meaning": "A formal written law passed by the state legislature."
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
       }
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "south carolina",
-    "city": "South Carolina"
+    "state": "new jersey",
+    "city": "New Jersey"
   },
   {
-    "id": "state-pa-1791481398",
-    "slug": "pa-urban-rural-hospitals-closing-at-similar-rates-study-finds",
-    "title": "Urban, rural hospitals closing at similar rates, study finds",
-    "simplifiedTitle": "Urban, rural hospitals closing at similar rates, study finds",
-    "source": "Pennsylvania Capital Wire",
-    "sourceUrl": "https://penncapital-star.com/2026/10/08/repub/urban-rural-hospitals-closing-at-similar-rates-study-finds/",
-    "pubDate": "Thu, 08 Oct 2026 15:39:29 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Pennsylvania Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Urban hospitals are closing at roughly the same rate as rural ones, and the shuttered hospitals are more likely to have served communities with high poverty rates and fewer transportation options.",
-    "bigPicture": "Urban hospitals are closing at roughly the same rate as rural ones, and the shuttered hospitals are more likely to have served communities with high poverty rates and fewer transportation options.",
-    "whatHappened": [
-      "Officials in Pennsylvania are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Public Health Directive",
-        "meaning": "Official guidance issued to doctors and clinics to keep patients safe."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "pennsylvania",
-    "city": "Pennsylvania"
-  },
-  {
-    "id": "state-or-1791481398",
+    "id": "state-or-1791481895",
     "slug": "or-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
     "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
     "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
@@ -1178,21 +1054,83 @@
     "city": "Oregon"
   },
   {
-    "id": "state-vt-1791481398",
-    "slug": "vt-state-police-investigate-shooting-by-williston-officer-that-wounded-a-",
-    "title": "State police investigate shooting by Williston officer that wounded a man early Thursday",
-    "simplifiedTitle": "State police investigate shooting by Williston officer that wounded a ma...",
-    "source": "Vermont Capital Wire",
-    "sourceUrl": "https://vtdigger.org/2026/10/08/state-police-investigate-shooting-by-williston-officer-that-wounded-a-man-early-thursday/",
-    "pubDate": "Thu, 08 Oct 2026 15:55:58 +0000",
+    "id": "state-ok-1791481895",
+    "slug": "ok-chance-of-dyed-diesel-lingering-in-tanks-makes-some-farmers-hesitant-t",
+    "title": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to accept Trump’s help",
+    "simplifiedTitle": "Chance of dyed diesel lingering in tanks makes some farmers hesitant to ...",
+    "source": "Oklahoma Capital Wire",
+    "sourceUrl": "https://oklahomavoice.com/2026/10/08/repub/chance-of-dyed-diesel-lingering-in-tanks-makes-some-farmers-hesitant-to-accept-trumps-help/",
+    "pubDate": "Thu, 08 Oct 2026 16:43:13 +0000",
     "timeAgo": "Today",
     "category": "us-world",
-    "categoryLabel": "Vermont Dispatch",
+    "categoryLabel": "Oklahoma Dispatch",
     "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "The injured man was taken to a hospital, where he was reported in stable condition. Read the story on VTDigger here: State police investigate shooting by Williston officer that wounded a man early Thursday.",
-    "bigPicture": "The injured man was taken to a hospital, where he was reported in stable condition.",
+    "originalSummary": "https://southdakotasearchlight.com/wp-content/uploads/2026/10/100626-Red-Dyed-Diesel-web.mp3 President Donald Trump is allowing broader use of a federally tax-exempt fuel that powers farm equipment, in an attempt to ease the burden of rising diesel prices. But some farmers are hesitant to accept the help. The fuel is red-dyed diesel, which is legally limited to use in offroad machinery. The action by Trump [&#8230;]",
+    "bigPicture": "https://southdakotasearchlight.com/wp-content/uploads/2026/10/100626-Red-Dyed-Diesel-web.mp3 President Donald Trump is allowing broader use of a federally tax-exempt fuel that powers farm equipment, in an attempt to ease the burden of rising diesel prices.",
     "whatHappened": [
-      "Read the story on VTDigger here: State police investigate shooting by Williston officer that wounded a man early Thursday.",
+      "But some farmers are hesitant to accept the help.",
+      "The fuel is red-dyed diesel, which is legally limited to use in offroad machinery.",
+      "The action by Trump [&#8230;]"
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "State Appropriation",
+        "meaning": "Money specifically set aside by state lawmakers for a public program."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "oklahoma",
+    "city": "Oklahoma"
+  },
+  {
+    "id": "state-oh-1791481895",
+    "slug": "oh-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
+    "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
+    "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
+    "source": "Ohio Capital Wire",
+    "sourceUrl": "https://ohiocapitaljournal.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
+    "pubDate": "Thu, 08 Oct 2026 14:32:51 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Ohio Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September. The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S. Navy, are raising [&#8230;]",
+    "bigPicture": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September.",
+    "whatHappened": [
+      "The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S.",
+      "Navy, are raising [&#8230;]",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "ohio",
+    "city": "Ohio"
+  },
+  {
+    "id": "state-pa-1791481895",
+    "slug": "pa-urban-rural-hospitals-closing-at-similar-rates-study-finds",
+    "title": "Urban, rural hospitals closing at similar rates, study finds",
+    "simplifiedTitle": "Urban, rural hospitals closing at similar rates, study finds",
+    "source": "Pennsylvania Capital Wire",
+    "sourceUrl": "https://penncapital-star.com/2026/10/08/repub/urban-rural-hospitals-closing-at-similar-rates-study-finds/",
+    "pubDate": "Thu, 08 Oct 2026 15:39:29 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Pennsylvania Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Urban hospitals are closing at roughly the same rate as rural ones, and the shuttered hospitals are more likely to have served communities with high poverty rates and fewer transportation options.",
+    "bigPicture": "Urban hospitals are closing at roughly the same rate as rural ones, and the shuttered hospitals are more likely to have served communities with high poverty rates and fewer transportation options.",
+    "whatHappened": [
+      "Officials in Pennsylvania are addressing community updates regarding this issue.",
       "State leaders and local agencies are reviewing the practical impact on residents.",
       "Further updates will be released as new details become verified."
     ],
@@ -1205,11 +1143,11 @@
     ],
     "readTimeMinutes": 2,
     "trendingScore": 85,
-    "state": "vermont",
-    "city": "Vermont"
+    "state": "pennsylvania",
+    "city": "Pennsylvania"
   },
   {
-    "id": "state-ri-1791481398",
+    "id": "state-ri-1791481895",
     "slug": "ri-trump-auto-enrolls-10s-of-millions-in-child-investment-accounts",
     "title": "Trump auto-enrolls 10s of millions in child investment accounts",
     "simplifiedTitle": "Trump auto-enrolls 10s of millions in child investment accounts",
@@ -1240,7 +1178,69 @@
     "city": "Rhode Island"
   },
   {
-    "id": "state-sd-1791481398",
+    "id": "state-vt-1791481895",
+    "slug": "vt-the-fall-foliage-is-the-best-it-s-been-in-years",
+    "title": "The fall foliage is the best it’s been in years",
+    "simplifiedTitle": "The fall foliage is the best it’s been in years",
+    "source": "Vermont Capital Wire",
+    "sourceUrl": "https://vtdigger.org/2026/10/08/the-fall-foliage-is-the-best-its-been-in-years/",
+    "pubDate": "Thu, 08 Oct 2026 17:51:17 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Vermont Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Warm temps and Saturday sunshine make foliage viewing a weekend must-do. Wetter weather is on the way. Read the story on VTDigger here: The fall foliage is the best it’s been in years.",
+    "bigPicture": "Warm temps and Saturday sunshine make foliage viewing a weekend must-do.",
+    "whatHappened": [
+      "Wetter weather is on the way.",
+      "Read the story on VTDigger here: The fall foliage is the best it’s been in years.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "vermont",
+    "city": "Vermont"
+  },
+  {
+    "id": "state-sc-1791481895",
+    "slug": "sc-sc-law-guaranteed-teachers-2-days-of-planning-time-some-schools-still-",
+    "title": "SC law guaranteed teachers 2 days of planning time. Some schools still aren’t complying.",
+    "simplifiedTitle": "SC law guaranteed teachers 2 days of planning time. Some schools still a...",
+    "source": "South Carolina Capital Wire",
+    "sourceUrl": "https://scdailygazette.com/2026/10/08/sc-law-guaranteed-teachers-2-days-of-planning-time-schools-still-arent-complying-advocates-say/",
+    "pubDate": "Thu, 08 Oct 2026 14:39:40 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "South Carolina Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Roughly one in five teachers reported not receiving their legally required planning days, the state's largest association of educators found.",
+    "bigPicture": "Roughly one in five teachers reported not receiving their legally required planning days, the state's largest association of educators found.",
+    "whatHappened": [
+      "Officials in South Carolina are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Statute",
+        "meaning": "A formal written law passed by the state legislature."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "south carolina",
+    "city": "South Carolina"
+  },
+  {
+    "id": "state-sd-1791481895",
     "slug": "sd-feds-unlikely-to-change-abortion-pill-policy-before-next-year",
     "title": "Feds unlikely to change abortion pill policy before next year",
     "simplifiedTitle": "Feds unlikely to change abortion pill policy before next year",
@@ -1271,7 +1271,7 @@
     "city": "South Dakota"
   },
   {
-    "id": "state-tn-1791481398",
+    "id": "state-tn-1791481895",
     "slug": "tn-the-democratic-party-is-gaining-ground-even-in-east-tennessee",
     "title": "The Democratic Party is gaining ground, even in East Tennessee",
     "simplifiedTitle": "The Democratic Party is gaining ground, even in East Tennessee",
@@ -1302,69 +1302,7 @@
     "city": "Tennessee"
   },
   {
-    "id": "state-wy-1791481398",
-    "slug": "wy-reading-with-a-friend",
-    "title": "Reading with a friend",
-    "simplifiedTitle": "Reading with a friend",
-    "source": "Wyoming Capital Wire",
-    "sourceUrl": "https://wyofile.com/reading-with-a-friend/",
-    "pubDate": "Thu, 08 Oct 2026 10:20:00 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Wyoming Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Treat the American Library Association’s list of the 100 most challenged and banned books as suggested reading, writes columnist David Romtvedt. The post Reading with a friend appeared first on WyoFile .",
-    "bigPicture": "Treat the American Library Association’s list of the 100 most challenged and banned books as suggested reading, writes columnist David Romtvedt.",
-    "whatHappened": [
-      "The post Reading with a friend appeared first on WyoFile .",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "wyoming",
-    "city": "Wyoming"
-  },
-  {
-    "id": "state-tx-1791481398",
-    "slug": "tx-in-attacking-talarico-for-campaign-absence-trump-calls-for-debate-that",
-    "title": "In attacking Talarico for campaign absence, Trump calls for debate that Paxton has avoided",
-    "simplifiedTitle": "In attacking Talarico for campaign absence, Trump calls for debate that ...",
-    "source": "Texas Capital Wire",
-    "sourceUrl": "https://feeds.texastribune.org/link/16799/17492227/texas-senate-james-talarico-flu-ken-paxton-debate-trump",
-    "pubDate": "Thu, 08 Oct 2026 16:12:00 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Texas Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1531218150217-54595bc2b934?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "The Democrat, off the trail with the flu, quickly accepted the president’s call to “immediately report to a Debate Stage” with Ken Paxton.",
-    "bigPicture": "The Democrat, off the trail with the flu, quickly accepted the president’s call to “immediately report to a Debate Stage” with Ken Paxton.",
-    "whatHappened": [
-      "Officials in Texas are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "texas",
-    "city": "Texas"
-  },
-  {
-    "id": "state-va-1791481398",
+    "id": "state-va-1791481895",
     "slug": "va-warner-mizusawa-outline-competing-approaches-to-disability-policy",
     "title": "Warner, Mizusawa outline competing approaches to disability policy",
     "simplifiedTitle": "Warner, Mizusawa outline competing approaches to disability policy",
@@ -1395,69 +1333,7 @@
     "city": "Virginia"
   },
   {
-    "id": "state-wv-1791481398",
-    "slug": "wv-parents-in-wallback-work-to-open-clay-county-s-only-childcare-center",
-    "title": "Parents in Wallback work to open Clay County’s only childcare center",
-    "simplifiedTitle": "Parents in Wallback work to open Clay County’s only childcare center",
-    "source": "West Virginia Capital Wire",
-    "sourceUrl": "https://westvirginiawatch.com/2026/10/08/parents-in-wallback-work-to-open-clay-countys-only-childcare-center/",
-    "pubDate": "Thu, 08 Oct 2026 10:00:59 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "West Virginia Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Clay County now has its only childcare center after parents worked together to get a facility certified and opened.",
-    "bigPicture": "Clay County now has its only childcare center after parents worked together to get a facility certified and opened.",
-    "whatHappened": [
-      "Officials in West Virginia are addressing community updates regarding this issue.",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Public Health Directive",
-        "meaning": "Official guidance issued to doctors and clinics to keep patients safe."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "west virginia",
-    "city": "West Virginia"
-  },
-  {
-    "id": "state-wa-1791481398",
-    "slug": "wa-4-takeaways-from-the-gluesenkamp-perez-braun-debate",
-    "title": "4 takeaways from the Gluesenkamp Perez-Braun debate",
-    "simplifiedTitle": "4 takeaways from the Gluesenkamp Perez-Braun debate",
-    "source": "Washington Capital Wire",
-    "sourceUrl": "https://washingtonstatestandard.com/2026/10/07/4-takeaways-from-the-gluesenkamp-perez-debate/",
-    "pubDate": "Thu, 08 Oct 2026 05:00:00 +0000",
-    "timeAgo": "Today",
-    "category": "us-world",
-    "categoryLabel": "Washington Dispatch",
-    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
-    "originalSummary": "Democratic U.S. Rep. Marie Gluesenkamp Perez and John Braun, the top Republican in the Washington state Senate who is challenging her in a critical congressional duel, faced off on Wednesday in a televised debate, exchanging digs on the Iran war, policies of President Donald Trump, gas prices, and at each other. This match-up in the [&#8230;]",
-    "bigPicture": "Marie Gluesenkamp Perez and John Braun, the top Republican in the Washington state Senate who is challenging her in a critical congressional duel, faced off on Wednesday in a televised debate, exchanging digs on the Iran war, policies of President Donald Trump, gas prices, and at each other.",
-    "whatHappened": [
-      "This match-up in the [&#8230;]",
-      "State leaders and local agencies are reviewing the practical impact on residents.",
-      "Further updates will be released as new details become verified."
-    ],
-    "whyItMatters": "",
-    "plainWords": [
-      {
-        "word": "Resolution",
-        "meaning": "An official decision or agreement made by public leaders."
-      }
-    ],
-    "readTimeMinutes": 2,
-    "trendingScore": 85,
-    "state": "washington",
-    "city": "Washington"
-  },
-  {
-    "id": "state-ut-1791481398",
+    "id": "state-ut-1791481895",
     "slug": "ut-salt-lake-city-council-members-agree-to-slow-down-sale-of-land-near-gr",
     "title": "Salt Lake City Council members agree to slow down sale of land near Great Salt Lake to the state",
     "simplifiedTitle": "Salt Lake City Council members agree to slow down sale of land near Grea...",
@@ -1488,7 +1364,100 @@
     "city": "Utah"
   },
   {
-    "id": "state-wi-1791481399",
+    "id": "state-tx-1791481895",
+    "slug": "tx-in-attacking-talarico-for-campaign-absence-trump-calls-for-debate-that",
+    "title": "In attacking Talarico for campaign absence, Trump calls for debate that Paxton has avoided",
+    "simplifiedTitle": "In attacking Talarico for campaign absence, Trump calls for debate that ...",
+    "source": "Texas Capital Wire",
+    "sourceUrl": "https://feeds.texastribune.org/link/16799/17492227/texas-senate-james-talarico-flu-ken-paxton-debate-trump",
+    "pubDate": "Thu, 08 Oct 2026 16:12:00 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Texas Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1531218150217-54595bc2b934?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "The Democrat, off the trail with the flu, quickly accepted the president’s call to “immediately report to a Debate Stage” with Ken Paxton.",
+    "bigPicture": "The Democrat, off the trail with the flu, quickly accepted the president’s call to “immediately report to a Debate Stage” with Ken Paxton.",
+    "whatHappened": [
+      "Officials in Texas are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "texas",
+    "city": "Texas"
+  },
+  {
+    "id": "state-wy-1791481896",
+    "slug": "wy-reading-with-a-friend",
+    "title": "Reading with a friend",
+    "simplifiedTitle": "Reading with a friend",
+    "source": "Wyoming Capital Wire",
+    "sourceUrl": "https://wyofile.com/reading-with-a-friend/",
+    "pubDate": "Thu, 08 Oct 2026 10:20:00 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Wyoming Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Treat the American Library Association’s list of the 100 most challenged and banned books as suggested reading, writes columnist David Romtvedt. The post Reading with a friend appeared first on WyoFile .",
+    "bigPicture": "Treat the American Library Association’s list of the 100 most challenged and banned books as suggested reading, writes columnist David Romtvedt.",
+    "whatHappened": [
+      "The post Reading with a friend appeared first on WyoFile .",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "wyoming",
+    "city": "Wyoming"
+  },
+  {
+    "id": "state-wa-1791481896",
+    "slug": "wa-voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-livi",
+    "title": "Voters in midterm elections identify a culprit for rising cost of living: Trump’s tariffs",
+    "simplifiedTitle": "Voters in midterm elections identify a culprit for rising cost of living...",
+    "source": "Washington Capital Wire",
+    "sourceUrl": "https://washingtonstatestandard.com/2026/10/08/repub/voters-in-midterm-elections-identify-a-culprit-for-rising-cost-of-living-trumps-tariffs/",
+    "pubDate": "Thu, 08 Oct 2026 17:43:05 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "Washington Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September. The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S. Navy, are raising [&#8230;]",
+    "bigPicture": "WASHINGTON — Rebecca Myers lives in one of the nation’s most hotly contested congressional districts, and tariffs were on her mind as she voted early and in-person in Suffolk, Virginia in late September.",
+    "whatHappened": [
+      "The 44-year-old trained social worker said she and her husband, who recently retired after 25 years in the U.S.",
+      "Navy, are raising [&#8230;]",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Resolution",
+        "meaning": "An official decision or agreement made by public leaders."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "washington",
+    "city": "Washington"
+  },
+  {
+    "id": "state-wi-1791481896",
     "slug": "wi-7th-cd-candidates-republican-michael-alfonso-and-democrat-fred-clark-d",
     "title": "7th CD candidates Republican Michael Alfonso and Democrat Fred Clark debate",
     "simplifiedTitle": "7th CD candidates Republican Michael Alfonso and Democrat Fred Clark debate",
@@ -1519,7 +1488,38 @@
     "city": "Wisconsin"
   },
   {
-    "id": "state-ny-1791481401",
+    "id": "state-wv-1791481896",
+    "slug": "wv-parents-in-wallback-work-to-open-clay-county-s-only-childcare-center",
+    "title": "Parents in Wallback work to open Clay County’s only childcare center",
+    "simplifiedTitle": "Parents in Wallback work to open Clay County’s only childcare center",
+    "source": "West Virginia Capital Wire",
+    "sourceUrl": "https://westvirginiawatch.com/2026/10/08/parents-in-wallback-work-to-open-clay-countys-only-childcare-center/",
+    "pubDate": "Thu, 08 Oct 2026 10:00:59 +0000",
+    "timeAgo": "Today",
+    "category": "us-world",
+    "categoryLabel": "West Virginia Dispatch",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
+    "originalSummary": "Clay County now has its only childcare center after parents worked together to get a facility certified and opened.",
+    "bigPicture": "Clay County now has its only childcare center after parents worked together to get a facility certified and opened.",
+    "whatHappened": [
+      "Officials in West Virginia are addressing community updates regarding this issue.",
+      "State leaders and local agencies are reviewing the practical impact on residents.",
+      "Further updates will be released as new details become verified."
+    ],
+    "whyItMatters": "",
+    "plainWords": [
+      {
+        "word": "Public Health Directive",
+        "meaning": "Official guidance issued to doctors and clinics to keep patients safe."
+      }
+    ],
+    "readTimeMinutes": 2,
+    "trendingScore": 85,
+    "state": "west virginia",
+    "city": "West Virginia"
+  },
+  {
+    "id": "state-ny-1791481898",
     "slug": "ny-super-pac-could-herald-aggressive-new-approach-to-albany-lobbying",
     "title": "Super PAC Could Herald Aggressive New Approach to Albany Lobbying",
     "simplifiedTitle": "Super PAC Could Herald Aggressive New Approach to Albany Lobbying",

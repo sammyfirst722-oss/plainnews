@@ -3,6 +3,7 @@ import path from 'path'
 import { put, get, list } from '@vercel/blob'
 import { NewsStory } from './types'
 import { INITIAL_STORIES } from './stories-data'
+import fiftyStateStoriesFallback from '@/data/fifty_states_stories.json'
 
 export interface PersistedSpend {
   month: string
@@ -20,7 +21,10 @@ const SPEND_FILE = 'spend-tracker.json'
 const SUBSCRIBERS_FILE = 'subscribers.json'
 
 // In-memory memory store to serve instant sync reads across requests within the lambda
-let inMemoryStories: NewsStory[] = [...INITIAL_STORIES]
+let inMemoryStories: NewsStory[] = [
+  ...INITIAL_STORIES,
+  ...(fiftyStateStoriesFallback as NewsStory[]),
+]
 let inMemorySpend: PersistedSpend | null = null
 let inMemorySubscribers: Subscriber[] = []
 let isInitialized = false

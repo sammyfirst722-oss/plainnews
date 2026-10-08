@@ -152,8 +152,12 @@ export default function NewsMap({
     return () => clearInterval(timer)
   }, [stateStoriesList.length])
 
+  const lastClickRef = React.useRef<{ key: string; t: number }>({ key: '', t: 0 })
   const handleStateClick = useCallback(
     (stateKey: string) => {
+      const now = Date.now()
+      if (lastClickRef.current.key === stateKey && now - lastClickRef.current.t < 350) return
+      lastClickRef.current = { key: stateKey, t: now }
       if (selectedState === stateKey) {
         onSelectState(null)
       } else {
@@ -334,7 +338,7 @@ export default function NewsMap({
         {/* Interactive SVG Radar Map */}
         <div className="relative w-full h-[360px] sm:h-[460px] bg-slate-950 overflow-hidden touch-none select-none">
           {/* Subtle patriotic backdrop grid */}
-          <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
 
           {/* Floating Map Zoom Controls */}
           <div className="absolute top-4 right-4 z-10 flex flex-col gap-1.5 bg-slate-900/90 border border-slate-700/80 p-1.5 rounded-2xl shadow-lg backdrop-blur-md">
@@ -381,7 +385,7 @@ export default function NewsMap({
               </button>
             </div>
           ) : hoveredState ? (
-            <div className="absolute bottom-4 left-4 z-10 px-3.5 py-2 rounded-2xl bg-slate-900/95 border-2 border-blue-500/50 text-white shadow-xl backdrop-blur-md text-xs font-bold animate-in fade-in duration-150">
+            <div className="absolute bottom-4 left-4 z-10 px-3.5 py-2 rounded-2xl bg-slate-900/95 border-2 border-blue-500/50 text-white shadow-xl backdrop-blur-md text-xs font-bold animate-in fade-in duration-150 pointer-events-none">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-red-500"></span>
                 <span className="font-extrabold text-sm uppercase text-blue-300">
@@ -426,6 +430,10 @@ export default function NewsMap({
                       fill = '#dc2626'
                       stroke = '#ffffff'
                       strokeWidth = 2.5
+                    } else if (isHovered) {
+                      fill = hasStories ? '#2563eb' : '#334155'
+                      stroke = '#ef4444'
+                      strokeWidth = 1.5
                     } else if (hasStories) {
                       fill = '#1e40af'
                       stroke = '#60a5fa'
@@ -440,15 +448,9 @@ export default function NewsMap({
                         stroke={stroke}
                         strokeWidth={strokeWidth}
                         style={{
-                          default: { outline: 'none', transition: 'all 250ms' },
-                          hover: {
-                            fill: isSelected ? '#1e40af' : hasStories ? '#1e3a8a' : '#334155',
-                            stroke: '#dc2626',
-                            strokeWidth: 1.5,
-                            outline: 'none',
-                            cursor: 'pointer',
-                          },
-                          pressed: { outline: 'none' },
+                          outline: 'none',
+                          cursor: 'pointer',
+                          transition: 'fill 150ms ease, stroke 150ms ease',
                         }}
                         onMouseEnter={() => setHoveredState(name || null)}
                         onMouseLeave={() => setHoveredState(null)}
