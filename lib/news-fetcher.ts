@@ -8,6 +8,7 @@ import {
   savePersistedMonthlySpend,
 } from './storage'
 import { extractUSLocation } from './location-extractor'
+import { redis } from './redis'
 
 interface FeedSource {
   url: string
@@ -465,6 +466,32 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
         return cachedStories
       }
     }
+  }
+
+  // Try Redis first
+  try {
+    const redisStories = await redis.get<NewsStory[]>('simplybignews:live_stories')
+    if (redisStories && Array.isArray(redisStories) && redisStories.length > 0) {
+      const combined = [...redisStories, ...INITIAL_STORIES]
+      const seen = new Set<string>()
+      const uniqueStories: NewsStory[] = []
+      
+      for (const story of combined) {
+        const key = story.title.toLowerCase().trim()
+        if (!seen.has(key)) {
+          seen.add(key)
+          uniqueStories.push(story)
+        }
+      }
+      
+      uniqueStories.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+      cachedStories = uniqueStories
+      lastFetchTime = now
+      saveArchivedStories(uniqueStories)
+      return cachedStories
+    }
+  } catch (error) {
+    console.error('[news-fetcher] Redis fetch failed, falling back to live RSS:', error)
   }
 
   const parser = new XMLParser({
