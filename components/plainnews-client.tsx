@@ -1,11 +1,10 @@
-﻿'use client'
+'use client'
 
 import Link from 'next/link'
 import React, { useState, useEffect, useMemo } from 'react'
 import { NewsStory, NewsCategory, TextSize } from '@/lib/types'
 import { TextSizeController } from './text-size-controller'
 import { StoryDetailModal } from './story-detail-modal'
-import { CustomRewriteModal } from './custom-rewrite-modal'
 import { AudioPlayer } from './audio-player'
 import { DailyBriefingSignup } from './daily-briefing-signup'
 import { SpotTheFake } from './spot-the-fake'
@@ -23,7 +22,6 @@ import { formatStateName } from '@/lib/location-extractor'
 import { toast } from 'sonner'
 import {
   Newspaper,
-  Sparkles,
   Crown,
   Search,
   RotateCw,
@@ -80,7 +78,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
   const [textSize, setTextSize] = useState<TextSize>('standard')
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   const [isRefreshing, setIsRefreshing] = useState(false)
-  const [isRewriteModalOpen, setIsRewriteModalOpen] = useState(false)
+  const [language, setLanguage] = useState<'en' | 'es'>('en')
   const [isVipModalOpen, setIsVipModalOpen] = useState(false)
   const [isNewsIqModalOpen, setIsNewsIqModalOpen] = useState(false)
   const [isVip, setIsVip] = useState(false)
@@ -244,7 +242,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-red-600 text-white flex items-center justify-center shadow-md border-2 border-blue-400 shrink-0">
               <Newspaper className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div>
+            <div className="hidden sm:block">
               <div className="flex items-center gap-2">
                 <span className="font-masthead font-black text-xl sm:text-2xl tracking-tight text-foreground">
                   SimplyBigNews
@@ -279,12 +277,11 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
             )}
 
             <button
-              onClick={() => setIsRewriteModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 text-blue-700 dark:text-blue-300 border-2 border-blue-600/30 text-xs font-extrabold shadow-2xs transition-all active:scale-95 cursor-pointer"
-              title="Translate any confusing news text into plain English"
+              onClick={() => setLanguage((l) => (l === 'en' ? 'es' : 'en'))}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-card border-2 border-border/80 hover:border-blue-500/50 text-xs font-black shadow-2xs transition-all active:scale-95 cursor-pointer"
+              title="Switch Language (English / Español)"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Translate Article</span>
+              <span>{language === 'en' ? '🇺🇸 EN' : '🇪🇸 ES'}</span>
             </button>
 
             <TextSizeController textSize={textSize} setTextSize={setTextSize} />
@@ -757,11 +754,6 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       <NewsIqScorecardModal
         isOpen={isNewsIqModalOpen}
         onClose={() => setIsNewsIqModalOpen(false)}
-      />
-
-      <CustomRewriteModal
-        isOpen={isRewriteModalOpen}
-        onClose={() => setIsRewriteModalOpen(false)}
       />
 
       <VipModal
