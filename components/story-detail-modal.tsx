@@ -9,9 +9,6 @@ import {
   Bookmark,
   Share2,
   ExternalLink,
-  CheckCircle2,
-  HelpCircle,
-  Lightbulb,
   Check,
   BookOpen,
   MapPin,
@@ -82,9 +79,7 @@ export function StoryDetailModal({
       ? 'text-base leading-relaxed'
       : 'text-sm leading-relaxed'
 
-  const fullAudioScript = `${story.simplifiedTitle}. The big picture: ${
-    story.bigPicture
-  } What happened: ${story.whatHappened.join(' ')} Why it matters: ${story.whyItMatters}`
+  const fullAudioScript = `${story.simplifiedTitle}. ${story.bigPicture} ${story.whatHappened.join(' ')}`
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
@@ -164,42 +159,21 @@ export function StoryDetailModal({
             </div>
           )}
 
-          {/* Section 1: The Big Picture */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-blue-600/10 border-2 border-blue-600/30">
-            <div className="flex items-center gap-2 mb-2 font-black text-sm text-blue-700 dark:text-blue-300">
-              <Lightbulb className="w-4 h-4" /> THE BIG PICTURE
-            </div>
-            <p className={`${bodyClass} font-semibold text-foreground text-pretty`}>
+          {/* Clean Story Summary & 3 Bullet Points */}
+          <div className="space-y-4">
+            <p className={`${bodyClass} font-semibold text-foreground text-pretty leading-relaxed`}>
               {story.bigPicture}
             </p>
-          </div>
 
-          {/* Section 2: What Happened */}
-          <div className="space-y-3">
-            <h2 className="text-sm font-black uppercase tracking-wider text-muted-foreground">
-              What Happened (In 3 Simple Points)
-            </h2>
-            <div className="space-y-2.5">
-              {story.whatHappened.map((point, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 p-3.5 rounded-2xl bg-card border-2 border-border/80 shadow-2xs"
-                >
-                  <div className="mt-0.5 rounded-full bg-blue-600/20 p-1 text-blue-600 dark:text-blue-400 shrink-0">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <p className={`${bodyClass} text-foreground text-pretty`}>{point}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Section 3: Why It Matters (Universal Plain English Takeaway) */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-red-600/10 border-2 border-red-600/30">
-            <div className="flex items-center gap-2 mb-2 font-black text-sm text-red-700 dark:text-red-300">
-              <HelpCircle className="w-4 h-4" /> WHY IT MATTERS — PLAIN ENGLISH TAKEAWAY
-            </div>
-            <p className={`${bodyClass} text-foreground text-pretty`}>{story.whyItMatters}</p>
+            {story.whatHappened && story.whatHappened.length > 0 && (
+              <ul className="space-y-2.5 list-disc list-outside pl-5 text-foreground marker:text-blue-600 dark:marker:text-blue-400">
+                {story.whatHappened.map((point, idx) => (
+                  <li key={idx} className={`${bodyClass} leading-relaxed text-pretty font-normal`}>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {/* Section 4: Plain Words Helper */}
