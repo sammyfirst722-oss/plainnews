@@ -134,6 +134,9 @@ export default function NewsMap({
       if (onRewardXp) {
         onRewardXp(5, `Exploring ${formatStateName(selectedState)} News Wire`)
       }
+      setTimeout(() => {
+        drawerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }, 150)
     } else {
       setCenter([-96, 38])
       setZoom(1)
@@ -160,12 +163,28 @@ export default function NewsMap({
     [selectedState, onSelectState]
   )
 
+  const pointerStartRef = React.useRef<{ x: number; y: number; t: number } | null>(null)
+  const drawerRef = React.useRef<HTMLDivElement>(null)
   const handleZoomIn = () => setZoom((prev) => Math.min(prev * 1.4, 7))
   const handleZoomOut = () => setZoom((prev) => Math.max(prev / 1.4, 1))
+  const handlePan = (dx: number, dy: number) => setCenter(([cx, cy]) => [cx + dx, cy + dy])
   const handleReset = () => {
     onSelectState(null)
     setZoom(1)
     setCenter([-96, 38])
+  }
+  const onPointerDownTrack = (e: React.PointerEvent) => {
+    pointerStartRef.current = { x: e.clientX, y: e.clientY, t: Date.now() }
+  }
+  const onPointerUpTrack = (e: React.PointerEvent, stateName: string) => {
+    if (pointerStartRef.current) {
+      const dx = Math.abs(e.clientX - pointerStartRef.current.x)
+      const dy = Math.abs(e.clientY - pointerStartRef.current.y)
+      const dt = Date.now() - pointerStartRef.current.t
+      if (dx < 15 && dy < 15 && dt < 450) {
+        handleStateClick(stateName)
+      }
+    }
   }
 
   const currentTickerStory = stateStoriesList[tickerIndex] || stateStoriesList[0]
@@ -313,7 +332,7 @@ export default function NewsMap({
         </div>
 
         {/* Interactive SVG Radar Map */}
-        <div className="relative w-full h-[360px] sm:h-[460px] bg-slate-950 overflow-hidden">
+        <div className="relative w-full h-[360px] sm:h-[460px] bg-slate-950 overflow-hidden touch-none select-none">
           {/* Subtle patriotic backdrop grid */}
           <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
 
@@ -343,20 +362,38 @@ export default function NewsMap({
           </div>
 
           {/* Active Hover / Selection Tooltip */}
-          {(hoveredState || selectedState) && (
+          {selectedState ? (
+            <div className="absolute top-4 left-4 right-16 z-10 px-3.5 py-2.5 rounded-2xl bg-slate-900/95 border-2 border-red-500 text-white shadow-2xl backdrop-blur-md flex items-center justify-between gap-2 animate-in fade-in slide-in-from-top-2">
+              <div className="flex items-center gap-2 overflow-hidden">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping shrink-0" />
+                <span className="font-extrabold text-xs sm:text-sm uppercase text-red-400 truncate">
+                  📍 {formatStateName(selectedState)}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-blue-600 text-white shrink-0">
+                  {storiesByState[selectedState]?.length || 0} Reports
+                </span>
+              </div>
+              <button
+                onClick={handleReset}
+                className="px-2 py-1 rounded-lg bg-red-600/80 hover:bg-red-600 text-white text-[11px] font-bold cursor-pointer shrink-0"
+              >
+                ✕ All USA
+              </button>
+            </div>
+          ) : hoveredState ? (
             <div className="absolute bottom-4 left-4 z-10 px-3.5 py-2 rounded-2xl bg-slate-900/95 border-2 border-blue-500/50 text-white shadow-xl backdrop-blur-md text-xs font-bold animate-in fade-in duration-150">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-red-500"></span>
                 <span className="font-extrabold text-sm uppercase text-blue-300">
-                  {formatStateName(hoveredState || selectedState)}
+                  {formatStateName(hoveredState)}
                 </span>
                 <span className="text-slate-400">•</span>
                 <span className="text-slate-200">
-                  {storiesByState[(hoveredState || selectedState)!]?.length || 0} Stories Active
+                  {storiesByState[hoveredState]?.length || 0} Stories Active
                 </span>
               </div>
             </div>
-          )}
+          ) : null}
 
           {/* Map Canvas */}
           <ComposableMap
@@ -381,18 +418,18 @@ export default function NewsMap({
                     const isHovered = hoveredState === name
                     const hasStories = !!(name && storiesByState[name]?.length)
 
-                    let fill = '#1e293b' // sleek slate navy
-                    let stroke = '#334155'
+                    let fill = '#0f172a'
+                    let stroke = '#1e293b'
                     let strokeWidth = 0.6
 
                     if (isSelected) {
-                      fill = '#1d4ed8' // vibrant royal blue
-                      stroke = '#dc2626' // crimson red border
-                      strokeWidth = 2
+                      fill = '#dc2626'
+                      stroke = '#ffffff'
+                      strokeWidth = 2.5
                     } else if (hasStories) {
-                      fill = '#0f1f38'
-                      stroke = '#2563eb'
-                      strokeWidth = 1
+                      fill = '#1e40af'
+                      stroke = '#60a5fa'
+                      strokeWidth = 1.2
                     }
 
                     return (
@@ -415,6 +452,10 @@ export default function NewsMap({
                         }}
                         onMouseEnter={() => setHoveredState(name || null)}
                         onMouseLeave={() => setHoveredState(null)}
+                        onPointerDown={onPointerDownTrack}
+                        onPointerUp={(e: any) => {
+                          if (name) onPointerUpTrack(e, name)
+                        }}
                         onClick={() => {
                           if (name) handleStateClick(name)
                         }}
@@ -436,6 +477,8 @@ export default function NewsMap({
                   <Marker
                     key={state}
                     coordinates={coords}
+                    onPointerDown={onPointerDownTrack}
+                    onPointerUp={(e: any) => onPointerUpTrack(e, state)}
                     onClick={() => handleStateClick(state)}
                     style={{ cursor: 'pointer' }}
                   >
@@ -525,7 +568,7 @@ export default function NewsMap({
       {/* SELECTED STATE DISPATCH DRAWER (WHEN A STATE IS FOCUSED)            */}
       {/* =================================================================== */}
       {selectedState && (
-        <div className="rounded-3xl border-2 border-blue-600/40 bg-gradient-to-br from-blue-600/10 via-card to-card p-5 sm:p-6 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+        <div ref={drawerRef} className="rounded-3xl border-2 border-blue-600/40 bg-gradient-to-br from-blue-600/10 via-card to-card p-5 sm:p-6 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-2.5">
               <span className="p-2 rounded-xl bg-blue-600 text-white">

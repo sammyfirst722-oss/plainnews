@@ -121,6 +121,16 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     window.addEventListener('simplybignews_vip_changed', handleVipChange)
     return () => window.removeEventListener('simplybignews_vip_changed', handleVipChange)
   }, [])
+  useEffect(() => {
+    fetch('/api/news')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.success && Array.isArray(d.stories) && d.stories.length > 0) {
+          setStories(d.stories)
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   const toggleBookmark = (id: string) => {
     setBookmarkedIds((prev) => {
