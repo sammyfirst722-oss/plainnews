@@ -112,42 +112,27 @@ export default async function StoryPage({ params }: PageProps) {
           </div>
         )}
 
-        <div className="p-5 sm:p-6 rounded-2xl bg-blue-600/10 border-2 border-blue-600/30">
-          <div className="flex items-center gap-2 mb-3 font-black text-sm text-blue-700 dark:text-blue-300">
-            <Lightbulb className="w-5 h-5" /> THE BIG PICTURE
-          </div>
-          <p className={`${bodyClass} font-semibold`}>
+        {/* Clean Story Summary & 3 Bullet Points */}
+        <div className="space-y-4">
+          <p className={`${bodyClass} font-semibold text-foreground text-pretty leading-relaxed`}>
             {story.bigPicture}
           </p>
-        </div>
 
-        <div className="space-y-4">
-          <h2 className="text-sm font-black uppercase tracking-wider text-muted-foreground">
-            What Happened (In 3 Simple Points)
-          </h2>
-          <div className="space-y-3">
-            {story.whatHappened.map((point, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-card border-2 border-border/80 shadow-2xs">
-                <div className="mt-0.5 rounded-full bg-blue-600/20 p-1 text-blue-600 dark:text-blue-400 shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <p className={bodyClass}>{point}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="p-5 sm:p-6 rounded-2xl bg-red-600/10 border-2 border-red-600/30">
-          <div className="flex items-center gap-2 mb-3 font-black text-sm text-red-700 dark:text-red-300">
-            <HelpCircle className="w-5 h-5" /> WHY IT MATTERS — EVERYDAY TAKEAWAY
-          </div>
-          <p className={bodyClass}>{story.whyItMatters}</p>
+          {story.whatHappened && story.whatHappened.length > 0 && (
+            <ul className="space-y-2.5 list-disc list-outside pl-5 text-foreground marker:text-blue-600 dark:marker:text-blue-400">
+              {story.whatHappened.map((point, idx) => (
+                <li key={idx} className={`${bodyClass} leading-relaxed text-pretty font-normal`}>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {story.plainWords && story.plainWords.length > 0 && (
           <div className="space-y-4 pt-4 border-t-2 border-border/60">
             <h2 className="text-sm font-black uppercase tracking-wider text-muted-foreground">
-              Plain Word Helper
+              Jargon Buster (Everyday Meanings)
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {story.plainWords.map((pw, i) => (

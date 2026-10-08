@@ -1,6 +1,7 @@
 import { XMLParser } from 'fast-xml-parser'
 import { NewsStory, NewsCategory, PlainWord } from './types'
 import { INITIAL_STORIES } from './stories-data'
+import fiftyStateStoriesFallback from '@/data/fifty_states_stories.json'
 import {
   getArchivedStories,
   saveArchivedStories,
@@ -461,10 +462,13 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
     if (archived && archived.length > 0) {
       cachedStories = archived
       lastFetchTime = now
-      // Prevent making live paid API calls during static compilation
-      if (process.env.NEXT_PHASE === 'phase-production-build') {
-        return cachedStories
-      }
+    } else {
+      cachedStories = [...(fiftyStateStoriesFallback as NewsStory[]), ...INITIAL_STORIES]
+      lastFetchTime = now
+    }
+    // Prevent making live paid API calls during static compilation
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      return cachedStories
     }
   }
 
@@ -472,7 +476,7 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
   try {
     const redisStories = await redis.get<NewsStory[]>('simplybignews:live_stories')
     if (redisStories && Array.isArray(redisStories) && redisStories.length > 0) {
-      const combined = [...redisStories, ...INITIAL_STORIES]
+      const combined = [...redisStories, ...(fiftyStateStoriesFallback as NewsStory[]), ...INITIAL_STORIES]
       const seen = new Set<string>()
       const uniqueStories: NewsStory[] = []
       
