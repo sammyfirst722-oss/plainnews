@@ -474,7 +474,10 @@ export async function fetchLiveNews(forceRefresh = false): Promise<NewsStory[]> 
 
   // Try Redis first
   try {
-    const redisStories = await redis.get<NewsStory[]>('simplybignews:live_stories')
+    let redisStories = await redis.get<any>('simplybignews:live_stories')
+    if (typeof redisStories === 'string') {
+      try { redisStories = JSON.parse(redisStories) } catch {}
+    }
     if (redisStories && Array.isArray(redisStories) && redisStories.length > 0) {
       const combined = [...redisStories, ...(fiftyStateStoriesFallback as NewsStory[]), ...INITIAL_STORIES]
       const seen = new Set<string>()
