@@ -468,21 +468,21 @@ export default function NewsMap({
                     const hasStories = !!(name && storiesByState[name]?.length)
 
                     let fill = '#0f172a'
-                    let stroke = '#1e293b'
-                    let strokeWidth = 0.6
+                    let stroke = '#cbd5e1'
+                    let strokeWidth = 1.8
 
                     if (isSelected) {
-                      fill = '#dc2626'
+                      fill = '#1e3a8a'
                       stroke = '#ffffff'
-                      strokeWidth = 2.5
+                      strokeWidth = 3.2
                     } else if (isHovered) {
-                      fill = hasStories ? '#2563eb' : '#334155'
-                      stroke = '#ef4444'
-                      strokeWidth = 1.5
+                      fill = hasStories ? '#1d4ed8' : '#334155'
+                      stroke = '#f87171'
+                      strokeWidth = 2.4
                     } else if (hasStories) {
-                      fill = '#1e40af'
-                      stroke = '#60a5fa'
-                      strokeWidth = 1.2
+                      fill = '#0f172a'
+                      stroke = '#e2e8f0'
+                      strokeWidth = 2.0
                     }
 
                     return (
@@ -511,6 +511,27 @@ export default function NewsMap({
                   })
                 }
               </Geographies>
+
+              {/* State Postal Labels when viewing national map */}
+              {!selectedState && zoom < 2.5 && ALL_US_STATES.map((st) => (
+                <Marker key={`label-${st.slug}`} coordinates={st.coordinates}>
+                  <text
+                    textAnchor="middle"
+                    y={3}
+                    style={{
+                      fontFamily: 'system-ui, sans-serif',
+                      fontSize: '9px',
+                      fontWeight: '800',
+                      fill: '#cbd5e1',
+                      pointerEvents: 'none',
+                      opacity: 0.85,
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {st.code}
+                  </text>
+                </Marker>
+              ))}
 
               {/* Pulsing Beacons & Story Markers for Active Locations */}
               {(() => {
@@ -577,25 +598,18 @@ export default function NewsMap({
                     >
                       {/* Animated Outer Radar Ring */}
                       <circle
-                        r={radius + 8}
-                        fill={isSelected ? '#dc2626' : '#2563eb'}
-                        opacity={0.3}
+                        r={radius + 6}
+                        fill="#ef4444"
+                        opacity={isSelected ? 0.45 : 0.25}
                         className="animate-radar"
-                      />
-
-                      {/* Middle Glow Ring */}
-                      <circle
-                        r={radius + 2}
-                        fill={isSelected ? '#dc2626' : '#3b82f6'}
-                        opacity={0.6}
                       />
 
                       {/* Solid Inner Center */}
                       <circle
                         r={radius}
-                        fill={isSelected ? '#ffffff' : '#dc2626'}
-                        stroke={isSelected ? '#dc2626' : '#ffffff'}
-                        strokeWidth={1.5}
+                        fill="#dc2626"
+                        stroke="#ffffff"
+                        strokeWidth={2}
                       />
 
                       {/* Count Text */}
@@ -615,17 +629,21 @@ export default function NewsMap({
                         </text>
                       )}
 
-                      {/* City Name Text */}
-                      {isSelectedState && city && (
+                      {/* City Name Text in Bold Red & Large Font */}
+                      {city && (
                         <text
                           textAnchor="middle"
-                          y={-radius - 4}
+                          y={-radius - 5}
                           style={{
                             fontFamily: 'system-ui, sans-serif',
-                            fontSize: '6px',
-                            fontWeight: '600',
-                            fill: isSelectedCity ? '#ef4444' : '#94a3b8',
+                            fontSize: isSelectedCity ? '13px' : '11px',
+                            fontWeight: '800',
+                            fill: '#ef4444',
+                            stroke: '#020617',
+                            strokeWidth: '2.5px',
+                            paintOrder: 'stroke fill',
                             pointerEvents: 'none',
+                            letterSpacing: '0.02em',
                           }}
                         >
                           {formatStateName(city)}
