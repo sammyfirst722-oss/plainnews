@@ -84,6 +84,11 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
   const [isVip, setIsVip] = useState(false)
   const [lastRefreshed, setLastRefreshed] = useState<string>('Just now')
   const [readStoryIds, setReadStoryIds] = useState<string[]>([])
+  const [visibleCount, setVisibleCount] = useState<number>(9)
+
+  useEffect(() => {
+    setVisibleCount(9)
+  }, [selectedCategory, selectedState, searchQuery])
 
   // Load saved bookmarks and VIP status
   useEffect(() => {
@@ -610,8 +615,9 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {(selectedCategory === 'saved' || searchQuery || selectedState ? filteredStories : remainingStories).map(
-                (story) => {
+              {(selectedCategory === 'saved' || searchQuery || selectedState ? filteredStories : remainingStories)
+                .slice(0, visibleCount)
+                .map((story) => {
                   const isSaved = bookmarkedIds.includes(story.id)
                   const audioScript = `${story.bigPicture} First: ${story.whatHappened.join(
                     ' Next: '
@@ -717,6 +723,26 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
               )}
             </div>
           )}
+
+          {/* Load More Stories Button */}
+          {(() => {
+            const list = selectedCategory === 'saved' || searchQuery || selectedState ? filteredStories : remainingStories
+            if (list.length <= visibleCount) return null
+            const remaining = list.length - visibleCount
+            return (
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-8 pb-4">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 12)}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-sm shadow-md active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <span>Load More Stories</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 font-bold">
+                    +{Math.min(12, remaining)}
+                  </span>
+                </button>
+              </div>
+            )
+          })()}
         </div>
       </main>
 

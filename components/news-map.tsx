@@ -756,7 +756,7 @@ export default function NewsMap({
               
             return storiesToShow.length ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {storiesToShow.map((story) => (
+                {storiesToShow.slice(0, 6).map((story) => (
                   <div
                     key={story.id}
                     onClick={() => onStoryClick(story)}
