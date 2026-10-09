@@ -44,10 +44,10 @@ export const AP_DATELINE_TITLES: Record<string, string> = {
 
 export const CITY_STATE_MAP: Record<string, string> = {
   'los angeles': 'california', 'san francisco': 'california', 'san diego': 'california',
-  'san jose': 'california', 'sacramento': 'california', 'oakland': 'california',
+  'san jose': 'california', 'sacramento': 'california', 'oakland': 'california', 'fresno': 'california', 'bakersfield': 'california', 'stockton': 'california', 'modesto': 'california',
   'new york city': 'new york', 'brooklyn': 'new york', 'buffalo': 'new york', 'manhattan': 'new york',
   'chicago': 'illinois',
-  'houston': 'texas', 'dallas': 'texas', 'austin': 'texas', 'san antonio': 'texas', 'fort worth': 'texas', 'el paso': 'texas',
+  'houston': 'texas', 'dallas': 'texas', 'austin': 'texas', 'san antonio': 'texas', 'fort worth': 'texas', 'el paso': 'texas', 'lubbock': 'texas', 'amarillo': 'texas', 'corpus christi': 'texas', 'laredo': 'texas',
   'phoenix': 'arizona', 'tucson': 'arizona', 'mesa': 'arizona',
   'philadelphia': 'pennsylvania', 'philly': 'pennsylvania', 'pittsburgh': 'pennsylvania',
   'jacksonville': 'florida', 'miami': 'florida', 'tampa': 'florida', 'orlando': 'florida',
@@ -78,10 +78,11 @@ export const CITY_STATE_MAP: Record<string, string> = {
 
 export const CITY_COORDINATES: Record<string, [number, number]> = {
   'los angeles': [-118.2, 34.0], 'san francisco': [-122.4, 37.7], 'san diego': [-117.1, 32.7],
+  'san jose': [-121.8, 37.3], 'sacramento': [-121.4, 38.5], 'oakland': [-122.2, 37.8], 'fresno': [-119.8, 36.7], 'bakersfield': [-119.0, 35.4], 'stockton': [-121.3, 37.9], 'modesto': [-121.0, 37.6],
   'new york city': [-74.0, 40.7], 'brooklyn': [-73.9, 40.6], 'buffalo': [-78.8, 42.8], 'manhattan': [-73.9, 40.7],
   'chicago': [-87.6, 41.8],
-  'houston': [-95.3, 29.7], 'dallas': [-96.7, 32.7], 'austin': [-97.7, 30.2], 'san antonio': [-98.4, 29.4],
-  'phoenix': [-112.0, 33.4], 'tucson': [-110.9, 32.2],
+  'houston': [-95.3, 29.7], 'dallas': [-96.7, 32.7], 'austin': [-97.7, 30.2], 'san antonio': [-98.4, 29.4], 'fort worth': [-97.3, 32.7], 'el paso': [-106.4, 31.7], 'lubbock': [-101.8, 33.6], 'amarillo': [-101.8, 35.2], 'corpus christi': [-97.4, 27.8], 'laredo': [-99.5, 27.5],
+  'phoenix': [-112.0, 33.4], 'tucson': [-110.9, 32.2], 'mesa': [-111.8, 33.4],
   'philadelphia': [-75.1, 39.9], 'philly': [-75.1, 39.9], 'pittsburgh': [-79.9, 40.4],
   'jacksonville': [-81.6, 30.3], 'miami': [-80.1, 25.7], 'tampa': [-82.4, 27.9], 'orlando': [-81.3, 28.5],
   'columbus': [-82.9, 39.9], 'cleveland': [-81.6, 41.4], 'cincinnati': [-84.5, 39.1],

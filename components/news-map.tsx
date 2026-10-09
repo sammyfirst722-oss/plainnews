@@ -12,6 +12,7 @@ import type { NewsStory } from '@/lib/types'
 import {
   STATE_COORDINATES,
   CITY_COORDINATES,
+  CITY_STATE_MAP,
   POPULAR_STATES,
   ALL_US_STATES,
   US_REGIONS,
@@ -56,6 +57,7 @@ export default function NewsMap({
   const [zoom, setZoom] = useState<number>(1)
   const [center, setCenter] = useState<[number, number]>([-96, 38])
   const [hoveredState, setHoveredState] = useState<string | null>(null)
+  const [selectedCity, setSelectedCity] = useState<string | null>(null)
   const [tickerIndex, setTickerIndex] = useState(0)
   const [selectedRegion, setSelectedRegion] = useState<string>('all')
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -148,6 +150,7 @@ export default function NewsMap({
 
   // Sync zoom and center when selectedState changes
   useEffect(() => {
+    setSelectedCity(null)
     if (selectedState && STATE_COORDINATES[selectedState]) {
       setCenter(STATE_COORDINATES[selectedState])
       setZoom(3.5)
@@ -207,6 +210,21 @@ export default function NewsMap({
       const dt = Date.now() - pointerStartRef.current.t
       if (dx < 15 && dy < 15 && dt < 450) {
         handleStateClick(stateName)
+      }
+    }
+  }
+
+  const onPointerUpTrackMarker = (e: React.PointerEvent, stateName: string, cityName?: string) => {
+    if (pointerStartRef.current) {
+      const dx = Math.abs(e.clientX - pointerStartRef.current.x)
+      const dy = Math.abs(e.clientY - pointerStartRef.current.y)
+      const dt = Date.now() - pointerStartRef.current.t
+      if (dx < 15 && dy < 15 && dt < 450) {
+        if (cityName && selectedState === stateName) {
+           setSelectedCity(cityName === selectedCity ? null : cityName)
+        } else {
+           handleStateClick(stateName)
+        }
       }
     }
   }
@@ -496,19 +514,50 @@ export default function NewsMap({
 
               {/* Pulsing Beacons & Story Markers for Active Locations */}
               {(() => {
-                const groups: Record<string, { coords: [number, number]; count: number; state: string }> = {}
+                const groups: Record<string, { coords: [number, number]; count: number; state: string; city?: string }> = {}
+                
+                // If a state is selected, pre-populate all cities for that state
+                if (selectedState) {
+                  Object.entries(CITY_STATE_MAP).forEach(([city, state]) => {
+                    if (state === selectedState) {
+                      const coords = CITY_COORDINATES[city]
+                      if (coords) {
+                        const key = `${coords[0]},${coords[1]}`
+                        groups[key] = { coords, count: 0, state, city }
+                      }
+                    }
+                  })
+                }
+
                 stories.forEach(story => {
                   if (!story.state) return
                   const state = story.state.toLowerCase()
-                  const coords = story.coordinates || (story.city && CITY_COORDINATES[story.city.toLowerCase()]) || STATE_COORDINATES[state]
-                  if (!coords) return
+                  const city = story.city?.toLowerCase()
+                  
+                  let coords = story.coordinates;
+                  if (!coords && city && CITY_COORDINATES[city]) {
+                    coords = CITY_COORDINATES[city];
+                  }
+                  
+                  let isFallback = false;
+                  if (!coords) {
+                    coords = STATE_COORDINATES[state];
+                    isFallback = true;
+                  }
+                  
+                  if (!coords) return;
                   const key = `${coords[0]},${coords[1]}`
-                  if (!groups[key]) groups[key] = { coords, count: 0, state }
+                  if (!groups[key]) {
+                    groups[key] = { coords, count: 0, state, city: isFallback ? undefined : city }
+                  }
                   groups[key].count++
                 })
                 return Object.entries(groups).map(([key, group]) => {
-                  const { coords, count, state } = group
-                  const isSelected = selectedState === state
+                  const { coords, count, state, city } = group
+                  const isSelectedState = selectedState === state
+                  const isSelectedCity = selectedCity === city && city != null
+                  const isSelected = selectedCity ? isSelectedCity : isSelectedState
+
                   const radius = Math.max(5, Math.min(14, 5 + count * 1.5))
 
                   return (
@@ -516,8 +565,14 @@ export default function NewsMap({
                       key={key}
                       coordinates={coords}
                       onPointerDown={onPointerDownTrack}
-                      onPointerUp={(e: any) => onPointerUpTrack(e, state)}
-                      onClick={() => handleStateClick(state)}
+                      onPointerUp={(e: any) => onPointerUpTrackMarker(e, state, city)}
+                      onClick={() => {
+                        if (city && selectedState === state) {
+                          setSelectedCity(city === selectedCity ? null : city)
+                        } else {
+                          handleStateClick(state)
+                        }
+                      }}
                       style={{ cursor: 'pointer' }}
                     >
                       {/* Animated Outer Radar Ring */}
@@ -557,6 +612,23 @@ export default function NewsMap({
                           }}
                         >
                           {count}
+                        </text>
+                      )}
+
+                      {/* City Name Text */}
+                      {isSelectedState && city && (
+                        <text
+                          textAnchor="middle"
+                          y={-radius - 4}
+                          style={{
+                            fontFamily: 'system-ui, sans-serif',
+                            fontSize: '6px',
+                            fontWeight: '600',
+                            fill: isSelectedCity ? '#ef4444' : '#94a3b8',
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          {formatStateName(city)}
                         </text>
                       )}
                     </Marker>
@@ -615,50 +687,63 @@ export default function NewsMap({
               </span>
               <div>
                 <h3 className="font-masthead text-lg sm:text-xl font-bold text-foreground">
-                  {formatStateName(selectedState)} Dispatches
+                  {selectedCity ? `${formatStateName(selectedCity)} Local News` : `${formatStateName(selectedState)} Dispatches`}
                 </h3>
                 <p className="text-xs text-muted-foreground font-semibold">
-                  {storiesByState[selectedState]?.length || 0} active local reports right now
+                  {(() => {
+                    const storiesToShow = selectedCity 
+                      ? (storiesByState[selectedState] || []).filter(s => s.city?.toLowerCase() === selectedCity)
+                      : storiesByState[selectedState] || [];
+                    return `${storiesToShow.length} active local reports right now`;
+                  })()}
                 </p>
               </div>
             </div>
 
             <button
-              onClick={handleReset}
+              onClick={selectedCity ? () => setSelectedCity(null) : handleReset}
               className="px-3.5 py-1.5 rounded-xl border-2 border-border/80 bg-card hover:bg-muted font-bold text-xs text-foreground transition-all cursor-pointer"
             >
-              ← Back to Full USA Map
+              {selectedCity ? `← Back to ${formatStateName(selectedState)} News` : `← Back to Full USA Map`}
             </button>
           </div>
 
-          {/* Quick List of Stories in this State */}
-          {storiesByState[selectedState]?.length ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {storiesByState[selectedState].map((story) => (
-                <div
-                  key={story.id}
-                  onClick={() => onStoryClick(story)}
-                  className="p-3.5 rounded-2xl bg-card border-2 border-border/80 hover:border-blue-500/60 shadow-2xs hover:shadow-md transition-all cursor-pointer group"
-                >
-                  <div className="flex items-center justify-between gap-1 mb-1.5">
-                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-700 dark:text-blue-300">
-                      {story.categoryLabel}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground font-semibold">
-                      {story.timeAgo}
-                    </span>
+          {/* Quick List of Stories in this State/City */}
+          {(() => {
+            const storiesToShow = selectedCity 
+              ? (storiesByState[selectedState] || []).filter(s => s.city?.toLowerCase() === selectedCity)
+              : storiesByState[selectedState] || [];
+              
+            return storiesToShow.length ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {storiesToShow.map((story) => (
+                  <div
+                    key={story.id}
+                    onClick={() => onStoryClick(story)}
+                    className="p-3.5 rounded-2xl bg-card border-2 border-border/80 hover:border-blue-500/60 shadow-2xs hover:shadow-md transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between gap-1 mb-1.5">
+                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-700 dark:text-blue-300">
+                        {story.categoryLabel}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground font-semibold">
+                        {story.timeAgo}
+                      </span>
+                    </div>
+                    <h4 className="font-fancy text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {story.simplifiedTitle}
+                    </h4>
                   </div>
-                  <h4 className="font-fancy text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {story.simplifiedTitle}
-                  </h4>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="p-6 text-center bg-card rounded-2xl border border-dashed border-border text-xs text-muted-foreground">
-              No state-specific wire reports for {formatStateName(selectedState)} at this hour. National headlines affecting all 50 states are shown below.
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="p-6 text-center bg-card rounded-2xl border border-dashed border-border text-xs text-muted-foreground">
+                {selectedCity 
+                  ? `No city-specific wire reports for ${formatStateName(selectedCity)} at this hour.`
+                  : `No state-specific wire reports for ${formatStateName(selectedState)} at this hour. National headlines affecting all 50 states are shown below.`}
+              </div>
+            )
+          })()}
         </div>
       )}
     </div>
