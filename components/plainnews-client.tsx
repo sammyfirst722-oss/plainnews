@@ -313,9 +313,8 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
           <h1 className="font-masthead text-3xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight text-balance">
             SIMPLY BIG NEWS
           </h1>
-
           <p className="font-fancy text-sm sm:text-base text-muted-foreground font-medium max-w-2xl mx-auto text-balance">
-            The day\\'s biggest news rewritten into calm, everyday English. Centered around live regional reports across all 50 states.
+            One Nation - One Truth - One Location.... covering the news in all 50 states. From the capital to your county, we map what matters.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-muted-foreground">

@@ -11,6 +11,7 @@ import {
 import type { NewsStory } from '@/lib/types'
 import {
   STATE_COORDINATES,
+  CITY_COORDINATES,
   POPULAR_STATES,
   ALL_US_STATES,
   US_REGIONS,
@@ -28,6 +29,7 @@ import {
   Search,
   CheckCircle2,
   X,
+  Maximize,
 } from 'lucide-react'
 
 const GEO_URL = '/us-topo.json'
@@ -56,6 +58,24 @@ export default function NewsMap({
   const [hoveredState, setHoveredState] = useState<string | null>(null)
   const [tickerIndex, setTickerIndex] = useState(0)
   const [selectedRegion, setSelectedRegion] = useState<string>('all')
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const mapContainerRef = React.useRef<HTMLDivElement>(null)
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      mapContainerRef.current?.requestFullscreen().catch(() => {})
+    } else {
+      document.exitFullscreen()
+    }
+  }
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement)
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
+  }, [])
 
   // Group stories by state
   const storiesByState = useMemo(() => {
@@ -336,12 +356,19 @@ export default function NewsMap({
         </div>
 
         {/* Interactive SVG Radar Map */}
-        <div className="relative w-full h-[360px] sm:h-[460px] bg-slate-950 overflow-hidden touch-none select-none">
+        <div ref={mapContainerRef} className={`relative w-full ${isFullscreen ? 'h-screen' : 'h-[360px] sm:h-[460px]'} bg-slate-950 overflow-hidden touch-none select-none`}>
           {/* Subtle patriotic backdrop grid */}
           <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
 
           {/* Floating Map Zoom Controls */}
           <div className="absolute top-4 right-4 z-10 flex flex-col gap-1.5 bg-slate-900/90 border border-slate-700/80 p-1.5 rounded-2xl shadow-lg backdrop-blur-md">
+            <button
+              onClick={toggleFullscreen}
+              className="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-black transition-all active:scale-95 cursor-pointer"
+              title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+            >
+              <Maximize className="w-4 h-4" />
+            </button>
             <button
               onClick={handleZoomIn}
               className="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-black transition-all active:scale-95 cursor-pointer"
@@ -467,65 +494,75 @@ export default function NewsMap({
                 }
               </Geographies>
 
-              {/* Pulsing Beacons & Story Markers for States with Active News */}
-              {Object.entries(storiesByState).map(([state, ss]) => {
-                const coords = STATE_COORDINATES[state]
-                if (!coords) return null
-                const isSelected = selectedState === state
-                const count = ss.length
-                const radius = Math.max(5, Math.min(14, 5 + count * 1.5))
+              {/* Pulsing Beacons & Story Markers for Active Locations */}
+              {(() => {
+                const groups: Record<string, { coords: [number, number]; count: number; state: string }> = {}
+                stories.forEach(story => {
+                  if (!story.state) return
+                  const state = story.state.toLowerCase()
+                  const coords = story.coordinates || (story.city && CITY_COORDINATES[story.city.toLowerCase()]) || STATE_COORDINATES[state]
+                  if (!coords) return
+                  const key = `${coords[0]},${coords[1]}`
+                  if (!groups[key]) groups[key] = { coords, count: 0, state }
+                  groups[key].count++
+                })
+                return Object.entries(groups).map(([key, group]) => {
+                  const { coords, count, state } = group
+                  const isSelected = selectedState === state
+                  const radius = Math.max(5, Math.min(14, 5 + count * 1.5))
 
-                return (
-                  <Marker
-                    key={state}
-                    coordinates={coords}
-                    onPointerDown={onPointerDownTrack}
-                    onPointerUp={(e: any) => onPointerUpTrack(e, state)}
-                    onClick={() => handleStateClick(state)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {/* Animated Outer Radar Ring */}
-                    <circle
-                      r={radius + 8}
-                      fill={isSelected ? '#dc2626' : '#2563eb'}
-                      opacity={0.3}
-                      className="animate-radar"
-                    />
+                  return (
+                    <Marker
+                      key={key}
+                      coordinates={coords}
+                      onPointerDown={onPointerDownTrack}
+                      onPointerUp={(e: any) => onPointerUpTrack(e, state)}
+                      onClick={() => handleStateClick(state)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {/* Animated Outer Radar Ring */}
+                      <circle
+                        r={radius + 8}
+                        fill={isSelected ? '#dc2626' : '#2563eb'}
+                        opacity={0.3}
+                        className="animate-radar"
+                      />
 
-                    {/* Middle Glow Ring */}
-                    <circle
-                      r={radius + 2}
-                      fill={isSelected ? '#dc2626' : '#3b82f6'}
-                      opacity={0.6}
-                    />
+                      {/* Middle Glow Ring */}
+                      <circle
+                        r={radius + 2}
+                        fill={isSelected ? '#dc2626' : '#3b82f6'}
+                        opacity={0.6}
+                      />
 
-                    {/* Solid Inner Center */}
-                    <circle
-                      r={radius}
-                      fill={isSelected ? '#ffffff' : '#dc2626'}
-                      stroke={isSelected ? '#dc2626' : '#ffffff'}
-                      strokeWidth={1.5}
-                    />
+                      {/* Solid Inner Center */}
+                      <circle
+                        r={radius}
+                        fill={isSelected ? '#ffffff' : '#dc2626'}
+                        stroke={isSelected ? '#dc2626' : '#ffffff'}
+                        strokeWidth={1.5}
+                      />
 
-                    {/* Count Text */}
-                    {count > 0 && (
-                      <text
-                        textAnchor="middle"
-                        y={3.5}
-                        style={{
-                          fontFamily: 'system-ui, sans-serif',
-                          fontSize: '8px',
-                          fontWeight: '900',
-                          fill: isSelected ? '#dc2626' : '#ffffff',
-                          pointerEvents: 'none',
-                        }}
-                      >
-                        {count}
-                      </text>
-                    )}
-                  </Marker>
-                )
-              })}
+                      {/* Count Text */}
+                      {count > 0 && (
+                        <text
+                          textAnchor="middle"
+                          y={3.5}
+                          style={{
+                            fontFamily: 'system-ui, sans-serif',
+                            fontSize: '8px',
+                            fontWeight: '900',
+                            fill: isSelected ? '#dc2626' : '#ffffff',
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          {count}
+                        </text>
+                      )}
+                    </Marker>
+                  )
+                })
+              })()}
             </ZoomableGroup>
           </ComposableMap>
         </div>

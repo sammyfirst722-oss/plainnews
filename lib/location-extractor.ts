@@ -76,6 +76,39 @@ export const CITY_STATE_MAP: Record<string, string> = {
   'washington dc': 'district of columbia', 'washington d.c.': 'district of columbia', 'capitol hill': 'district of columbia'
 };
 
+export const CITY_COORDINATES: Record<string, [number, number]> = {
+  'los angeles': [-118.2, 34.0], 'san francisco': [-122.4, 37.7], 'san diego': [-117.1, 32.7],
+  'new york city': [-74.0, 40.7], 'brooklyn': [-73.9, 40.6], 'buffalo': [-78.8, 42.8], 'manhattan': [-73.9, 40.7],
+  'chicago': [-87.6, 41.8],
+  'houston': [-95.3, 29.7], 'dallas': [-96.7, 32.7], 'austin': [-97.7, 30.2], 'san antonio': [-98.4, 29.4],
+  'phoenix': [-112.0, 33.4], 'tucson': [-110.9, 32.2],
+  'philadelphia': [-75.1, 39.9], 'philly': [-75.1, 39.9], 'pittsburgh': [-79.9, 40.4],
+  'jacksonville': [-81.6, 30.3], 'miami': [-80.1, 25.7], 'tampa': [-82.4, 27.9], 'orlando': [-81.3, 28.5],
+  'columbus': [-82.9, 39.9], 'cleveland': [-81.6, 41.4], 'cincinnati': [-84.5, 39.1],
+  'charlotte': [-80.8, 35.2], 'raleigh': [-78.6, 35.7],
+  'indianapolis': [-86.1, 39.7],
+  'seattle': [-122.3, 47.6], 'spokane': [-117.4, 47.6],
+  'denver': [-104.9, 39.7], 'colorado springs': [-104.8, 38.8],
+  'nashville': [-86.7, 36.1], 'memphis': [-90.0, 35.1],
+  'oklahoma city': [-97.5, 35.4], 'tulsa': [-95.9, 36.1],
+  'boston': [-71.0, 42.3], 'cambridge': [-71.1, 42.3],
+  'portland': [-122.6, 45.5],
+  'las vegas': [-115.1, 36.1], 'reno': [-119.8, 39.5],
+  'louisville': [-85.7, 38.2],
+  'baltimore': [-76.6, 39.2],
+  'milwaukee': [-87.9, 43.0],
+  'albuquerque': [-106.6, 35.0],
+  'atlanta': [-84.3, 33.7], 'savannah': [-81.0, 32.0],
+  'kansas city': [-94.5, 39.0], 'st. louis': [-90.1, 38.6], 'saint louis': [-90.1, 38.6],
+  'omaha': [-95.9, 41.2],
+  'new orleans': [-90.0, 29.9], 'baton rouge': [-91.1, 30.4],
+  'detroit': [-83.0, 42.3], 'ann arbor': [-83.7, 42.2],
+  'minneapolis': [-93.2, 44.9], 'st. paul': [-93.0, 44.9],
+  'honolulu': [-157.8, 21.3],
+  'anchorage': [-149.9, 61.2],
+  'washington dc': [-77.0, 38.9], 'washington d.c.': [-77.0, 38.9], 'capitol hill': [-77.0, 38.9]
+};
+
 export const US_REGIONS: Record<string, { label: string; states: string[] }> = {
   'all': { label: 'All 50 States', states: Object.keys(STATE_COORDINATES) },
   'west': {
@@ -183,10 +216,11 @@ export function extractUSLocation(title: string, description: string): { state: 
     const cityMap: Record<string, string> = { 'nyc': 'new york', 'la': 'california', 'sf': 'california', 'dc': 'district of columbia' };
     if (cityMap[code]) {
       const state = cityMap[code];
+      const city = code === 'nyc' ? 'new york city' : code === 'la' ? 'los angeles' : code === 'sf' ? 'san francisco' : 'washington dc';
       return {
         state,
-        city: code,
-        coordinates: STATE_COORDINATES[state],
+        city,
+        coordinates: CITY_COORDINATES[city] || STATE_COORDINATES[state],
       };
     }
   }
@@ -199,7 +233,7 @@ export function extractUSLocation(title: string, description: string): { state: 
       return {
         state,
         city,
-        coordinates: STATE_COORDINATES[state],
+        coordinates: CITY_COORDINATES[city] || STATE_COORDINATES[state],
       };
     }
   }
@@ -211,21 +245,21 @@ export function extractUSLocation(title: string, description: string): { state: 
         return {
           state: 'district of columbia',
           city: 'washington dc',
-          coordinates: STATE_COORDINATES['district of columbia'],
+          coordinates: CITY_COORDINATES['washington dc'] || STATE_COORDINATES['district of columbia'],
         };
       }
       if (/\bwashington\s+state\b/i.test(text) || /\bseattle\b/i.test(text)) {
         return {
           state: 'washington',
-          city: null,
-          coordinates: STATE_COORDINATES['washington'],
+          city: /\bseattle\b/i.test(text) ? 'seattle' : null,
+          coordinates: /\bseattle\b/i.test(text) ? CITY_COORDINATES['seattle'] : STATE_COORDINATES['washington'],
         };
       }
       if (/\bwashington\b/i.test(text)) {
         return {
           state: 'district of columbia',
           city: 'washington dc',
-          coordinates: STATE_COORDINATES['district of columbia'],
+          coordinates: CITY_COORDINATES['washington dc'] || STATE_COORDINATES['district of columbia'],
         };
       }
       continue;
