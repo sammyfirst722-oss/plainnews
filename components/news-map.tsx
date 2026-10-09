@@ -190,6 +190,16 @@ export default function NewsMap({
     [selectedState, onSelectState]
   )
 
+  const handleCityToggle = useCallback((cityName: string, stateName: string, coords?: [number, number]) => {
+    if (cityName === selectedCity) {
+      setSelectedCity(null)
+      if (STATE_COORDINATES[stateName]) { setCenter(STATE_COORDINATES[stateName]); setZoom(3.5) }
+    } else {
+      setSelectedCity(cityName)
+      if (coords) { setCenter(coords); setZoom(5.2) }
+    }
+  }, [selectedCity])
+
   const pointerStartRef = React.useRef<{ x: number; y: number; t: number } | null>(null)
   const drawerRef = React.useRef<HTMLDivElement>(null)
   const handleZoomIn = () => setZoom((prev) => Math.min(prev * 1.4, 7))
@@ -214,16 +224,16 @@ export default function NewsMap({
     }
   }
 
-  const onPointerUpTrackMarker = (e: React.PointerEvent, stateName: string, cityName?: string) => {
+  const onPointerUpTrackMarker = (e: React.PointerEvent, stateName: string, cityName?: string, coords?: [number, number]) => {
     if (pointerStartRef.current) {
       const dx = Math.abs(e.clientX - pointerStartRef.current.x)
       const dy = Math.abs(e.clientY - pointerStartRef.current.y)
       const dt = Date.now() - pointerStartRef.current.t
       if (dx < 15 && dy < 15 && dt < 450) {
         if (cityName && selectedState === stateName) {
-           setSelectedCity(cityName === selectedCity ? null : cityName)
+          handleCityToggle(cityName, stateName, coords)
         } else {
-           handleStateClick(stateName)
+          handleStateClick(stateName)
         }
       }
     }
@@ -586,10 +596,10 @@ export default function NewsMap({
                       key={key}
                       coordinates={coords}
                       onPointerDown={onPointerDownTrack}
-                      onPointerUp={(e: any) => onPointerUpTrackMarker(e, state, city)}
+                      onPointerUp={(e: any) => onPointerUpTrackMarker(e, state, city, coords)}
                       onClick={() => {
                         if (city && selectedState === state) {
-                          setSelectedCity(city === selectedCity ? null : city)
+                          handleCityToggle(city, state, coords)
                         } else {
                           handleStateClick(state)
                         }
@@ -704,9 +714,16 @@ export default function NewsMap({
                 <MapPin className="w-4 h-4" />
               </span>
               <div>
-                <h3 className="font-masthead text-lg sm:text-xl font-bold text-foreground">
-                  {selectedCity ? `${formatStateName(selectedCity)} Local News` : `${formatStateName(selectedState)} Dispatches`}
-                </h3>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-masthead text-lg sm:text-xl font-bold text-foreground">
+                    {selectedCity ? `${formatStateName(selectedCity)} Local News` : `${formatStateName(selectedState)} Dispatches`}
+                  </h3>
+                  {selectedCity && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-red-600/15 text-red-600 border border-red-500/30 uppercase">
+                      <Radio className="w-2.5 h-2.5 animate-pulse" /> City Pulse
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs text-muted-foreground font-semibold">
                   {(() => {
                     const storiesToShow = selectedCity 
@@ -719,7 +736,12 @@ export default function NewsMap({
             </div>
 
             <button
-              onClick={selectedCity ? () => setSelectedCity(null) : handleReset}
+              onClick={selectedCity ? () => {
+                setSelectedCity(null)
+                if (selectedState && STATE_COORDINATES[selectedState]) {
+                  setCenter(STATE_COORDINATES[selectedState]); setZoom(3.5)
+                }
+              } : handleReset}
               className="px-3.5 py-1.5 rounded-xl border-2 border-border/80 bg-card hover:bg-muted font-bold text-xs text-foreground transition-all cursor-pointer"
             >
               {selectedCity ? `← Back to ${formatStateName(selectedState)} News` : `← Back to Full USA Map`}
