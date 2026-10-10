@@ -196,14 +196,14 @@ export default function NewsMap({
       if (STATE_COORDINATES[stateName]) { setCenter(STATE_COORDINATES[stateName]); setZoom(3.5) }
     } else {
       setSelectedCity(cityName)
-      if (coords) { setCenter(coords); setZoom(5.2) }
+      if (coords) { setCenter(coords); setZoom(8.5) }
     }
   }, [selectedCity])
 
   const pointerStartRef = React.useRef<{ x: number; y: number; t: number } | null>(null)
   const drawerRef = React.useRef<HTMLDivElement>(null)
-  const handleZoomIn = () => setZoom((prev) => Math.min(prev * 1.4, 7))
-  const handleZoomOut = () => setZoom((prev) => Math.max(prev / 1.4, 1))
+  const handleZoomIn = () => setZoom((prev) => Math.min(prev * 1.6, 28))
+  const handleZoomOut = () => setZoom((prev) => Math.max(prev / 1.6, 1))
   const handlePan = (dx: number, dy: number) => setCenter(([cx, cy]) => [cx + dx, cy + dy])
   const handleReset = () => {
     onSelectState(null)
@@ -383,10 +383,8 @@ export default function NewsMap({
           </div>
         </div>
 
-        {/* Interactive SVG Radar Map */}
-        <div ref={mapContainerRef} className={`relative w-full ${isFullscreen ? 'h-screen' : 'h-[360px] sm:h-[460px]'} bg-slate-950 overflow-hidden touch-none select-none`}>
-          {/* Subtle patriotic backdrop grid */}
-          <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
+        {/* Interactive SVG Google Maps Style Canvas */}
+        <div ref={mapContainerRef} className={`relative w-full ${isFullscreen ? 'h-screen' : 'h-[360px] sm:h-[460px]'} bg-[#cbe8f6] dark:bg-[#152e3d] overflow-hidden touch-none select-none rounded-3xl border-2 border-border/80 shadow-inner`}>
 
           {/* Floating Map Zoom Controls */}
           <div className="absolute top-4 right-4 z-10 flex flex-col gap-1.5 bg-slate-900/90 border border-slate-700/80 p-1.5 rounded-2xl shadow-lg backdrop-blur-md">
@@ -463,7 +461,7 @@ export default function NewsMap({
               center={center}
               zoom={zoom}
               minZoom={1}
-              maxZoom={8}
+              maxZoom={28}
               onMoveEnd={({ coordinates, zoom: newZoom }) => {
                 if (coordinates) setCenter(coordinates)
                 if (typeof newZoom === 'number') setZoom(newZoom)
@@ -477,22 +475,22 @@ export default function NewsMap({
                     const isHovered = hoveredState === name
                     const hasStories = !!(name && storiesByState[name]?.length)
 
-                    let fill = '#0f172a'
-                    let stroke = '#cbd5e1'
-                    let strokeWidth = 1.8
+                    let fill = '#f8fafc'
+                    let stroke = '#94a3b8'
+                    let strokeWidth = 1.4
 
                     if (isSelected) {
-                      fill = '#1e3a8a'
-                      stroke = '#ffffff'
-                      strokeWidth = 3.2
+                      fill = '#dbeafe'
+                      stroke = '#2563eb'
+                      strokeWidth = 3.0
                     } else if (isHovered) {
-                      fill = hasStories ? '#1d4ed8' : '#334155'
-                      stroke = '#f87171'
-                      strokeWidth = 2.4
+                      fill = '#e2e8f0'
+                      stroke = '#ea4335'
+                      strokeWidth = 2.2
                     } else if (hasStories) {
-                      fill = '#0f172a'
-                      stroke = '#e2e8f0'
-                      strokeWidth = 2.0
+                      fill = '#f1f5f9'
+                      stroke = '#64748b'
+                      strokeWidth = 1.6
                     }
 
                     return (
@@ -532,9 +530,8 @@ export default function NewsMap({
                       fontFamily: 'system-ui, sans-serif',
                       fontSize: '9px',
                       fontWeight: '800',
-                      fill: '#cbd5e1',
+                      fill: '#64748b',
                       pointerEvents: 'none',
-                      opacity: 0.85,
                       letterSpacing: '0.05em',
                     }}
                   >
@@ -583,13 +580,14 @@ export default function NewsMap({
                   }
                   groups[key].count++
                 })
-                return Object.entries(groups).map(([key, group]) => {
+                return Object.entries(groups).map(([key, group], idx) => {
                   const { coords, count, state, city } = group
                   const isSelectedState = selectedState === state
                   const isSelectedCity = selectedCity === city && city != null
                   const isSelected = selectedCity ? isSelectedCity : isSelectedState
 
-                  const radius = Math.max(5, Math.min(14, 5 + count * 1.5))
+                  const radius = Math.max(5, Math.min(13, 5 + count * 1.4))
+                  const labelY = (idx % 2 === 1) ? (radius + 15) : (-radius - 6)
 
                   return (
                     <Marker
@@ -606,18 +604,21 @@ export default function NewsMap({
                       }}
                       style={{ cursor: 'pointer' }}
                     >
+                      {/* Invisible Generous Touch Hitbox */}
+                      <circle r={Math.max(22, radius + 12)} fill="transparent" />
+
                       {/* Animated Outer Radar Ring */}
                       <circle
                         r={radius + 6}
-                        fill="#ef4444"
-                        opacity={isSelected ? 0.45 : 0.25}
+                        fill="#ea4335"
+                        opacity={isSelected ? 0.5 : 0.25}
                         className="animate-radar"
                       />
 
-                      {/* Solid Inner Center */}
+                      {/* Solid Google Maps Red Pin Center */}
                       <circle
                         r={radius}
-                        fill="#dc2626"
+                        fill="#ea4335"
                         stroke="#ffffff"
                         strokeWidth={2}
                       />
@@ -639,24 +640,24 @@ export default function NewsMap({
                         </text>
                       )}
 
-                      {/* City Name Text in Bold Red & Large Font */}
+                      {/* City Name Text in Bold Red with Staggered Y & White Halo */}
                       {city && (
                         <text
                           textAnchor="middle"
-                          y={-radius - 5}
+                          y={labelY}
                           style={{
                             fontFamily: 'system-ui, sans-serif',
                             fontSize: isSelectedCity ? '13px' : '11px',
-                            fontWeight: '800',
-                            fill: '#ef4444',
-                            stroke: '#020617',
-                            strokeWidth: '2.5px',
+                            fontWeight: '900',
+                            fill: '#d93025',
+                            stroke: '#ffffff',
+                            strokeWidth: '3.5px',
                             paintOrder: 'stroke fill',
                             pointerEvents: 'none',
-                            letterSpacing: '0.02em',
+                            letterSpacing: '0.01em',
                           }}
                         >
-                          {formatStateName(city)}
+                          {isSelectedCity ? `📍 ${formatStateName(city)}` : formatStateName(city)}
                         </text>
                       )}
                     </Marker>
