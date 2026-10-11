@@ -93,7 +93,7 @@ async function handleBriefing(request: Request) {
                 SPONSORED BRIEFING PARTNER
               </div>
               <p style="margin: 0; font-size: 13px; color: #78350f; line-height: 1.4;">
-                <strong>SnapChef AI:</strong> Have random ingredients in your fridge? Snap a photo with your phone and get custom step-by-step recipes in plain English. <a href="https://snapchef-ai-eight.vercel.app" style="color: #b45309; font-weight: 700; text-decoration: underline;">Try SnapChef AI Free →</a>
+                <strong>SnapChef AI:</strong> Have random ingredients in your fridge? Snap a photo with your phone and get custom step-by-step recipes with zero culinary fluff. <a href="https://snapchef-ai-eight.vercel.app" style="color: #b45309; font-weight: 700; text-decoration: underline;">Try SnapChef AI Free →</a>
               </p>
             </div>
 

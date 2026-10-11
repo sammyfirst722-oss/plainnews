@@ -326,7 +326,7 @@ export async function aiSimplifyStory(title: string, description: string, catego
     return createFallbackBreakdown(title, description, category)
   }
 
-  const prompt = `You are a top-tier news journalist and editor. Your job is to take today's biggest, most trending and interesting news story and rewrite it into captivating, crystal-clear plain English that anyone can read in 60 seconds.
+  const prompt = `You are a top-tier news journalist and editor. Your job is to take today's biggest, most trending and interesting news story and rewrite it into a razor-sharp, high-signal briefing with zero fluff or partisan spin that anyone can read in 60 seconds.
 Focus on the most fascinating facts, big revelations, and why millions of people are talking about it today. Avoid confusing jargon, academic fluff, or partisan bias.
 
 ARTICLE HEADLINE: "${title}"
@@ -335,10 +335,10 @@ ARTICLE TEXT:
 ${description.slice(0, 3000)}
 """
 
-Please rewrite this news story into punchy, compelling plain English.
+Please rewrite this news story into punchy, razor-sharp, high-signal journalism with zero fluff.
 Return ONLY valid JSON matching this exact structure:
 {
-  "simplifiedTitle": "Short, gripping title in plain English (under 65 characters)",
+  "simplifiedTitle": "Short, gripping title that cuts right to the point (under 65 characters)",
   "bigPicture": "One bold, captivating sentence explaining the biggest takeaway.",
   "whatHappened": [
     "First fascinating fact about what went down.",
@@ -360,7 +360,7 @@ Return ONLY valid JSON matching this exact structure:
     if (freeRes.success) {
       const result = {
         simplifiedTitle: freeRes.data.simplifiedTitle || title,
-        bigPicture: freeRes.data.bigPicture || 'Here is the key takeaway in plain English.',
+        bigPicture: freeRes.data.bigPicture || 'Here is the smart cut takeaway.',
         whatHappened: freeRes.data.whatHappened || ['The main events were reviewed.'],
         whyItMatters: freeRes.data.whyItMatters || 'Staying informed helps you make practical decisions.',
         plainWords: freeRes.data.plainWords || [],
@@ -406,7 +406,7 @@ Return ONLY valid JSON matching this exact structure:
 
       const result = {
         simplifiedTitle: paidRes.data.simplifiedTitle || title,
-        bigPicture: paidRes.data.bigPicture || 'Here is the key takeaway in plain English.',
+        bigPicture: paidRes.data.bigPicture || 'Here is the smart cut takeaway.',
         whatHappened: paidRes.data.whatHappened || ['The main events were reviewed.'],
         whyItMatters: paidRes.data.whyItMatters || 'Staying informed helps you make practical decisions.',
         plainWords: paidRes.data.plainWords || [],

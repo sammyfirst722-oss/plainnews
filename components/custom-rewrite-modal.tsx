@@ -77,7 +77,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
             </div>
             <div>
               <h2 className="text-base font-black text-foreground">
-                Translate Any Story to Plain English
+                The Smart Cut: De-Jargon Any Story
               </h2>
               <p className="text-xs text-muted-foreground font-medium">
                 Converts dense or confusing articles into simple, everyday words
@@ -138,7 +138,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
                 {isLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Translating into Plain English...</span>
+                    <span>Extracting pure signal & filtering noise...</span>
                   </>
                 ) : (
                   <>
@@ -153,7 +153,7 @@ export function CustomRewriteModal({ isOpen, onClose }: CustomRewriteModalProps)
               {/* Plain Title */}
               <div>
                 <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1.5">
-                  <BookOpen className="w-3.5 h-3.5" /> Plain English Translation
+                  <BookOpen className="w-3.5 h-3.5" /> The Smart Cut Breakdown
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-foreground">
                   {result.simplifiedTitle}

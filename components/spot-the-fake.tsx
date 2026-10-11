@@ -289,7 +289,7 @@ export function SpotTheFake({ onOpenVipModal }: SpotTheFakeProps) {
                 </span>
               </div>
               <p className="text-xs sm:text-sm font-bold text-foreground">
-                Get tomorrow\'s mystery headline + today\'s 2-minute plain English briefing at 7 AM.
+                Get tomorrow\'s mystery headline + today\'s 2-minute smart cut briefing at 7 AM.
               </p>
             </div>
 

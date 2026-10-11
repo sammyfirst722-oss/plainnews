@@ -32,7 +32,7 @@ export function AudioPlayer({ title, textToRead, compact = false }: AudioPlayerP
 
     window.speechSynthesis.cancel()
 
-    const fullScript = `${title}. ... Here is the story in plain English. ... ${textToRead}`
+    const fullScript = `${title}. ... Here is the smart cut, zero noise. ... ${textToRead}`
     const utterance = new SpeechSynthesisUtterance(fullScript)
     utterance.rate = rate
     utterance.pitch = 1.0

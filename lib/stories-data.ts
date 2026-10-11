@@ -358,9 +358,9 @@ export const INITIAL_STORIES: NewsStory[] = [
   },
   {
     id: 'story-trending-12',
-    title: '2026 Social Security Benefits and Medicare Cost Adjustments Explained in Plain English',
+    title: '2026 Social Security Benefits and Medicare Cost Adjustments: The Smart Cut',
     slug: '2026-social-security-benefits-plain-english-breakdown',
-    simplifiedTitle: '2026 Social Security Check Adjustments: Exactly What to Expect in Plain English',
+    simplifiedTitle: '2026 Social Security Check Adjustments: The Smart Cut Breakdown',
     source: 'National Policy Desk',
     sourceUrl: 'https://news.google.com',
     pubDate: new Date(Date.now() - 1000 * 60 * 400).toISOString(),

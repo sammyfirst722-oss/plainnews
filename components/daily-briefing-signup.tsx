@@ -57,7 +57,7 @@ export function DailyBriefingSignup({ variant = 'card' }: DailyBriefingSignupPro
           <Mail className="w-4 h-4" /> THE 2-MINUTE MORNING BRIEFING
         </div>
         <p className="text-sm sm:text-base font-semibold mb-4 text-pretty">
-          Want the day&apos;s most interesting news explained in plain English like this? Delivered free at 7:00 AM.
+          Want the day&apos;s biggest news distilled into the smart cut—pure signal, zero noise? Delivered free at 7:00 AM.
         </p>
 
         {status === 'success' ? (

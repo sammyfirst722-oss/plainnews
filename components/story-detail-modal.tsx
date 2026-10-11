@@ -43,7 +43,7 @@ export function StoryDetailModal({
   if (!story) return null
 
   const handleShare = async () => {
-    const textToShare = `${story.simplifiedTitle}\n\n${story.bigPicture}\n\nRead in plain English on SimplyBigNews.`
+    const textToShare = `${story.simplifiedTitle}\n\n${story.bigPicture}\n\nRead the smart cut on SimplyBigNews (100% signal, zero noise).`
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
@@ -136,7 +136,7 @@ export function StoryDetailModal({
         <div className="overflow-y-auto px-5 sm:px-8 py-6 space-y-6">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">
-              <BookOpen className="w-3.5 h-3.5" /> Plain English • 2 Min Read • +10 News IQ XP
+              <BookOpen className="w-3.5 h-3.5" /> The Smart Cut • 2 Min Read • +10 News IQ XP
             </div>
             <h1 className={`font-fancy ${titleClass} text-foreground text-balance`}>
               {story.simplifiedTitle}

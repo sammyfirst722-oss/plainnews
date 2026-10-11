@@ -12,7 +12,7 @@ ICON_PATH = r"C:\Users\sammy\plainnews\public\play-icon-512.png"
 FEATURE_PATH = r"C:\Users\sammy\plainnews\public\play-feature-1024x500.png"
 SCOPES = ['https://www.googleapis.com/auth/androidpublisher']
 
-SHORT_DESC = "Clear, calm news rewritten in plain English at an 8th-grade reading level."
+SHORT_DESC = "High-signal, zero-noise news. The smart cut on what actually matters."
 FULL_DESC = """PlainNews brings you the day's top headlines without media jargon, sensory overload, or sensationalism. Every story is carefully rewritten in plain, straightforward English at an 8th-grade reading level so you can stay informed in just two minutes.
 
 Designed especially for readers 40 and older who value clarity, honest reporting, and comfort.
@@ -21,10 +21,10 @@ WHAT MAKES PLAINNEWS DIFFERENT:
 • The Big Picture: A 2-sentence summary at the top of every story.
 • What Happened: Exactly 3 key bullet points—no fluff.
 • Why It Matters: How the news impacts your wallet, retirement, family, healthcare, and daily life.
-• Word Helper: Tap difficult financial or political jargon for instant, plain-English definitions.
+• Jargon Buster: Tap complex financial or political terms for instant, razor-sharp clarity.
 • Listen Aloud: Tap the speaker icon to listen to any story hands-free with adjustable narration speeds.
 • Easy on the Eyes: One-tap font sizing (Large, Extra Large) and Warm Sepia or Dark reading modes.
-• Custom Article Simplifier: Paste any complicated article from the web and simplify it into plain English with one tap.
+• Noise Filter: Paste any bloated article from the web to extract the smart cut and pure signal in one tap.
 
 TOPICS YOU CARE ABOUT:
 • Wallet & Money: Social Security, Medicare, savings, and straightforward inflation updates.

@@ -23,7 +23,7 @@ WHAT MAKES SIMPLYBIGNEWS DIFFERENT:
 • The Big Picture: A 2-sentence summary at the top of every story.
 • What Happened: Exactly 3 key bullet points—clean, fast, and zero fluff.
 • Why It Matters: How the news impacts your wallet, retirement, family, healthcare, and daily life.
-• Word Helper: Tap difficult financial or political terms for instant, plain-English definitions.
+• Jargon Buster: Tap complex financial or political terms for instant, razor-sharp clarity.
 • Listen Aloud: Tap the speaker icon to listen to any story hands-free with adjustable narration speeds.
 • Easy on the Eyes: One-tap font sizing (Large, Extra Large) and Warm Sepia or Dark reading modes.
 • Custom Article Simplifier: Paste any complicated article from the web and translate it into clear, simple language with one tap.

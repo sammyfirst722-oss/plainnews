@@ -28,10 +28,10 @@ ARTICLE TEXT:
 ${articleText.slice(0, 3000)}
 """
 
-Please rewrite this news story into simple, plain English at an 8th-grade reading level.
+Please rewrite this news story into crisp, high-signal journalism that strips away corporate spin and technical jargon.
 Return ONLY valid JSON matching this exact structure:
 {
-  "simplifiedTitle": "Short, clear title in plain English (under 65 characters)",
+  "simplifiedTitle": "Short, punchy title with zero fluff (under 65 characters)",
   "bigPicture": "One clear sentence explaining the main point simply.",
   "whatHappened": [
     "First simple fact about what happened in everyday words.",
@@ -83,8 +83,8 @@ Return ONLY valid JSON matching this exact structure:
     const parsed = JSON.parse(cleanedJson)
 
     return {
-      simplifiedTitle: parsed.simplifiedTitle || headline || 'News in Plain English',
-      bigPicture: parsed.bigPicture || 'Here is the key takeaway in plain English.',
+      simplifiedTitle: parsed.simplifiedTitle || headline || 'The Smart Cut News',
+      bigPicture: parsed.bigPicture || 'Here is the smart cut takeaway.',
       whatHappened: Array.isArray(parsed.whatHappened) && parsed.whatHappened.length > 0
         ? parsed.whatHappened
         : ['The main events were reviewed by reporters.', 'Key details are being followed up.', 'Further updates will follow.'],
@@ -119,7 +119,7 @@ function fallbackSimplification(text: string, headline?: string): PlainRewriteRe
     whyItMatters:
       'Keeping up with reliable facts helps you protect your family, save money, and avoid unnecessary worry or confusion.',
     plainWords: [
-      { word: 'Plain English', meaning: 'Clear, straightforward words without confusing technical jargon.' },
+      { word: 'The Smart Cut', meaning: 'Pure, substantive facts with all the media spin, jargon, and noise filtered out.' },
       { word: 'Summary', meaning: 'The main facts gathered in short, readable sentences.' },
     ],
   }

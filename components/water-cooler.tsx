@@ -222,7 +222,7 @@ export function WaterCooler() {
         </div>
       )}
 
-      {/* The Plain English Gist */}
+      {/* The Smart Cut Gist */}
       <div className="p-4 rounded-2xl bg-muted/40 border border-border flex items-start gap-3">
         <Scale className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
         <p className="text-xs sm:text-sm font-semibold text-foreground leading-relaxed">

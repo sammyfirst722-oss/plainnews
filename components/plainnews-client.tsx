@@ -167,7 +167,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
     setSelectedStory(story)
     if (!readStoryIds.includes(story.id)) {
       setReadStoryIds((prev) => [...prev, story.id])
-      rewardGlobalNewsIqXp(10, 'Reading Story in Plain English')
+      rewardGlobalNewsIqXp(10, 'Reading The Smart Cut')
       toast.success('+10 XP towards News IQ!', {
         description: 'Keep reading to boost your daily News IQ score.',
       })
@@ -529,7 +529,7 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
                     onClick={() => handleStoryRead(spotlightStory)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-sm shadow-md active:scale-95 transition-all cursor-pointer"
                   >
-                    <span>Read in Plain English</span>
+                    <span>Get The Smart Cut</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
 
