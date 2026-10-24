@@ -19,8 +19,8 @@ export async function rewriteArticleToPlainEnglish(
     return fallbackSimplification(articleText, headline)
   }
 
-  const prompt = `You are an expert news editor and educator specializing in writing for adults aged 40+ at an 8th-grade school reading level.
-Your goal is to make the news clear, calm, and easy to understand without confusing jargon, hyperbolic panic, or partisan spin.
+  const prompt = `You are an expert news editor specializing in writing clear, zero-fluff journalism in everyday words.
+Your goal is to make the news clear, calm, and easy to understand without confusing terminology, hyperbolic panic, or partisan spin.
 
 ARTICLE HEADLINE: "${headline || 'News Report'}"
 ARTICLE TEXT:
@@ -28,7 +28,7 @@ ARTICLE TEXT:
 ${articleText.slice(0, 3000)}
 """
 
-Please rewrite this news story into crisp, high-signal journalism that strips away corporate spin and technical jargon.
+Please rewrite this news story into crisp, high-signal journalism that strips away corporate spin and technical fluff.
 Return ONLY valid JSON matching this exact structure:
 {
   "simplifiedTitle": "Short, punchy title with zero fluff (under 65 characters)",
@@ -38,10 +38,10 @@ Return ONLY valid JSON matching this exact structure:
     "Second key detail or background point.",
     "Third outcome or what happens next."
   ],
-  "whyItMatters": "Two sentences explaining the practical impact on everyday life, money, health, safety, or family for adults aged 40+.",
+  "whyItMatters": "Two sentences explaining the practical impact on everyday life, money, health, safety, or family.",
   "plainWords": [
-    {"word": "Jargon Term 1", "meaning": "Simple everyday definition"},
-    {"word": "Jargon Term 2", "meaning": "Simple everyday definition"}
+    {"word": "Term 1", "meaning": "Simple everyday definition"},
+    {"word": "Term 2", "meaning": "Simple everyday definition"}
   ]
 }`
 

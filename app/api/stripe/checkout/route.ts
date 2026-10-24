@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
             currency: 'usd',
             product_data: {
               name: 'SimplyBigNews VIP Supporter (Monthly)',
-              description: 'Ad-Free Reading, Unlimited AI 8th-Grade News Simplifier, Morning Audio Briefing',
+              description: 'Ad-Free Reading, Unlimited AI Everyday-Words News Simplifier, Morning Audio Briefing',
             },
             unit_amount: 299, // $2.99
             recurring: { interval: 'month' as const },
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
             currency: 'usd',
             product_data: {
               name: 'SimplyBigNews VIP Lifetime Pass (Gift)',
-              description: 'Gift this to a parent or grandparent for ad-free calm reading forever.',
+              description: 'Share the gift of ad-free, zero-fluff everyday news forever.',
             },
             unit_amount: 1999, // $19.99
           },

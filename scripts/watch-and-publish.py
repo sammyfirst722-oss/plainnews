@@ -12,30 +12,28 @@ ICON_PATH = r"C:\Users\sammy\plainnews\public\play-icon-512.png"
 FEATURE_PATH = r"C:\Users\sammy\plainnews\public\play-feature-1024x500.png"
 SCOPES = ['https://www.googleapis.com/auth/androidpublisher']
 
-SHORT_DESC = "High-signal, zero-noise news. The smart cut on what actually matters."
-FULL_DESC = """PlainNews brings you the day's top headlines without media jargon, sensory overload, or sensationalism. Every story is carefully rewritten in plain, straightforward English at an 8th-grade reading level so you can stay informed in just two minutes.
+SHORT_DESC = "Clear, honest, Zero Fluff news written in everyday words. Distraction-free."
+FULL_DESC = """SimplyBigNews brings you the day's top headlines with Zero Fluff—no media spin, sensory overload, or sensationalism. Every story is carefully rewritten in calm, straightforward everyday words so you can stay informed in just two minutes.
 
-Designed especially for readers 40 and older who value clarity, honest reporting, and comfort.
-
-WHAT MAKES PLAINNEWS DIFFERENT:
+WHAT MAKES SIMPLYBIGNEWS DIFFERENT:
 • The Big Picture: A 2-sentence summary at the top of every story.
-• What Happened: Exactly 3 key bullet points—no fluff.
-• Why It Matters: How the news impacts your wallet, retirement, family, healthcare, and daily life.
-• Jargon Buster: Tap complex financial or political terms for instant, razor-sharp clarity.
+• What Happened: Exactly 3 key bullet points—Zero Fluff.
+• Why It Matters: How the news impacts your wallet, family, healthcare, and daily life.
+• Plain Words: Tap complex financial or political terms for instant, razor-sharp clarity in everyday words.
 • Listen Aloud: Tap the speaker icon to listen to any story hands-free with adjustable narration speeds.
 • Easy on the Eyes: One-tap font sizing (Large, Extra Large) and Warm Sepia or Dark reading modes.
 • Noise Filter: Paste any bloated article from the web to extract the smart cut and pure signal in one tap.
 
 TOPICS YOU CARE ABOUT:
-• Wallet & Money: Social Security, Medicare, savings, and straightforward inflation updates.
-• Health & Longevity: Clear nutrition, wellness, and medical breakthroughs explained plainly.
-• Technology Made Simple: Everyday tech guides without confusing acronyms.
+• Wallet & Money: Savings, housing, markets, and straightforward inflation updates.
+• Health & Wellness: Clear nutrition, wellness, and medical breakthroughs explained plainly.
+• Technology Made Simple: Everyday tech and AI guides without confusing acronyms.
 • Good News: Uplifting community stories, nature recoveries, and inspiring achievements.
-• US & World Events: Major headlines delivered with calm, balanced context.
+• US & World Events: Major headlines across all 50 states delivered with calm, balanced context.
 
 No sensationalism. No clickbait. Just clear, honest news."""
 
-RELEASE_NOTES = """Initial launch of PlainNews: Clear daily news rewritten at an 8th-grade reading level with listen-aloud audio narration and large-print comfort controls."""
+RELEASE_NOTES = """Initial launch of SimplyBigNews: Clear daily news written in everyday words with Zero Fluff, listen-aloud audio narration, and reading comfort controls."""
 
 def try_publish():
     creds = service_account.Credentials.from_service_account_file(KEY_FILE, scopes=SCOPES)
@@ -56,7 +54,7 @@ def try_publish():
             language="en-US",
             body={
                 "language": "en-US",
-                "title": "PlainNews - Simple Daily News",
+                "title": "SimplyBigNews",
                 "shortDescription": SHORT_DESC,
                 "fullDescription": FULL_DESC
             }
