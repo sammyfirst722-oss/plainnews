@@ -250,10 +250,7 @@ export default function NewsMap({
         {/* Top Radar Bar: Red, White & Blue */}
         <div className="border-b-2 border-border/80 bg-gradient-to-r from-blue-950 via-slate-900 to-red-950 px-4 sm:px-6 py-3.5 text-white flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-            </span>
+            <span className="inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
             <div className="flex items-center gap-2">
               <span className="font-masthead text-xs sm:text-sm tracking-wider uppercase font-bold text-white">
                 50-State Interactive News Radar
@@ -285,7 +282,7 @@ export default function NewsMap({
         {/* US Regions Filter Bar */}
         <div className="px-3 sm:px-6 py-2 border-b border-border/40 bg-muted/20 flex items-center gap-1.5 overflow-x-auto scrollbar-none">
           <span className="text-[10px] font-black uppercase text-muted-foreground shrink-0 mr-1 flex items-center gap-1">
-            <Radio className="w-3 h-3 text-red-600 animate-pulse" />
+            <Radio className="w-3 h-3 text-red-600 " />
             <span>Region:</span>
           </span>
           {Object.entries(US_REGIONS).map(([key, reg]) => {
@@ -422,7 +419,7 @@ export default function NewsMap({
           {selectedState ? (
             <div className="absolute top-4 left-4 right-16 z-10 px-3.5 py-2.5 rounded-2xl bg-slate-900/95 border-2 border-red-500 text-white shadow-2xl backdrop-blur-md flex items-center justify-between gap-2 animate-in fade-in slide-in-from-top-2">
               <div className="flex items-center gap-2 overflow-hidden">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping shrink-0" />
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500  shrink-0" />
                 <span className="font-extrabold text-xs sm:text-sm uppercase text-red-400 truncate">
                   📍 {formatStateName(selectedState)}
                 </span>
@@ -607,14 +604,6 @@ export default function NewsMap({
                       {/* Invisible Generous Touch Hitbox */}
                       <circle r={Math.max(22, radius + 12)} fill="transparent" />
 
-                      {/* Animated Outer Radar Ring */}
-                      <circle
-                        r={radius + 6}
-                        fill="#ea4335"
-                        opacity={isSelected ? 0.5 : 0.25}
-                        className="animate-radar"
-                      />
-
                       {/* Solid Google Maps Red Pin Center */}
                       <circle
                         r={radius}
@@ -673,7 +662,7 @@ export default function NewsMap({
           <div className="bg-slate-900 border-t-2 border-slate-800 px-4 py-2.5 flex items-center justify-between gap-3 text-xs text-slate-300">
             <div className="flex items-center gap-2 overflow-hidden">
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-red-600 text-white font-black text-[10px] uppercase shrink-0">
-                <Radio className="w-3 h-3 animate-pulse" />
+                <Radio className="w-3 h-3 " />
                 <span>STATE WIRE</span>
               </span>
               <span className="font-extrabold text-blue-400 shrink-0">
@@ -721,7 +710,7 @@ export default function NewsMap({
                   </h3>
                   {selectedCity && (
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-red-600/15 text-red-600 border border-red-500/30 uppercase">
-                      <Radio className="w-2.5 h-2.5 animate-pulse" /> City Pulse
+                      <Radio className="w-2.5 h-2.5 " /> City Pulse
                     </span>
                   )}
                 </div>

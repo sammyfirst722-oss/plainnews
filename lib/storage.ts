@@ -170,6 +170,8 @@ export function getArchivedStories(): NewsStory[] {
   return inMemoryStories.length > 0 ? inMemoryStories : INITIAL_STORIES
 }
 
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000
+
 export function saveArchivedStories(newStories: NewsStory[]): void {
   if (!newStories || newStories.length === 0) return
 
@@ -181,16 +183,32 @@ export function saveArchivedStories(newStories: NewsStory[]): void {
     if (story.slug) map.set(story.slug, story)
   }
 
-  const combined = Array.from(map.values()).slice(0, 200)
-  inMemoryStories = combined
+  const now = Date.now()
+  // Rolling 30-day retention window: keep all stories published within the last 30 days
+  const validStories = Array.from(map.values()).filter((story) => {
+    const rawDate = story.pubDate || (story as any).publishedAt
+    if (!rawDate) return true
+    const time = new Date(rawDate).getTime()
+    if (isNaN(time)) return true
+    return now - time <= THIRTY_DAYS_MS
+  })
+
+  // Sort newest first
+  validStories.sort((a, b) => {
+    const timeA = new Date(a.pubDate || (a as any).publishedAt || 0).getTime() || 0
+    const timeB = new Date(b.pubDate || (b as any).publishedAt || 0).getTime() || 0
+    return timeB - timeA
+  })
+
+  inMemoryStories = validStories
 
   // Write local
   try {
-    fs.writeFileSync(getLocalFilePath(STORIES_FILE), JSON.stringify(combined, null, 2), 'utf-8')
+    fs.writeFileSync(getLocalFilePath(STORIES_FILE), JSON.stringify(validStories, null, 2), 'utf-8')
   } catch {}
 
   // Flush to Vercel Blob in background
-  persistToBlob(STORIES_FILE, combined).catch(() => {})
+  persistToBlob(STORIES_FILE, validStories).catch(() => {})
 }
 
 export function getStoryBySlug(slug: string): NewsStory | null {

@@ -143,9 +143,8 @@
 }
 
 .animate-radar {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: radar-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  /* Disabled: flashing circles removed */
+  display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
