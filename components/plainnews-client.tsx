@@ -747,35 +747,6 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
       </main>
 
       {/* =================================================================== */}
-      {/* FOOTER & COMPLIANCE LINKS                                           */}
-      {/* =================================================================== */}
-      <footer className="mt-20 border-t-2 border-border/60 py-8 px-4 text-center text-xs text-muted-foreground">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-masthead font-black text-foreground">SimplyBigNews</span>
-            <span>&copy; {new Date().getFullYear()} • One Nation - One Truth - One Location</span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4 font-medium">
-            <a href="/privacy" className="hover:text-blue-600 hover:underline">
-              Privacy Policy
-            </a>
-            <span className="text-border">•</span>
-            <a href="/terms" className="hover:text-blue-600 hover:underline">
-              Terms of Service
-            </a>
-            <span className="text-border">•</span>
-            <a href="/account-deletion" className="hover:text-blue-600 hover:underline">
-              Data &amp; Privacy Choices
-            </a>
-            <span className="text-border">•</span>
-            <a href="mailto:sammyfirst722@gmail.com" className="hover:text-blue-600 hover:underline">
-              Feedback &amp; Inquiries
-            </a>
-          </div>
-        </div>
-      </footer>
-
-      {/* =================================================================== */}
       {/* MODALS                                                              */}
       {/* =================================================================== */}
       <StoryDetailModal

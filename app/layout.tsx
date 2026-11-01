@@ -1,12 +1,12 @@
-﻿import type { Metadata, Viewport } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
 import { SwRegister } from '@/components/sw-register'
+import { EcosystemFooter } from '@/components/ecosystem-footer'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'SimplyBigNews | One Nation - One Truth - One Location',
-  
   description:
     "One Nation - One Truth - One Location. Centered around our interactive 50-state USA News Radar and daily News IQ challenge.",
   keywords: [
@@ -48,14 +48,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background text-foreground antialiased font-sans">
+      <body className="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem={false}
           themes={['light', 'sepia', 'dark']}
         >
-          {children}
+          <div className="flex-1 flex flex-col">
+            {children}
+          </div>
+          <EcosystemFooter />
           <Toaster position="top-center" richColors closeButton />
           <SwRegister />
         </ThemeProvider>
@@ -63,7 +66,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-
