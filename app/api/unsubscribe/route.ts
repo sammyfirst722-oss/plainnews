@@ -49,7 +49,7 @@ export async function POST(request: Request) {
   return new Response(
     `<!DOCTYPE html><html><body style="font-family:sans-serif;text-align:center;padding:50px;">
       <h2>You have been unsubscribed.</h2>
-      <p>${email ? `<strong>${email}</strong> has been removed from our list.` : 'You have been removed.'}</p>
+      <p>${email ? 'That address has been removed from our list.' : 'You have been removed.'}</p>
       <a href="/" style="color:#059669;font-weight:bold;">Return to SimplyBigNews</a>
     </body></html>`,
     { headers: { 'Content-Type': 'text/html' } }
