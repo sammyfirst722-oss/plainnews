@@ -3,13 +3,6 @@
 import React, { useState } from 'react'
 import { Sparkles, Check, X, Shield, Volume2, Zap, ArrowRight, Loader2 } from 'lucide-react'
 
-const VIP_TESTER_EMAILS = [
-  'sammyfirstplaystore@gmail.com',
-  'sammyfirst722@gmail.com',
-  'sammyfirst722-oss@gmail.com',
-]
-const TESTER_PASSWORDS = ['Pa55word!.']
-
 interface VipModalProps {
   isOpen: boolean
   onClose: () => void
@@ -17,33 +10,12 @@ interface VipModalProps {
 }
 
 export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
-  const [isLoading, setIsLoading] = useState<'monthly' | 'lifetime' | 'gift' | null>(null)
+  const [isLoading, setIsLoading] = useState<'monthly' | 'lifetime' | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [restoreInput, setRestoreInput] = useState('')
-  const [restoreMessage, setRestoreMessage] = useState<string | null>(null)
-
-  const handleRestore = (e: React.FormEvent) => {
-    e.preventDefault()
-    const clean = restoreInput.trim()
-    const cleanLower = clean.toLowerCase()
-
-    if (VIP_TESTER_EMAILS.includes(cleanLower) || TESTER_PASSWORDS.includes(clean)) {
-      try {
-        localStorage.setItem('simplybignews_vip', 'true')
-        localStorage.setItem('simplybignews_vip_email', cleanLower)
-        window.dispatchEvent(new Event('simplybignews_vip_changed'))
-      } catch {}
-      setRestoreMessage('✓ VIP Supporter access unlocked!')
-      if (onVipSuccess) onVipSuccess()
-      setTimeout(() => onClose(), 1000)
-    } else {
-      setRestoreMessage('Account not recognized. Please check your email or password.')
-    }
-  }
 
   if (!isOpen) return null
 
-  const handleCheckout = async (plan: 'monthly' | 'lifetime' | 'gift') => {
+  const handleCheckout = async (plan: 'monthly' | 'lifetime') => {
     setIsLoading(plan)
     setError(null)
 
@@ -178,44 +150,6 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
           </button>
         </div>
         
-        {/* Gift Option */}
-        <button
-          onClick={() => handleCheckout('gift')}
-          disabled={isLoading !== null}
-          className="w-full mt-3 p-3 rounded-2xl border-2 border-dashed border-blue-600/50 bg-blue-600/5 hover:bg-blue-600/10 transition-all text-center flex items-center justify-center gap-2 group cursor-pointer active:scale-98"
-        >
-          <span className="text-xs sm:text-sm font-bold text-blue-800 dark:text-blue-300">
-            {isLoading === 'gift' ? 'Connecting...' : '🎁 Gift a Lifetime Pass to a Parent/Grandparent ($19.99)'}
-          </span>
-        </button>
-
-        {/* Restore / Google Play Tester VIP Access */}
-        <div className="mt-4 pt-3 border-t border-border/60 text-center">
-          <span className="text-[11px] text-muted-foreground block mb-1.5 font-medium">
-            Already a VIP Supporter or Google Play Tester?
-          </span>
-          <form onSubmit={handleRestore} className="flex gap-1.5 items-center">
-            <input
-              type="text"
-              placeholder="Enter email or tester password"
-              value={restoreInput}
-              onChange={(e) => setRestoreInput(e.target.value)}
-              className="flex-1 text-xs px-3 py-2 rounded-xl border border-border/80 bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-blue-600/40"
-            />
-            <button
-              type="submit"
-              className="text-xs font-bold h-9 rounded-xl px-3 border-2 border-blue-600/40 bg-blue-600/10 text-blue-800 dark:text-blue-300 hover:bg-blue-600/20 cursor-pointer active:scale-95 transition-all"
-            >
-              Restore
-            </button>
-          </form>
-          {restoreMessage && (
-            <p className={`text-[11px] mt-1.5 font-semibold ${restoreMessage.startsWith('✓') ? 'text-blue-600 dark:text-blue-400' : 'text-red-500'}`}>
-              {restoreMessage}
-            </p>
-          )}
-        </div>
-
         {/* Footer Guarantee */}
         <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground font-medium">
           <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />

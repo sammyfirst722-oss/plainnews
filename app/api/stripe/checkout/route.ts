@@ -14,6 +14,12 @@ export async function POST(req: NextRequest) {
   try {
     const { plan = 'lifetime', isTwa = false } = await req.json().catch(() => ({}))
 
+    // The old "gift" pass only ever unlocked the buyer's own browser (nothing delivers it to a recipient),
+    // so it is not sold until a real delivery method exists.
+    if (plan !== 'monthly' && plan !== 'lifetime') {
+      return NextResponse.json({ error: 'That plan is not available.' }, { status: 400 })
+    }
+
     // Google Play Policy 3.1 Guard: Disallow external Stripe credit card checkout inside Android app
     if (isAndroidTwa(req, isTwa)) {
       return NextResponse.json(
@@ -93,8 +99,9 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       mode: plan === 'monthly' ? 'subscription' : 'payment',
       line_items: lineItems,
-      success_url: `${origin}/?upgraded=true`,
+      success_url: `${origin}/?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/?canceled=true`,
+      metadata: { plan, app: 'plainnews' },
     })
 
     return NextResponse.json({ checkoutUrl: session.url })

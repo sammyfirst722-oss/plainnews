@@ -99,15 +99,29 @@ export function PlainNewsClient({ initialStories }: PlainNewsClientProps) {
         if (stateParam) {
           setSelectedState(stateParam)
         }
-        if (
-          params.get('upgraded') === 'true' ||
-          params.get('tester') === 'true' ||
-          params.get('email')?.toLowerCase() === 'sammyfirstplaystore@gmail.com'
-        ) {
-          localStorage.setItem('simplybignews_vip', 'true')
-          setIsVip(true)
-        } else {
-          setIsVip(localStorage.getItem('simplybignews_vip') === 'true')
+        const sessionId = params.get('session_id')
+        setIsVip(localStorage.getItem('simplybignews_vip') === 'true')
+        if (sessionId) {
+          // Returning from Stripe Checkout: only the server's answer can switch VIP on.
+          const cleanUrl = new URL(window.location.href)
+          cleanUrl.searchParams.delete('session_id')
+          window.history.replaceState({}, '', cleanUrl.pathname + (cleanUrl.search || ''))
+          fetch('/api/stripe/verify-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId }),
+          })
+            .then((r) => r.json().catch(() => ({})))
+            .then((d) => {
+              if (d && d.ok) {
+                try {
+                  localStorage.setItem('simplybignews_vip', 'true')
+                } catch {}
+                setIsVip(true)
+                window.dispatchEvent(new Event('simplybignews_vip_changed'))
+              }
+            })
+            .catch(() => {})
         }
       }
       const saved = localStorage.getItem('plainnews_bookmarks')
