@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Sparkles, Check, X, Shield, Volume2, Zap, ArrowRight, Loader2 } from 'lucide-react'
+import { isAndroidApp } from '@/lib/android-app'
 
 interface VipModalProps {
   isOpen: boolean
@@ -12,6 +13,12 @@ interface VipModalProps {
 export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
   const [isLoading, setIsLoading] = useState<'monthly' | 'lifetime' | null>(null)
   const [error, setError] = useState<string | null>(null)
+  // Inside the Google Play app, digital purchases must use Play Billing (not offered for VIP yet), so no card checkout there.
+  const [inAndroidApp, setInAndroidApp] = useState(false)
+
+  useEffect(() => {
+    setInAndroidApp(isAndroidApp())
+  }, [isOpen])
 
   if (!isOpen) return null
 
@@ -23,7 +30,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan }),
+        body: JSON.stringify({ plan, isTwa: isAndroidApp() }),
       })
 
       const data = await res.json()
@@ -91,8 +98,14 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
           </div>
         )}
 
+        {inAndroidApp && (
+          <div className="mb-4 p-4 rounded-xl bg-muted/60 border border-border/60 text-sm text-center text-foreground">
+            VIP is not available inside the Android app yet. Thank you for reading SimplyBigNews.
+          </div>
+        )}
+
         {/* Pricing Options */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className={inAndroidApp ? 'hidden' : 'grid grid-cols-1 sm:grid-cols-2 gap-3'}>
           {/* Monthly Option */}
           <button
             onClick={() => handleCheckout('monthly')}
@@ -151,7 +164,7 @@ export function VipModal({ isOpen, onClose, onVipSuccess }: VipModalProps) {
         </div>
         
         {/* Footer Guarantee */}
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground font-medium">
+        <div className={inAndroidApp ? 'hidden' : 'mt-4 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground font-medium'}>
           <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
           <span>Secured by Stripe • Instant Access • Money-back guarantee</span>
         </div>

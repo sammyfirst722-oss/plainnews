@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: 'google_play_billing_required',
-          message: 'In-app digital purchases on Android must use Google Play Store billing. Please restore your purchase with your email or use the website.',
+          message: 'VIP is not available inside the Android app yet. In-app digital purchases on Android must use Google Play billing.',
           isAndroidApp: true,
         },
         { status: 403 }
