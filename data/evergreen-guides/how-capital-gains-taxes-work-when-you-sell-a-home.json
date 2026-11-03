@@ -1,25 +1,40 @@
 {
   "title": "How Capital Gains Taxes Work When You Sell a Home",
   "slug": "how-capital-gains-taxes-work-when-you-sell-a-home",
-  "bigPicture": "When you sell your home for more than you paid, the profit is usually tax-free up to $250,000 (single) or $500,000 (married), if you lived there 2 of the last 5 years.",
+  "bigPicture": "When you sell your main home for more than you paid, you may be able to leave up to $250,000 of the profit out of your income ($500,000 if you file a joint return), if you owned it and lived in it for at least 2 of the last 5 years.",
   "whatYouNeedToKnow": [
-    "Capital gains tax is just a tax on the profit you make, not the whole sale price.",
-    "The IRS lets most homeowners skip tax on up to $250,000 of profit ($500,000 if married filing jointly).",
-    "You must have lived in the home as your main home for at least 2 years out of the last 5 to qualify.",
-    "Money you spent on big improvements (new roof, kitchen remodel) adds to your cost basis and lowers your taxable profit.",
-    "Even if you owe no tax, you still must report the sale on your return."
+    "A capital gain is the profit on a sale, not the whole sale price.",
+    "The IRS lets you exclude up to $250,000 of gain, or up to $500,000 if you file a joint return with your spouse.",
+    "You must have owned the home and used it as your main home for at least 2 years (24 months) out of the 5 years before the sale. The two 2-year periods do not have to be the same.",
+    "On a joint return, either spouse can meet the ownership test, but both spouses must meet the use test.",
+    "The exclusion only applies to your main home.",
+    "The cost of additions and improvements is added to your home's cost basis, which lowers your gain."
   ],
   "commonMistakesToAvoid": [
-    "Forgetting to save receipts for home improvements — they lower your tax.",
-    "Assuming every sale is tax-free — the 2-of-5-year rule must be met.",
-    "Not reporting the sale because you think you owe nothing.",
-    "Selling a second home and expecting the same big exclusion — it only applies to your main home."
+    "Throwing away receipts for big improvements. They raise your cost basis.",
+    "Assuming every sale is tax-free. The 2-of-5-year ownership and use tests must be met.",
+    "Skipping the report because you think you owe nothing. If you receive Form 1099-S you must report the sale, even if the gain can be excluded. You must also report it if you cannot exclude all of the gain.",
+    "Expecting the same exclusion on a second home. It only applies to your main home."
   ],
   "actionSteps": [
-    "Gather all receipts for upgrades and repairs done in the last few years.",
-    "Write down what you paid for the home plus improvement costs — that's your cost basis.",
-    "Subtract cost basis from the sale price to find your profit.",
-    "Check if you meet the 2-of-5-year live-in rule.",
-    "Talk to a tax preparer or use IRS Form 8949 to report the sale correctly."
-  ]
+    "Gather the receipts for additions and improvements you have made.",
+    "Write down what you paid for the home plus those improvement costs. That is your adjusted cost basis.",
+    "Subtract your adjusted basis from the sale price to estimate your gain.",
+    "Check that you meet both the ownership test and the use test for 2 of the last 5 years.",
+    "Read the IRS pages listed below, or ask a tax preparer, before you file."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "IRS Topic 701: Sale of your home",
+        "url": "https://www.irs.gov/taxtopics/tc701"
+      },
+      {
+        "label": "IRS Publication 523: Selling Your Home",
+        "url": "https://www.irs.gov/publications/p523"
+      }
+    ],
+    "note": "Exclusion amounts, 2-of-5 test, reporting rule from Topic 701; main-home-only and basis from Pub 523. Form 8949 step removed because not fully confirmed."
+  }
 }

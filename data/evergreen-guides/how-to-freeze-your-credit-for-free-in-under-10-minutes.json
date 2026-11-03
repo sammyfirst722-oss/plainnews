@@ -1,20 +1,33 @@
 {
-  "title": "How to Freeze Your Credit for Free in Under 10 Minutes",
+  "title": "How to Freeze Your Credit for Free",
   "slug": "how-to-freeze-your-credit-for-free-in-under-10-minutes",
-  "bigPicture": "A credit freeze locks your file so thieves cannot open new accounts in your name, and it costs nothing.",
+  "bigPicture": "A credit freeze stops anyone from opening a new credit account in your name, it does not affect your credit score, and it is free to place and to lift.",
   "whatYouNeedToKnow": [
-    "It is free by law at Equifax, Experian, and TransUnion.",
-    "Your own credit cards still work, and your score does not drop.",
-    "You get a secret code to unlock it when you need credit."
+    "There is no cost to place or lift a credit freeze.",
+    "You must contact all three credit bureaus: Equifax, Experian, and TransUnion.",
+    "While a freeze is on, nobody can open a new credit account in your name.",
+    "A freeze does not affect your credit score.",
+    "A freeze lasts until you lift it."
   ],
   "commonMistakesToAvoid": [
-    "Freezing only one bureau—thieves can still use the other two.",
-    "Forgetting your secret code—write it down and store it safely."
+    "Freezing at only one bureau. Contact all three.",
+    "Forgetting how to lift the freeze before you apply for credit. Keep the details each bureau gives you somewhere safe.",
+    "Leaving it frozen when you need a loan. Lift it first so the lender can check your credit."
   ],
   "actionSteps": [
-    "Collect your name, address, birth date, and Social Security number.",
-    "Contact Equifax, Experian, and TransUnion online or by phone.",
-    "Answer two easy questions and get your secret code.",
-    "Write down the codes and test unlocking once."
-  ]
+    "Gather the details the bureaus ask for, such as your name, address, birth date, and Social Security number.",
+    "Contact Equifax, Experian, and TransUnion and ask each one to place a freeze.",
+    "Write down and safely store whatever each bureau gives you to lift the freeze later.",
+    "When a lender needs to check your credit, ask which bureau they will use, lift the freeze there, and put it back afterward."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "FTC: What to know about credit freezes and fraud alerts",
+        "url": "https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts"
+      }
+    ],
+    "note": "Removed unconfirmed claims: 10-minute time, existing cards keep working, two questions and a secret code."
+  }
 }

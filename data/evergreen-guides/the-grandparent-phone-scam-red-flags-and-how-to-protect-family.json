@@ -1,19 +1,35 @@
 {
   "title": "The Grandparent Phone Scam: Red Flags and How to Protect Family",
   "slug": "the-grandparent-phone-scam-red-flags-and-how-to-protect-family",
-  "bigPicture": "Scammers call pretending to be a grandchild in trouble, hoping you'll send money fast without checking the truth.",
+  "bigPicture": "Scammers pretend to be a family member in trouble and press you to send money fast. Slow down, hang up, and check with the real person at a number you already know.",
   "whatYouNeedToKnow": [
-    "The caller may use your grandchild's name or a fake cry for help to sound real.",
-    "They often say it's an emergency — jail, car crash, lost wallet — to rush you.",
-    "They ask you to keep the call secret and send money by wire, gift card, or crypto."
+    "The caller claims to be a family member or close friend who needs money. They may also pose as a lawyer, police officer, or doctor.",
+    "Scammers may know details from social media or a hacked email, or they may simply guess.",
+    "Some use AI to clone a loved one's voice from a short audio clip, so a familiar voice is not proof.",
+    "Red flags: demands for immediate payment, claims the situation is urgent and only you can help, requests to keep it secret, and pressure to act without checking.",
+    "Requests to pay by wire transfer (such as Western Union or MoneyGram), cryptocurrency, payment apps, or gift cards are a red flag."
   ],
   "commonMistakesToAvoid": [
-    "Sending money before you verify the story with your grandchild directly.",
-    "Letting the caller pressure you into acting right away without talking to family."
+    "Sending money before you check the story with your family member.",
+    "Keeping it secret because the caller told you to.",
+    "Letting emotion and urgency push you into acting without checking."
   ],
   "actionSteps": [
-    "Hang up, then call your grandchild on their real phone number to confirm.",
-    "Ask a trusted family member or friend before you send any money.",
-    "Never share bank info, Social Security number, or passwords over an unexpected call."
-  ]
+    "Resist the pressure. Hang up, or tell the caller you will call back.",
+    "If hanging up feels hard, ask a question only the real person would know.",
+    "Call or message your family member or friend at a number you already know is correct.",
+    "Contact another family member or friend, even if you were told to keep it secret.",
+    "If you already sent money, act as fast as you can. The FTC has general guidance on getting your money back.",
+    "Report it at ReportFraud.ftc.gov and to your state attorney general."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "FTC: Scammers use fake emergencies to steal your money",
+        "url": "https://consumer.ftc.gov/articles/scammers-use-fake-emergencies-steal-your-money"
+      }
+    ],
+    "note": "Removed unconfirmed claims: example emergencies (jail, car crash), family password, money orders, reloadable cards."
+  }
 }
