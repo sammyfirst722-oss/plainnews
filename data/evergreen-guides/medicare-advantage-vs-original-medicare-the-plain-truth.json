@@ -1,20 +1,35 @@
 {
   "title": "Medicare Advantage vs Original Medicare: The Plain Truth",
-  "slug": "medicare-advantage-vs-original-medicare-the-plain-truth",
-  "bigPicture": "Original Medicare is a federal fee-for-service plan; Medicare Advantage is a private plan that bundles your coverage — both meet the legal minimum, but they work very differently.",
+  "bigPicture": "Original Medicare lets you use any doctor or hospital that takes Medicare. Medicare Advantage usually limits you to a plan network but adds a yearly limit on what you pay.",
   "whatYouNeedToKnow": [
-    "Original Medicare (Part A + Part B) lets you see any doctor nationwide that accepts Medicare — no referrals needed.",
-    "Medicare Advantage (Part C) is sold by private companies, often includes drug coverage and extras like dental or vision, but you must use its network.",
-    "Both cover hospital and doctor visits, but copays, premiums, and out-of-pocket limits differ — compare the yearly summary before you pick."
+    "Original Medicare lets you use any doctor or hospital that accepts Medicare, anywhere in the U.S. Medicare Advantage generally limits you to the plan's network and service area for non-emergency care.",
+    "In most cases you do not need a referral to see a specialist with Original Medicare. With Medicare Advantage you may need one.",
+    "Original Medicare needs a separate Part D drug plan, which has its own premium. Most Medicare Advantage plans include drug coverage.",
+    "Medicare Advantage plans may offer extras such as some vision, hearing, and dental services. Original Medicare does not cover routine eye exams or most dental care.",
+    "Medicare Advantage has a yearly out-of-pocket limit. Original Medicare has no yearly limit unless you have supplemental coverage.",
+    "Medicare Advantage may require prior approval for some services. Original Medicare usually does not.",
+    "Medigap works only with Original Medicare. You cannot buy Medigap if you have Medicare Advantage."
   ],
   "commonMistakesToAvoid": [
-    "Assuming your current doctors are in-network — always check the plan's provider list first.",
-    "Skipping the yearly Open Enrollment review — your needs and costs change, so should your plan.",
-    "Thinking 'free' means no cost — look for premiums, deductibles, and copays."
+    "Assuming your doctors are in a Medicare Advantage plan's network without checking.",
+    "Comparing only the monthly premium and ignoring copays, deductibles, and the yearly out-of-pocket limit.",
+    "Forgetting that emergency and urgent care are covered even from providers outside the plan's network."
   ],
   "actionSteps": [
-    "Visit Medicare.gov or call 1-800-MEDICARE to compare plans in your zip code.",
-    "List your doctors, medications, and preferred hospitals, then match them to plan networks.",
-    "Set a calendar reminder for Open Enrollment (Oct 15 – Dec 7) to review and switch if needed."
-  ]
+    "List your doctors, medicines, and preferred hospitals.",
+    "Compare Original Medicare and Medicare Advantage on Medicare.gov using that list.",
+    "Check whether each plan you are considering covers your doctors and your medicines.",
+    "Review your coverage again each year, since plans can change."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "Medicare.gov: Compare Original Medicare and Medicare Advantage",
+        "url": "https://www.medicare.gov/basics/get-started-with-medicare/get-more-coverage/your-coverage-options/compare-original-medicare-medicare-advantage"
+      }
+    ],
+    "note": "Removed: who sells Medicare Advantage and Open Enrollment dates (not on the page)."
+  },
+  "slug": "medicare-advantage-vs-original-medicare-the-plain-truth"
 }

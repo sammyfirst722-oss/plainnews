@@ -1,0 +1,34 @@
+{
+  "title": "Reverse Mortgages Explained in Plain Words",
+  "bigPicture": "A reverse mortgage lets homeowners 62 and older borrow against their home equity with no regular monthly mortgage payment, but interest and fees keep adding to what is owed.",
+  "whatYouNeedToKnow": [
+    "A reverse mortgage is a loan, most often a Home Equity Conversion Mortgage (HECM), that lets you borrow against your home's equity.",
+    "You must be at least 62.",
+    "You keep ownership of the home and make no regular monthly mortgage payment.",
+    "The home must be your principal residence. You must keep paying property taxes and homeowners insurance and maintain the home.",
+    "Lenders add interest and fees to the loan balance each month, so the amount you owe rises over time while your home equity shrinks.",
+    "Repayment is triggered once you no longer live in the home. You or your heirs must eventually repay, usually by selling the home."
+  ],
+  "commonMistakesToAvoid": [
+    "Forgetting that interest and fees grow the balance every month.",
+    "Falling behind on property taxes, insurance, or upkeep, which you are still responsible for.",
+    "Not telling your family. Your heirs will need to repay the loan, usually by selling the home."
+  ],
+  "actionSteps": [
+    "Ask each lender for all fees and the interest rate in writing before you decide.",
+    "Compare more than one offer.",
+    "Talk it over with your family and with a trusted, independent advisor.",
+    "Read the CFPB page below before you sign anything."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "CFPB: What is a reverse mortgage?",
+        "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-reverse-mortgage-en-224/"
+      }
+    ],
+    "note": "Removed unconfirmed claims: HUD-approved counseling requirement and payout options (not on the CFPB page)."
+  },
+  "slug": "reverse-mortgages-explained-in-plain-words"
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Common Phone Scams Targeting Seniors and How to Respond",
+  "bigPicture": "Most phone scams work the same way: they rush you, ask for money or personal information, and want payment that is hard to trace. Slow down, hang up, and check with a number you already know.",
+  "whatYouNeedToKnow": [
+    "Government impersonation: government agencies will never call, email, text, or message you on social media to ask for money or personal information. Scammers may threaten arrest or benefit suspension.",
+    "Tech support: legitimate tech companies will not contact you by phone, email, or text to say your computer has a problem. Real security pop-ups never ask you to call a phone number.",
+    "Prizes and lotteries: real prizes are free. If you must pay fees, taxes, or shipping to get a prize, it is a scam.",
+    "Family emergency: a caller claims to be a relative in trouble and presses you to send money fast. Some use AI to copy a loved one's voice.",
+    "Scammers ask for wire transfers, gift cards, cryptocurrency, or payment apps because these are hard to trace and hard to get back.",
+    "Caller ID can be faked, so do not trust it."
+  ],
+  "commonMistakesToAvoid": [
+    "Paying or sharing personal information because a caller sounds official or urgent.",
+    "Calling back the number the caller gave you instead of one you know is correct.",
+    "Pressing numbers on a robocall, or clicking links in unexpected messages.",
+    "Giving a bank account number, card number, or Social Security number to claim a prize."
+  ],
+  "actionSteps": [
+    "Hang up or ignore the contact.",
+    "Contact the real agency or company using a number you already know is correct. For Medicare, call 1-800-MEDICARE.",
+    "Talk to a family member or friend before you send any money.",
+    "If you paid or shared information, act as quickly as you can and contact the company you paid through.",
+    "Report scams at ReportFraud.ftc.gov and to your state attorney general."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "FTC: How to avoid a government impersonation scam",
+        "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+      },
+      {
+        "label": "FTC: How to spot, avoid, and report tech support scams",
+        "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+      },
+      {
+        "label": "FTC: Fake prize, sweepstakes, and lottery scams",
+        "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+      },
+      {
+        "label": "FTC: Scammers use fake emergencies to steal your money",
+        "url": "https://consumer.ftc.gov/articles/scammers-use-fake-emergencies-steal-your-money"
+      }
+    ],
+    "note": "Removed: top-5 ranking, Do Not Call and ICE tips (not confirmed on these pages)."
+  },
+  "slug": "common-phone-scams-targeting-seniors-and-how-to-respond"
+}

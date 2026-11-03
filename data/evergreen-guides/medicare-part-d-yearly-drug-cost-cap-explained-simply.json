@@ -1,0 +1,34 @@
+{
+  "title": "The Medicare Part D Yearly Drug Cost Cap, Explained Simply",
+  "bigPicture": "Medicare drug plans (Part D) have a yearly limit on what you pay out of pocket for covered drugs. In 2026 it is $2,100.",
+  "whatYouNeedToKnow": [
+    "The yearly out-of-pocket cap for Part D drugs is $2,100 in 2026 and $2,400 in 2027. It changes from year to year.",
+    "It applies to covered drugs in a Medicare Part D drug plan.",
+    "After any deductible and 25% coinsurance, you reach the cap and move to catastrophic coverage.",
+    "Once you reach the cap, you pay nothing out of pocket for covered Part D drugs for the rest of the calendar year.",
+    "What you spend on covered Part D drugs counts toward the cap, including certain payments made on your behalf, such as through Extra Help.",
+    "The Medicare Prescription Payment Plan can spread your drug costs across the calendar year to help with monthly budgeting. It does not save you money or lower your drug costs."
+  ],
+  "commonMistakesToAvoid": [
+    "Assuming the cap is the same every year. It is $2,100 in 2026 and $2,400 in 2027.",
+    "Assuming every drug counts. Only covered Part D drugs count toward the cap.",
+    "Thinking the payment plan lowers your costs. It only spreads them out."
+  ],
+  "actionSteps": [
+    "Check that your medicines are covered by your Part D plan.",
+    "Keep track of what you spend on covered drugs during the year.",
+    "If large drug bills worry you, read about the Medicare Prescription Payment Plan on Medicare.gov.",
+    "Review your drug plan each year, since the cap and plan costs change."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "Medicare.gov: Costs for Medicare drug coverage",
+        "url": "https://www.medicare.gov/drug-coverage-part-d/costs-for-medicare-drug-coverage"
+      }
+    ],
+    "note": "Old guide said $2,000 starting 2025 and that plan payments do not count; replaced with the 2026 and 2027 amounts from Medicare.gov. Premiums-count claim removed (not confirmed)."
+  },
+  "slug": "medicare-part-d-yearly-drug-cost-cap-explained-simply"
+}

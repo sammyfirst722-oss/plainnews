@@ -1,19 +1,34 @@
 {
-  "title": "Medicare Part A vs Part B: What Is Actually Free and What Costs Money",
-  "slug": "medicare-part-a-vs-part-b-what-is-actually-free-and-what-costs-money",
-  "bigPicture": "Part A often has no monthly bill, but both parts have out-of-pocket costs you must pay.",
+  "title": "Medicare Part A vs Part B: What Is Free and What Costs Money",
+  "bigPicture": "Part A usually has no monthly premium, but neither part is free: both have deductibles and other costs you pay yourself.",
   "whatYouNeedToKnow": [
-    "Part A covers hospital stays. Most people pay no monthly premium if they worked and paid Medicare taxes for 10 years.",
-    "Part B covers doctor visits and outpatient care. You pay a monthly premium plus a yearly deductible.",
-    "Neither part is free. You pay deductibles, copays, and coinsurance for services."
+    "Part A (hospital insurance) has a $0 monthly premium for most people who, or whose spouse, paid Medicare taxes for generally at least 10 years.",
+    "If you do not qualify for premium-free Part A, you can buy it for $311 or $565 a month in 2026, depending on your work history. You need Part B to buy Part A.",
+    "Part A still has costs. In 2026 the deductible is $1,736 for each inpatient benefit period. After that you pay $434 a day for hospital days 61 to 90 and $868 a day for days 91 to 150. After day 150 you pay all costs.",
+    "Part A skilled nursing facility stays cost you $217 a day for days 21 to 100 in 2026.",
+    "Part B (medical insurance) has a monthly premium of $202.90 in 2026, and higher-income people pay more. It also has a yearly deductible of $283 in 2026.",
+    "Part B has a late enrollment penalty if you do not sign up when you are first eligible, usually at 65. It grows the longer you wait, and you pay it for as long as you have Part B."
   ],
   "commonMistakesToAvoid": [
-    "Assuming Part A is free because there is no premium. You still pay hospital deductibles and coinsurance.",
-    "Delaying Part B enrollment without other coverage. You will pay a lifelong late penalty."
+    "Assuming Part A is free because there is no premium. Hospital stays still have a deductible and daily coinsurance.",
+    "Delaying Part B without checking how it affects your costs. The late penalty lasts as long as you have Part B.",
+    "Forgetting that these dollar amounts change every year."
   ],
   "actionSteps": [
-    "Check your Social Security statement to confirm Part A premium status.",
-    "Sign up for Part B during your Initial Enrollment Period at age 65 unless you have other coverage.",
-    "Set aside money for the Part B premium and Part A hospital deductible each year."
-  ]
+    "Find out when you are first eligible for Medicare, usually at 65.",
+    "Check on Medicare.gov what you would pay for Part A and Part B this year.",
+    "Plan for the Part B premium and the deductibles in your yearly budget.",
+    "If you are not sure about your situation, ask Medicare directly using the contact options on Medicare.gov."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "Medicare.gov: Medicare costs",
+        "url": "https://www.medicare.gov/basics/costs/medicare-costs"
+      }
+    ],
+    "note": "2026 amounts from the Medicare.gov costs page. Removed: Social Security statement tip, Initial Enrollment Period details (not on the page)."
+  },
+  "slug": "medicare-part-a-vs-part-b-what-is-actually-free-and-what-costs-money"
 }

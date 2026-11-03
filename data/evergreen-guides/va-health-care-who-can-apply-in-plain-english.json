@@ -1,0 +1,36 @@
+{
+  "title": "VA Health Care: Who Can Apply, in Plain English",
+  "bigPicture": "Veterans who served in active military service and did not get a dishonorable discharge may be able to get VA health care. What you pay depends on your priority group.",
+  "whatYouNeedToKnow": [
+    "VA health care is open to Veterans who served in the active military, naval, or air service and did not receive a dishonorable discharge.",
+    "If you enlisted after September 7, 1980, or entered active duty after October 16, 1981, you generally need 24 continuous months of active duty or the full period you were called up for. Exceptions include a service-related disability discharge and a hardship or early-out discharge.",
+    "Reserve or National Guard members generally must have been called to active duty by federal order and completed the full period. Training-only active duty does not count.",
+    "Other than honorable, bad conduct, or dishonorable discharges may make you ineligible. You may be able to seek a discharge upgrade or a Character of Discharge review.",
+    "Your priority group (1 of 8) affects how soon you are signed up and how much, if anything, you pay.",
+    "Service-connected disability compensation, a VA pension, and Medicaid eligibility can raise your priority group.",
+    "Veterans who do not meet the service-based rules may still get free or reduced-cost care based on income.",
+    "Having other health insurance does not affect your VA benefits."
+  ],
+  "commonMistakesToAvoid": [
+    "Assuming you do not qualify without checking. Eligibility depends on your service, discharge, and sometimes income.",
+    "Not gathering your discharge papers before you apply.",
+    "Assuming other insurance cancels your VA benefits. It does not."
+  ],
+  "actionSteps": [
+    "Find your discharge papers.",
+    "Read the VA eligibility page below to see where you fit.",
+    "Apply online at VA.gov using VA Form 10-10EZ.",
+    "If you want help, ask an accredited representative or your state's Veterans agency."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "VA.gov: Eligibility for VA health care",
+        "url": "https://www.va.gov/health-care/eligibility/"
+      }
+    ],
+    "note": "Narrowed to health care eligibility only. Removed disability pay details and the phone number (not confirmed on the page)."
+  },
+  "slug": "va-health-care-who-can-apply-in-plain-english"
+}
