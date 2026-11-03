@@ -1,0 +1,33 @@
+{
+  "title": "Social Security COLA, Explained Simply",
+  "bigPicture": "A COLA is the yearly adjustment meant to help Social Security and SSI benefits keep up with rising prices. As of November 2, 2026, the latest COLA is 3.6%.",
+  "whatYouNeedToKnow": [
+    "COLA stands for cost-of-living adjustment. Cost-of-living adjustments keep Social Security and Supplemental Security Income (SSI) benefits in step with inflation.",
+    "The latest COLA is 3.6% for Social Security benefits and SSI payments.",
+    "Social Security benefits increase by 3.6% beginning with the December 2026 benefits, which are payable in January 2027.",
+    "Federal SSI payment levels also increase by 3.6% for payments made for January 2027. Because January 1 is a holiday, those SSI payments are made at the end of December.",
+    "COLAs are based on the increase in the Consumer Price Index for Urban Wage Earners and Clerical Workers (CPI-W). The law compares the third-quarter average to the third-quarter average of the last year a COLA took effect, and rounds to the nearest tenth of a percent.",
+    "If there is no increase, or the rounded increase is zero, there is no COLA that year."
+  ],
+  "commonMistakesToAvoid": [
+    "Assuming the COLA is the same every year. It depends on the CPI-W and can be zero.",
+    "Using an old COLA figure. This guide shows the figure as of November 2, 2026, and a new one is set each year.",
+    "Confusing a COLA with a raise based on your work. It is an adjustment for price changes."
+  ],
+  "actionSteps": [
+    "Check the Social Security Administration's COLA page for the latest announcement.",
+    "Remember that the new amount starts with December 2026 benefits, paid in January 2027.",
+    "If you receive SSI, note that the increase is for payments made for January 2027."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "SSA: Latest Cost-of-Living Adjustment",
+        "url": "https://www.ssa.gov/oact/cola/latestCOLA.html"
+      }
+    ],
+    "note": "Replaced the old \"2026 not announced yet\" text. Removed the unconfirmed Medicare Part B offset claim. The 3.6% figure is dated; recheck each fall."
+  },
+  "slug": "social-security-cola-explained-simply"
+}

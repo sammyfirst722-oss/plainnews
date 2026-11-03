@@ -1,22 +1,46 @@
 {
   "title": "Social Security Survivor Benefits: Who Qualifies and How Much",
-  "slug": "social-security-survivor-benefits-who-qualifies-and-how-much",
-  "bigPicture": "If you lose a spouse or parent who paid into Social Security, you may get monthly money to help you live.",
+  "bigPicture": "Social Security survivor benefits pay monthly money to eligible family members of someone who worked and paid Social Security taxes before they died.",
   "whatYouNeedToKnow": [
-    "Widows and widowers age 60 or older can get benefits. If disabled, it can start at age 50.",
-    "Children under 18 can get benefits. If still in high school, up to age 19. Disabled children may qualify at any age.",
-    "The amount is based on what the person earned while working. It is usually 75% to 100% of their full benefit.",
-    "You can get survivor benefits and your own retirement benefit, but Social Security pays the higher amount, not both full amounts."
+    "You may qualify as a spouse, ex-spouse, child, or dependent parent of someone who worked and paid Social Security taxes before they died.",
+    "Spouses generally need to be age 60 or older (or 50 to 59 with a disability), to have been married at least 9 months, and not to have remarried before age 60 (age 50 with a disability). You might qualify at any age if you are caring for a child of the person who died.",
+    "Ex-spouses who were married at least 10 years may also qualify.",
+    "Children may qualify if they are unmarried and 17 or younger, or 18 to 19 and in school (K-12) full time, or any age if they developed a disability at age 21 or younger.",
+    "A dependent parent may qualify at age 62 or older if the child who died financially supported them.",
+    "Spouse payments start at 71.5% of the spouse's benefit and rise the longer you wait: over 75% at age 61, over 80% at 63, over 90% at 65, and up to 100% at Full Retirement Age for Survivor benefits (between 66 and 67).",
+    "Children generally get 75% of the parent's benefit, but a family maximum may lower everyone's payments.",
+    "If you qualify for Survivor benefits and another benefit, you choose the better one. They are not added together, and you can switch later.",
+    "Spouses or some minor children could also get a one-time $255 death payment."
   ],
   "commonMistakesToAvoid": [
-    "Waiting too long to apply. Apply right away so you do not lose back payments.",
-    "Thinking remarriage ends your benefits. If you remarry after age 60, you still qualify.",
-    "Forgetting the $255 lump-sum death payment. Not everyone knows this is available."
+    "Assuming survivor and retirement benefits add up. You choose one, not both.",
+    "Assuming you will get 100% right away. Payments start lower and rise with the age you start.",
+    "Assuming only older widows and widowers qualify. Children and some younger spouses can too.",
+    "Ignoring earnings limits. Your payment may be temporarily reduced if you earn above the limit."
   ],
   "actionSteps": [
-    "Call Social Security at 1-800-772-1213 or visit ssa.gov to start your claim.",
-    "Gather your ID, the deceased person's SSN, and a copy of the death certificate.",
-    "Have your banking info ready so payments go straight to your account.",
-    "Ask about extra help like Medicare or SNAP if money is tight."
-  ]
+    "Call Social Security at 1-800-772-1213 (TTY 1-800-325-0778), Monday through Friday, 8 a.m. to 7 p.m.",
+    "Have the Social Security number of the family member who died. If you do not have it, you will be asked for other details like their date of birth and parents' names.",
+    "A funeral home will usually report the death, so you may not need to.",
+    "Read the SSA pages listed below for the rules that fit your situation."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "SSA: Who can get Survivor benefits",
+        "url": "https://www.ssa.gov/survivor/eligibility"
+      },
+      {
+        "label": "SSA: What you could get from Survivor benefits",
+        "url": "https://www.ssa.gov/survivor/amount"
+      },
+      {
+        "label": "SSA: Survivor benefits",
+        "url": "https://www.ssa.gov/survivor"
+      }
+    ],
+    "note": "Rewritten from the three SSA pages. Removed: \"usually 75% to 100%\" for everyone, SNAP/Medicare extras, remarriage-after-60 wording."
+  },
+  "slug": "social-security-survivor-benefits-who-qualifies-and-how-much"
 }

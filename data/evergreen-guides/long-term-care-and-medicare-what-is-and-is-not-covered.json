@@ -1,0 +1,39 @@
+{
+  "title": "Long-Term Care and Medicare: What Is and Is Not Covered",
+  "bigPicture": "Medicare does not pay for long-term care, so you pay the cost unless you have another source such as Medicaid or private long-term care insurance.",
+  "whatYouNeedToKnow": [
+    "Long-term care, also called custodial care, covers medical and non-medical help for people with a chronic illness or disability. Most of it is help with activities of daily living, such as personal care, home-delivered meals, adult day health care, and transportation.",
+    "Medicare does not pay for long-term care, whether it is in a nursing home or in the community. Medicare Supplement Insurance (Medigap) does not cover it either.",
+    "Long-term care is different from skilled nursing facility care, which Medicare does cover under its own rules.",
+    "You may qualify for Medicaid help if you meet your state's eligibility rules.",
+    "You can also choose to buy private long-term care insurance.",
+    "Long-term care can be received at home, in the community, in assisted living, or in a nursing home.",
+    "If you itemize on your taxes, premiums for qualified long-term care insurance are listed by the IRS among deductible medical expenses, but only the part of your total medical costs above 7.5% of your adjusted gross income is deductible."
+  ],
+  "commonMistakesToAvoid": [
+    "Assuming Medicare or Medigap pays for long-term care. They do not.",
+    "Mixing up long-term care (custodial care) with skilled nursing facility care, which Medicare covers separately.",
+    "Waiting to learn about your options until you or a family member needs care."
+  ],
+  "actionSteps": [
+    "Read the Medicare.gov long-term care page listed below.",
+    "Look up your state's Medicaid rules for long-term care help.",
+    "If you think about private long-term care insurance, ask for the policy terms in writing and compare more than one offer.",
+    "Talk with your family about what kind of care you would want."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "Medicare.gov: Long-term care",
+        "url": "https://www.medicare.gov/coverage/long-term-care"
+      },
+      {
+        "label": "IRS: Topic 502, Medical and dental expenses",
+        "url": "https://www.irs.gov/taxtopics/tc502"
+      }
+    ],
+    "note": "Rewritten from Medicare.gov and IRS. Removed unconfirmed claims about waiting periods, inflation protection, shared-care options, and \"must buy before you need it\"."
+  },
+  "slug": "long-term-care-and-medicare-what-is-and-is-not-covered"
+}

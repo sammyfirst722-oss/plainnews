@@ -1,25 +1,40 @@
 {
-  "title": "Standard Deduction vs Itemized Deduction: Plain Words Guide",
-  "slug": "standard-deduction-vs-itemized-deduction-plain-words-guide",
-  "bigPicture": "You get to subtract money from your income before taxes are calculated — either using one simple number (standard) or adding up your real expenses (itemized).",
+  "title": "Standard Deduction vs Itemizing: A Plain-Words Guide",
+  "bigPicture": "The standard deduction is a set dollar amount that lowers the income you are taxed on. If you itemize instead, you cannot also take the standard deduction.",
   "whatYouNeedToKnow": [
-    "The standard deduction is one fixed amount the government gives you — no receipts needed.",
-    "The itemized deduction means you list out real costs like medical bills, mortgage interest, and charity donations.",
-    "You pick whichever method lowers your tax bill more — you never have to do both.",
-    "The standard deduction amount grows each year and is higher for people age 65 and older.",
-    "If your total itemized expenses are less than the standard deduction, just take the standard one."
+    "The standard deduction is a specific dollar amount that reduces the income you are taxed on. It is the basic amount plus any additional amount for age 65 or older or for blindness.",
+    "The amount is adjusted every year for inflation. It depends on your filing status, whether you are 65 or older or blind, and whether someone else can claim you as a dependent.",
+    "You cannot take the standard deduction if you itemize your deductions.",
+    "For tax year 2025, the additional standard deduction for age or blindness is $1,600, or $2,000 if you are also unmarried and not a surviving spouse. You count as 65 for 2025 if you were born before January 2, 1961.",
+    "For tax year 2025, the IRS also lists a separate enhanced deduction of $6,000 for taxpayers 65 and older. It has an adjusted gross income limit, requires a valid Social Security number, requires a joint return if you are married, and uses Schedule 1-A (Form 1040).",
+    "If you itemize medical expenses on Schedule A, only the amount above 7.5% of your adjusted gross income is deductible.",
+    "Some people cannot take the standard deduction, for example a married person filing separately whose spouse itemizes."
   ],
   "commonMistakesToAvoid": [
-    "Forgetting you get a bigger standard deduction once you turn 65.",
-    "Tossing receipts all year — if you might itemize, save every medical and donation receipt.",
-    "Assuming you must itemize because someone told you to — always compare both numbers.",
-    "Missing the state tax deduction cap of $10,000 when itemizing."
+    "Assuming you can take both the standard deduction and itemize. You cannot.",
+    "Forgetting the additional amounts for age 65 or older.",
+    "Using dollar amounts from a past year. They change each year.",
+    "Counting all medical costs. Only the part above 7.5% of your adjusted gross income counts."
   ],
   "actionSteps": [
-    "Gather last year's receipts for medical costs, property taxes, mortgage interest, and charity.",
-    "Add them up and compare the total to the standard deduction amount for your filing status.",
-    "Pick the bigger number and use that on your tax return.",
-    "If the numbers are close, ask a tax preparer to double-check — small differences matter.",
-    "Repeat this check every year because your expenses and the standard deduction amount can change."
-  ]
+    "Look up the current standard deduction for your filing status on the IRS website.",
+    "If you might itemize, read IRS Topic 501 (Should I itemize?) and add up your deductible costs.",
+    "Compare your itemized total with the standard deduction and use the method that is right for you.",
+    "Ask a tax preparer if your situation is not simple."
+  ],
+  "reviewed": {
+    "on": "2026-11-02",
+    "sources": [
+      {
+        "label": "IRS: Topic 551, Standard deduction",
+        "url": "https://www.irs.gov/taxtopics/tc551"
+      },
+      {
+        "label": "IRS: Topic 502, Medical and dental expenses",
+        "url": "https://www.irs.gov/taxtopics/tc502"
+      }
+    ],
+    "note": "Removed the old $10,000 state tax cap claim and all current-year base amounts (not confirmed and they change yearly). 2025 senior amounts come from IRS Topic 551."
+  },
+  "slug": "standard-deduction-vs-itemized-deduction-plain-words-guide"
 }
