@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "app.vercel.plainnews.twa",
       "sha256_cert_fingerprints": [
-        "D9:D4:E2:E4:4D:A1:03:05:F5:79:69:56:B5:42:E6:9E:08:5E:90:79:17:DD:6F:21:7D:A6:EA:8C:45:A5:62:3D"
+        "D9:D4:E2:E4:4D:A1:03:05:F5:79:69:56:B5:42:E6:9E:08:5E:90:79:17:DD:6F:21:7D:A6:EA:8C:45:A5:62:3D",
+        "49:F6:F7:B6:12:8F:E9:DC:C8:75:49:EF:23:D7:22:77:4C:76:F1:D5:B5:CA:FD:0A:23:8D:67:FE:85:5A:94:C6"
       ]
     }
   }
